@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans" xmlns="http://www.springframework.org/schema/security">
+
+
+<http use-expressions="true" auto-config="true">
+
+<!-- <intercept-url pattern="/admin1**" access="hasRole('ROLE_ADMIN')"/> -->
+
+
+<!-- <intercept-url pattern="/login/**" access="hasRole('ROLE_USER')"/> -->
+
+
+<!-- <intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" /> -->
+
+
+<intercept-url access="hasRole('ROLE_ADMIN')" pattern="/admin**"/>
+
+<intercept-url access="hasRole('ROLE_USER')" pattern="/user**"/>
+
+<!-- <intercept-url pattern="/ret/**" access="hasRole('ROLE_USER')"/> -->
+
+
+<form-login authentication-failure-url="/fail2login" default-target-url="/welcome" login-processing-url="/j_spring_security_check" login-page="/Login"/>
+
+<logout logout-success-url="/logoutsuccess" logout-url="/Logout" delete-cookies="JSESSIONID"/>
+
+<csrf disabled="true"/>
+
+</http>
+
+
+<authentication-manager>
+
+
+<authentication-provider>
+
+<jdbc-user-service authorities-by-username-query="select u1.username, u1.role from login u1 where u1.username =?" users-by-username-query="select username,password,'true' from login where username=?" data-source-ref="dataSource"/>
+
+</authentication-provider>
+
+</authentication-manager>
+
+</beans:beans>
