@@ -12,12 +12,12 @@ var modalTemplate =
 
 		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
 
-app.controller('UserCtrl', function($scope, $http, $uibModal) {
-	$http.get('list?page=1').then(function(response) {
+app.controller('StudyVolunteerCtrl', function($scope, $http, $uibModal) {
+	$http.get('list2?page=1').then(function(response) {
 		$scope.names = response.data;
 	});
 
-	$http.get('pageCount').then(function(response) {
+	$http.get('pageCount2').then(function(response) {
 		$scope.pagecount = response.data;
 		console.log('Page count', response.data)
 		$scope.numlist = new Array($scope.pagecount);
@@ -36,14 +36,12 @@ app.controller('UserCtrl', function($scope, $http, $uibModal) {
 
 		});
 		
-	
-		
 	  };
 	
 	  $scope.goToPage = function(pageNumber) {
 			console.log('GOIN TO A NEW PAGE');
 			$scope.currentPage = pageNumber;
-			var searchUrl = 'list?page=' + pageNumber +
+			var searchUrl = 'list2?page=' + pageNumber +
 				($scope.filter ? ('&filter=' + $scope.filter) : '');
 			$http.get(searchUrl).then(function(response) {
 				$scope.names = response.data;
@@ -53,12 +51,11 @@ app.controller('UserCtrl', function($scope, $http, $uibModal) {
 		console.log('search.........');
 		$scope.filter=$scope.tempfilter;
 		console.log('search.........');
-			$http.get('list?page=1&filter='+$scope.filter).then(function(response) {
+			$http.get('list2?page=1&filter='+$scope.filter).then(function(response) {
 				console.log('ID modal');
 				$scope.names = response.data;
 				angular.copy($scope.names, response.data);
-				console.log('user', $scope.names);
-				$scope.currentPage = 1;
+				console.log('patientTrail', $scope.names);
 			});
 			
 			$http.get('pageCount').then(function(response) {
@@ -78,7 +75,7 @@ app.controller('deleteModalController', function($scope, $http, $uibModalInstanc
 	$scope.delete = function() {
 		var body = { userId: $scope.id };
 		console.log('VEDHA deleting', body);
-		$http.post('deleteuser?userId=' + $scope.id).then(function(response) {
+		$http.post('delete_patientTrail?id=' + $scope.id).then(function(response) {
 			console.log('VEDHAAA HEREE DELETED');
 			$uibModalInstance.close('deleted');	
 			location.reload();

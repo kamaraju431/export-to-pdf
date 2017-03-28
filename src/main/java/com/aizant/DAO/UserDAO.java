@@ -8,6 +8,7 @@ public interface UserDAO {
 	public List<User> list();
 
 	public User get(int id);
+	public User getByUsername(String username);
 
 	public void saveOrUpdate(User user);
 
@@ -20,4 +21,8 @@ public interface UserDAO {
 	public List<User> getUserByPage(int pageid, int total);
 
 	public long getPageCount();
+	
+	
+	
+	
 }

@@ -36,7 +36,7 @@
 <script
 	src="<%=request.getContextPath()%>/resources/js/displaycontroller.js" /></script>
 </head>
-<body>
+<body ng-controller="UserCtrl">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 
 	<br>
@@ -48,82 +48,85 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col col-xs-6">
-						<h3 class="panel-title">USERS</h3>
-
-						<ul>
-							<li ng-repeat="s in names | filter:test">{{ x }}</li>
-						</ul>
+						<h3 class="panel-title">Users</h3>
 					</div>
-
 					<div class="col col-xs-6 text-right">
-						<input type="text" ng-model="test" placeholder="search"> <a
-							href="add_patientTrail"><button type="button"
-								class="btn btn-sm btn-primary btn-create">New
-								Experiment</button></a> <a href="add_user"><button type="button"
-								class="btn btn-sm btn-primary btn-create">Add User</button></a>
-					</div>
-				</div>
-			</div>
 
-			<div ng-controller="UserCtrl">
+						<form class="navbar-form" role="search">
 
-				<table class="table table-hover table-bordered">
-					<tr>
-						<th>ID</th>
-						<th>USER NAME</th>
-						<th>EMAIL</th>
-						<th>ROLE</th>
-						<th>ACTION</th>
-
-					</tr>
-					<tr ng-repeat="s in names | filter:searchBy">
-						<td>{{s.id}}</td>
-						<td>{{s.username}}</td>
-						<td>{{s.email}}</td>
-						<td>{{s.role}}</td>
-
-						<td><a
-							href="${pageContext.servletContext.contextPath}/view_user?id={{s.id}}"><span
-								class="glyphicon glyphicon-eye-open"></span></a> <sec:authorize
-								access="hasRole('ROLE_ADMIN')">
-								<a
-									href="${pageContext.servletContext.contextPath}/edit_user?id={{s.id}}"><span
-									class="glyphicon glyphicon-pencil"></span></a>
-								<!-- Button to trigger modal -->
-								<a ng-click="openDeleteModal(s.id)"><span
-									class="glyphicon glyphicon-trash"></span></a>
+							<div class="input-group custom-search-form" align="center">
+								<input type="text" ng-model="searchBy" class="form-control">
+								<!-- ng-model="tempfilter" -->
+								<span class="input-group-btn">
+									<button class="btn btn-primary" ng-click="search()"
+										type="button">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<a href="add_user"><button type="button"
+										class="btn btn-sm btn-primary btn-create">Add User</button></a>
 							</sec:authorize>
-							</div> <!-- /.modal-dialog -->
-							</div> <!-- /.modal --></td>
-						<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
+						</form>
+					</div>
+
+				</div>
+
+				<div>
+
+					<table class="table table-hover table-bordered">
+						<tr>
+							<th>ID</th>
+							<th>USER NAME</th>
+							<th>EMAIL</th>
+							<th>AUTHORITY</th>
+							<th>ACTION</th>
+
+						</tr>
+						<tr ng-repeat="s in names | filter:searchBy">
+							<td>{{s.id}}</td>
+							<td>{{s.username}}</td>
+							<td>{{s.email}}</td>
+							<td>{{s.role}}</td>
+
+							<td><a
+								href="${pageContext.servletContext.contextPath}/view_user?id={{s.id}}"><span
+									class="glyphicon glyphicon-eye-open"></span></a> <sec:authorize
+									access="hasRole('ROLE_ADMIN')">
+									<a
+										href="${pageContext.servletContext.contextPath}/edit_user?id={{s.id}}"><span
+										class="glyphicon glyphicon-pencil"></span></a>
+									<!-- Button to trigger modal -->
+									<a ng-click="openDeleteModal(s.id)"><span
+										class="glyphicon glyphicon-trash"></span></a>
+								</sec:authorize>
+								</div> <!-- /.modal-dialog -->
+								</div> <!-- /.modal --></td>
+							<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
 								class="glyphicon glyphicon-trash"></span></a></td> -->
-					</tr>
-				</table>
+						</tr>
+					</table>
 
 
 
 
-				<div class="panel-footer">
-					<div class="row">
-						<div class="col col-xs-4">Page No:</div>
-						<div class="container">
-							<ul class="pagination">
+					<div class="panel-footer">
+						<div class="row">
+							<div class="col col-xs-4">Page No:</div>
+							<div class="container">
+								<ul class="pagination">
 
-								<li ng-repeat="i in numlist track by $index"><a
-									ng-click="goToPage($index + 1)"><span class="active">{{$index
-											+ 1}}</span></a></li>
-							</ul>
+									<li ng-repeat="i in numlist track by $index"><a
+										ng-click="goToPage($index + 1)"><span class="active">{{$index
+												+ 1}}</span></a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-	</div>
-
-	</script>
-
 	</div>
 
 </body>

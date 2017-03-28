@@ -1,29 +1,28 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html lang="en">
+
+<html>
 <head>
-<title>AIZANT::Adduser</title>
+<title>Aizant::Edit_Study_Volunteer</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
 	<br>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -35,43 +34,38 @@
 
 
 				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">${login.username}</h3>
+					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
 								<img alt="User Pic"
-									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
+									src="http://previews.123rf.com/images/krisdog/krisdog1308/krisdog130800150/21822848-An-illustration-of-a-cartoon-scientist-holding-a-test-tube-and-clipboard-in-a-white-lab-coat-perform-Stock-Vector.jpg"
 									class="img-circle img-responsive">
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
-
-								<c:url var="add_user" value="add_user"></c:url>
-								<form:form commandName="User" method="post" action="store_user">
+								<form:form modelAttribute="StudyVolunteer" method="post"
+									action="update_studyVolunteer">
 									<table class="table table-user-information">
 										<tbody>
 											<tr>
-												<td><form:label path="username">Username :</form:label></td>
-												<td><form:input path="username" /> <font color="red"><form:errors
-															path="username"></form:errors></font></td>
+												<td><form:label path="id">Id:</form:label></td>
+												<td><form:input path="id" value="${study_Volunteer.id}"
+														text="readonly" /></td>
 											</tr>
 											<tr>
-												<td><form:label path="password">Password :</form:label></td>
-												<td><form:input path="password" /> <font color="red"><form:errors
-															path="password"></form:errors></font></td>
+												<td><form:label path="volunteerId">Volunteer Id:</form:label></td>
+												<td><form:input path="volunteerId"
+														value="${study_Volunteer.volunteerId}" text="readonly" /></td>
 											</tr>
 											<tr>
-												<td><form:label path="email">Email :</form:label></td>
-												<td><form:input path="email" /> <font color="red"><form:errors
-															path="email"></form:errors></font></td>
+												<td><form:label path="volunteerName">Volunteer Name:</form:label></td>
+												<td><form:input path="volunteerName"
+														value="${study_Volunteer.volunteerName}" text="readonly" /></td>
 											</tr>
-											<tr>
-												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
-											</tr>
-
-											<td><input type="submit" value="submit"
-												class="btn-success" /></td>
+											<td><input type="submit" value="submit" /></td>
 										</tbody>
 									</table>
 								</form:form>
@@ -81,11 +75,9 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
-
-
-
 </body>
 <%@ include file="/WEB-INF/views/template/footer.jsp"%>
 </html>

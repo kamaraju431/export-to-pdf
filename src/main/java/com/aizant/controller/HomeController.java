@@ -1,6 +1,8 @@
 package com.aizant.controller;
 
+
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,11 +24,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aizant.DAO.LoginDAO;
 import com.aizant.DAO.UserDAO;
-import com.aizant.model.Login;
+import com.aizant.Services.IUserService;
+import com.aizant.Services.UserService;
+
 import com.aizant.model.User;
 import com.google.gson.Gson;
 
@@ -36,10 +40,14 @@ public class HomeController {
 	 * ------------------------------------- DAO declaration
 	 * --------------------------------------
 	 */
-	@Autowired
-	private LoginDAO loginDao;
+	
+	
 	@Autowired
 	private UserDAO userDao;
+	
+	@Autowired
+	private IUserService userService;
+	
 	SessionFactory sessionFactory;
 
 	/*
@@ -47,18 +55,20 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping("/")
-	public ModelAndView display2() {
-		ModelAndView log = new ModelAndView("Login");
-		return log;
+	public ModelAndView display() {
+		ModelAndView m4 = new ModelAndView("Login");
+		return m4;
 	}
+
 
 	/*
 	 * ------------------------------------- View All Users
 	 * --------------------------------------
 	 */
 	@RequestMapping("/display_user")
-	public ModelAndView retriveRecords() {
+	public ModelAndView retriveRecords() throws Exception {
 		ModelAndView m1 = new ModelAndView("display_user");
+		
 		return m1;
 	}
 
@@ -67,12 +77,12 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "edit_user", method = RequestMethod.GET)
-	public ModelAndView edituser(@RequestParam int id, @ModelAttribute("Login") Login login) {
+	public ModelAndView edituser(@RequestParam int id, @ModelAttribute("User") User user) {
 		System.out.println("hello kamu............");
-		Login u1 = loginDao.get(id);
+		User u1 = userDao.get(id);
 		System.out.println("hai.............");
 
-		return new ModelAndView("edit_user", "login", u1);
+		return new ModelAndView("edit_user", "user", u1);
 	}
 
 	@RequestMapping("/edit_user")
@@ -85,12 +95,12 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
-	public ModelAndView updateuser(HttpServletRequest request, @Valid @ModelAttribute("Login") Login login,
-			@ModelAttribute("User") User user) {
-		loginDao.Update(login);
+	public ModelAndView updateuser(HttpServletRequest request, @Valid @ModelAttribute("User") User user) {
+		userService.registerNewUserAccount(user);
 		userDao.saveOrUpdate(user);
 		return new ModelAndView("display_user");
 	}
+	
 	/*
 	 * ------------------------------------- Page Count
 	 * --------------------------------------
@@ -113,7 +123,8 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute User user) {
+	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute User user,
+			@RequestParam(value="", required=false) String filter) {
 		List<User> list;
 
 		System.out.println("Page number " + page);
@@ -150,48 +161,26 @@ public class HomeController {
 	 * ------------------------------------- Store User
 	 * --------------------------------------
 	 */
-	@RequestMapping("/store_user")
-	public String addmobile(HttpServletRequest request, @Valid @ModelAttribute("User") User user,
-			BindingResult result) {
-
-		if (result.hasErrors()) {
-			return "add_user";
-		}
-		System.out.println(user);
-
-		userDao.saveOrUpdate(user);
-
-		return "display_user";
-	}
 
 	@RequestMapping(value = "/store_user", method = RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
+	public ModelAndView addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
 		System.out.println(user.getId());
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(user.getEmail());
 		System.out.println(user.getRole());
-		System.out.println(user.getStatus());
+		System.out.println(user.getEnabled());
+		
 
 		if (result.hasErrors()) {
 			System.out.println("hi");
 
-			return "add_user";
+			return new ModelAndView("redirect:/add_user");
 		}
-		Login login = new Login();
-		System.out.println("hello storeUser");
-		System.out.println(user.getUsername() + "hello @@@@@@");
-		userDao.saveOrUpdate(user);
-		login.setId(user.getId());
-		login.setUsername(user.getUsername());
-		login.setPassword(user.getPassword());
-		login.setEmail(user.getEmail());
-		login.setStatus(user.getStatus());
+	
 
-		login.setRole(user.getRole());
-
-		loginDao.save(login);
-		return "display_user";
+		userService.registerNewUserAccount(user);
+		return new ModelAndView("redirect:/display_user");
 	}
 
 	/*
@@ -210,20 +199,20 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws Exception {
+	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+
 		System.out.println("hi");
 		/*
 		 * ------------------------------------- Admin Page
 		 * --------------------------------------
 		 */
-		if (request.isUserInRole("ROLE_ADMIN")) {
+	if (request.isUserInRole("ROLE_ADMIN")) {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
 			session.setAttribute("loggedInUser", str);
 
-			// session.invalidate();
+
 			ModelAndView m1 = new ModelAndView("Admin");
 			return m1;
 		} else {
@@ -235,13 +224,12 @@ public class HomeController {
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
 			session.setAttribute("loggedInUser", str);
-			ModelAndView m2 = new ModelAndView("display_patientTrail");
-			return m2;
+//			ModelAndView m2 = new ModelAndView("display_study");
+			return new ModelAndView("redirect:/display_study");
 		}
 
 	}
-
-	/*
+		/*
 	 * ------------------------------------- View User
 	 * --------------------------------------
 	 */
@@ -261,7 +249,7 @@ public class HomeController {
 	@RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
 	public @ResponseBody String deleteuser(@RequestParam int userId) {
 		System.out.println("hello " + userId);
-		loginDao.delete(userId);
+
 		userDao.delete(userId);
 		Gson u = new Gson();
 		String json = u.toJson(userId);

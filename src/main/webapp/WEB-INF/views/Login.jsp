@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>AIZANT::Login</title>
@@ -34,16 +35,16 @@
 }
 </style>
 </head>
-<body>
+<body background=http://img07.deviantart.net/274c/i/2011/109/8/8/background_m3_login_for_m1_by_andreascy-d3ecbzg.jpg>
 
-	<%@ include file="/WEB-INF/views/template/header.jsp"%>
+	<%@ include file="/WEB-INF/views/template/header2.jsp"%>
 	<br>
 	<br>
 	<br>
 	<br>
 	<div class="container">
 		<c:if test="${error=='true'}">
-			<div class="errorblock">Enter Your UserName and Password....</div>
+			<div class="errorblock">Invalid credintial...</div>
 		</c:if>
 		<c:if test="${not empty logoutmsg }">
 			<div class="logoutblock">
@@ -55,14 +56,14 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="form-wrap">
-						<h1>Log in with your email account</h1>
+						<h1>Log in with your User Name & Password</h1>
 
 						<form role="form" action="j_spring_security_check" method="post"
 							id="login-form" autocomplete="off">
 							<div class="form-group">
 								<label for="username">UserName:</label> <input type="text"
 									name="username" class="form-control"
-									placeholder="Enter User Username" />
+									placeholder="Enter Username" />
 							</div>
 							<div class="form-group">
 								<label for="password">Password:</label> <input type="password"
@@ -72,6 +73,7 @@
 
 							<input type="submit" id="btn-login"
 								class="btn btn-custom btn-lg btn-block" value="Log in">
+						 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 						<hr>
 					</div>
@@ -82,4 +84,5 @@
 		</div>
 		<!-- /.container --> </section>
 </body>
+<%@ include file="/WEB-INF/views/template/footer.jsp"%>
 </html>

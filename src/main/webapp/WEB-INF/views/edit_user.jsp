@@ -35,44 +35,44 @@
 
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">${login.username}</h3>
+						<h3 class="panel-title">${user.username}</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
 								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
 									class="img-circle img-responsive">
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
-								<form:form modelAttribute="Login" method="post"
+								<form:form modelAttribute="User" method="post"
 									action="update_user">
 									<table class="table table-user-information">
 										<tbody>
 											<tr>
 												<td><form:label path="id">User ID:</form:label></td>
-												<td><form:input path="id" value="${login.id}"
+												<td><form:input path="id" value="${user.id}"
 														text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="username">User Name :</form:label></td>
 												<td><form:input path="username"
-														value="${login.username}" text="readonly" /></td>
+														value="${user.username}" text="readonly" /></td>
 											</tr>
-											<tr>
+										 <tr>
 												<td><form:label path="password">password:</form:label></td>
 												<td><form:input path="password"
-														value="${login.password}" text="readonly" /></td>
+														value="${user.password}" text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="email">Email:</form:label></td>
-												<td><form:input path="email" value="${login.email}"
+												<td><form:input path="email" value="${user.email}"
 														text="readonly" /></td>
 											</tr>
 											<tr>
-												<td><form:label path="role">Role:</form:label></td>
-												<td><form:input path="role" value="${login.role}"
+												<td><form:label path="role">Authority:</form:label></td>
+												<td><form:input path="role" value="${user.role}"
 														text="readonly" /></td>
 											</tr>
 											<td><input type="submit" value="submit" /></td>
@@ -89,4 +89,5 @@
 		</div>
 	</div>
 </body>
+<%@ include file="/WEB-INF/views/template/footer.jsp"%>
 </html>

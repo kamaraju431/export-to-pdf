@@ -51,7 +51,7 @@
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
 								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
 									class="img-circle img-responsive">
 							</div>
 
@@ -67,7 +67,7 @@
 											<td>${user.username}</td>
 										</tr>
 										<tr>
-											<td>Role</td>
+											<td>Authority</td>
 											<td>${user.role}</td>
 										</tr>
 

@@ -15,7 +15,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/header.css" />
 <meta name="description" content="">
 <meta name="author" content="">
@@ -39,9 +39,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" width="100px">
-            <li><a href="/Sample/display_study" style="color:#ffffff">HOME</a></li>
-             <li><a href="/Sample/Blood_Sample_Collection_Record" style="color:#ffffff">BLOOD SAMPLE</a></li>
-           
+            <li><a href="/Sample/" style="color:#ffffff">HOME</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WHY WE <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -56,29 +54,13 @@
               </ul>
             </li>
           </ul>
-          <form class="navbar-form navbar-left form-horizontal" role="search">
+          <form class="navbar-form navbar-left form-horizontal" role="search" href="google.co.in">
               <div class="input-group">
                  <input type="text" class="search-box" placeholder="Search">
                  <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
               </div>
           </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle navbar-img" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("loggedInUser")%>
-              
-             <img alt="User Pic"
-									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
-									class="img-circle">
-              </a>
-              <ul class="dropdown-menu">
-           
-               <li><a href="${pageContext.request.contextPath}/Logout" target="_self">Log out</a></li>
-            
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Settings</a></li>
-              </ul>
-            </li>
-          </ul>
+         
         </div>
     </nav>
 </header>

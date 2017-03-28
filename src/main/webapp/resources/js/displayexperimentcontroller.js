@@ -5,23 +5,23 @@ var modalTemplate =
 		+ "<button ng-click='x()'type='button' class='close' data-dismiss='modal'>x</button>"
 		+ "<h4 class='modal-title'>Warning!</h4>"
 		+ "</div>"
-		+ "<div class='modal-body'>Are you sure you want to delete Experiment{{s.id}}</div>"
+		+ "<div class='modal-body'>Are you sure You want to Delete{{s.id}}</div>"
 		+ "<div class='modal-footer'>"
 		+ "<button ng-click='cancel()' type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
 		+
 
-		"<button ng-click='delete()' type='button' class='btn btn-primary' data-dismiss='modal'>Delete changes</button>	</div>";
+		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
 
 
 
 		  
 		
-app.controller('experimentCtrl', function($scope, $http, $uibModal) {
-	$http.get('list1?page=1').then(function(response) {
+app.controller('studyCtrl', function($scope, $http, $uibModal) {
+	$http.get('list3?page=1').then(function(response) {
 		$scope.names = response.data;
 	});
 
-	$http.get('pageCount1').then(function(response) {
+	$http.get('pageCount3').then(function(response) {
 		$scope.pagecount = response.data;
 		console.log('Page count', response.data)
 		$scope.numlist = new Array($scope.pagecount);
@@ -29,7 +29,8 @@ app.controller('experimentCtrl', function($scope, $http, $uibModal) {
 	
 	$scope.getLengthFromSamples = function(samplesArray) {
 		var length = (samplesArray || []).length;
-		return length ? samplesArray[length-1] : 0 ;
+		return length;
+		//return length ? samplesArray[length-1] : 0 ;
 	};
 
 	$scope.openDeleteModal = function(id) {
@@ -53,7 +54,7 @@ app.controller('experimentCtrl', function($scope, $http, $uibModal) {
 	$scope.goToPage = function(pageNumber) {
 		console.log('GOIN TO A NEW PAGE');
 		$scope.currentPage = pageNumber;
-		$http.get('list1?page=' + pageNumber).then(function(response) {
+		$http.get('list3?page=' + pageNumber).then(function(response) {
 			$scope.names = response.data;
 			$scope.currentPage = 1;
 		});
@@ -66,7 +67,7 @@ app.controller('deleteModalController', function($scope, $http, $uibModalInstanc
 	$scope.delete = function() {
 		var body = { experimentTypeId: $scope.id };
 		console.log('VEDHA deleting', body);
-		$http.post('delete_experiment?experimentTypeId=' + $scope.id).then(function(response) {
+		$http.post('deleteexperiment?experimentTypeId=' + $scope.id).then(function(response) {
 			console.log('VEDHAAA HEREE DELETED', response);
 			$uibModalInstance.close('deleted');	
 			location.reload();

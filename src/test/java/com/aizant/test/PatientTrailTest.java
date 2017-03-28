@@ -2,8 +2,8 @@ package com.aizant.test;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.aizant.DAO.PatientTrailDAO;
-import com.aizant.model.PatientTrail;
+import com.aizant.DAO.StudyVolunteerDAO;
+import com.aizant.model.StudyVolunteer;
 
 
 public class PatientTrailTest {
@@ -12,12 +12,12 @@ public class PatientTrailTest {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.aizant");
 		context.refresh();
-		PatientTrailDAO patientTrailDAO = (PatientTrailDAO) context.getBean("patienttrailDAO");
-		PatientTrail patientTrail = (PatientTrail) context.getBean("patienttrail");
+		StudyVolunteerDAO studyVolunteerDAO = (StudyVolunteerDAO) context.getBean("patienttrailDAO");
+		StudyVolunteer studyVolunteer = (StudyVolunteer) context.getBean("patienttrail");
 		
 	
 		
-		patientTrailDAO.save(patientTrail);
+		studyVolunteerDAO.save(studyVolunteer);
 		
 		
 

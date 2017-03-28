@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin</title>
 
 </head>
 <body>
@@ -12,23 +12,35 @@
 	<br>
 	<br>
 	<br>
-	<h1>hello Admin...!!!</h1>
+<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="form-wrap">
+						<h1>Hello Admin...!!!</h1>
 
-	<p>
-		<a href="display_user"><span class="glyphicon glyphicon-bookmark"></span>
+						
+							<div class="form-group">
+								<a href="display_user"><span class="glyphicon glyphicon-bookmark"></span>
 			Manage Users</a>
-	<p>
-		<a href="display_patientTrail"><span
-			class="glyphicon glyphicon-bookmark"></span> Manage Patient Trails</a>
-	<p>
-		<a href="display_experiments"><span
-			class="glyphicon glyphicon-bookmark"></span> Manage Experiments</a>
-	<p>
-		<a href="${pageContext.request.contextPath}/Logout">Log out</a>
-	</p>
+							</div>
+							<div class="form-group">
+								<a href="display_studyVolunteer"><span
+			class="glyphicon glyphicon-bookmark"></span> Manage Study Volunteer</a>
+							</div>
+							<div class="form-group">
+								<a href="display_study"><span
+			class="glyphicon glyphicon-bookmark"></span> Manage Study</a>
+							</div>
 
-
-
+							<a href="${pageContext.request.contextPath}/Logout">Log out</a>
+						<hr>
+					</div>
+				</div>
+				<!-- /.col-xs-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container --> </section>
 
 </body>
 </html>

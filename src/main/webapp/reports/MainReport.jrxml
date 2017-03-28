@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-03-18T18:58:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dec9e481-4ee0-4ce4-9133-19d86ad149ef">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="SUBREPORT_PATH" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="V_NAME" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA["name"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="EX_TYPE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["experiment"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="V_ID" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["id"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="time" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="30" width="490" height="40" forecolor="#0B8722" uuid="d1617c1b-f0e1-455f-83c0-fe5e20c3729f"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[AIZANT SAMPLE TRACKING]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="131" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="60" width="93" height="20" uuid="d42230fe-6f6b-485e-9e17-b62f585e25cb"/>
+				<textFieldExpression><![CDATA[$P{V_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="90" width="100" height="20" uuid="bf56bade-674f-4ac9-9534-f420595b5e3a"/>
+				<textFieldExpression><![CDATA[$P{EX_TYPE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="30" width="93" height="20" uuid="ea071ce9-1324-4cfc-b53f-98c0b582be0c"/>
+				<textFieldExpression><![CDATA[$P{V_ID}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="90" y="15" width="70" height="35" uuid="8bf4842c-297a-4a9b-8081-7134eb2c7aa1"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{V_ID}+$P{V_NAME}+$P{EX_TYPE}+$F{time}]]></jr:codeExpression>
+				</jr:DataMatrix>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

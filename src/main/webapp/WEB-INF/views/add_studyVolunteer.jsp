@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
-<title>AIZANT::Adduser</title>
+<title>AIZANT::AddStudyVolunteer</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -18,7 +18,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body ng-app="myApp" ng-controller="myController">
 
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
@@ -39,40 +39,45 @@
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
 								<img alt="User Pic"
-									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
+									src="http://previews.123rf.com/images/krisdog/krisdog1308/krisdog130800150/21822848-An-illustration-of-a-cartoon-scientist-holding-a-test-tube-and-clipboard-in-a-white-lab-coat-perform-Stock-Vector.jpg"
 									class="img-circle img-responsive">
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
+								<form:form commandName="StudyVolunteer" method="post"
+									action="store_studyVolunteer">
+									<table border="0">
+										<tr>
+											<td colspan="2" align="center"><h2>ADD STUDY VOLUNTEER</h2></td>
+										</tr>
+										<div>
+											<table>
 
-								<c:url var="add_user" value="add_user"></c:url>
-								<form:form commandName="User" method="post" action="store_user">
-									<table class="table table-user-information">
-										<tbody>
-											<tr>
-												<td><form:label path="username">Username :</form:label></td>
-												<td><form:input path="username" /> <font color="red"><form:errors
-															path="username"></form:errors></font></td>
-											</tr>
-											<tr>
-												<td><form:label path="password">Password :</form:label></td>
-												<td><form:input path="password" /> <font color="red"><form:errors
-															path="password"></form:errors></font></td>
-											</tr>
-											<tr>
-												<td><form:label path="email">Email :</form:label></td>
-												<td><form:input path="email" /> <font color="red"><form:errors
-															path="email"></form:errors></font></td>
-											</tr>
-											<tr>
-												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
-											</tr>
 
-											<td><input type="submit" value="submit"
-												class="btn-success" /></td>
-										</tbody>
+												<tr>
+													<div>Volunteer ID:</div>
+													<div>
+														<form:input path="volunteerId"
+															ng-repeat="x in random_array" name="point{{$index}}" />
+														<br>
+
+
+														<div>Volunteer Name:</div>
+														<form:input path="VolunteerName"
+															ng-repeat="x in random_array" name="point{{$index}}" />
+													</div>
+
+												</tr>
+											</table>
+										
+											<br>
+											<tr>
+												<td colspan="2" align="center"><input type="submit"
+													value="submit" class="btn-success" /></td>
+											</tr>
+											<span ng-click="add_input()" class="btn-primary">Add
+												Study Volunteer</span>
+										</div>
 									</table>
 								</form:form>
 
@@ -82,6 +87,17 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			var app = angular.module("myApp", []);
+			app.controller("myController", [ "$scope", function($scope) {
+				$scope.random_array = [ 0 ]
+				$scope.add_input = function() {
+					var i = $scope.random_array.length
+					$scope.random_array.push(i)
+				}
+			} ]);
+		</script>
+
 	</div>
 
 

@@ -6,14 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+
 @Table(name = "User")
 @Component
 public class User {
@@ -25,18 +21,12 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	private boolean status = true;
+	private boolean enabled = true;
 
-	private String role = "ROLE_USER";
+	private String role = "ROLE_MONITOR/QA";
+	
 
 	/* --------------- Getter setters --------------------- */
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public String getUsername() {
 		return username;
@@ -45,7 +35,6 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -61,7 +50,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -70,12 +59,23 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean getStatus() {
-		return status;
+	public boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	
+	
+	
 }

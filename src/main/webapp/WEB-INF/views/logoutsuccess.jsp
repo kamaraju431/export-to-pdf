@@ -22,4 +22,5 @@
 		setTimeout("window.location='/Sample/'", 2000);
 	</script>
 </body>
+<%@ include file="/WEB-INF/views/template/footer.jsp"%>
 </html>
