@@ -13,7 +13,7 @@
 <link rel="stylesheet"
 	href='<x:url value="/resources/css/bootstrap.min.css"></x:url>' />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/display.css" />
+	href="<%=request.getContextPath()%>/resources/css/display_user.css" />
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -36,10 +36,10 @@
 
 <script
 	src="<%=request.getContextPath()%>/resources/js/displayexpcontroller.js" /></script>
-</head>
 
 </head>
-<body>
+
+<body ng-controller="PatientTrailCtrl">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
@@ -52,80 +52,82 @@
 					<div class="col col-xs-6">
 						<h3 class="panel-title">Volunteers</h3>
 					</div>
-					<div class="col col-xs-6 text-right">
-						<a href="add_patientTrail"><button type="button"
-								class="btn btn-sm btn-primary btn-create">Add PATIENT
-								TRAIL</button></a>
+					<div class="col col-xs-6 text-center">
+						
+							<form class="navbar-form" role="search">
+								
+									<div class="input-group custom-search-form">
+										<input type="text" ng-model="searchBy" class="form-control"><!--ng-model="tempfilter"  -->
+										<span class="input-group-btn">
+											<button class="btn btn-primary" ng-click="search()"
+												type="button">
+												<span class="glyphicon glyphicon-search"></span>
+											</button>
+										</span>
+									</div>
+									<a href="add_patientTrail"><button type="button"
+											class="btn btn-sm btn-primary btn-create">Add
+											PATIENT TRAIL</button></a>
 
+							
+						</form>
 					</div>
-				</div>
-			</div>
+					<div>
 
-			<div ng-controller="PatientTrailCtrl">
+						<table class="table table-hover table-bordered">
+							<tr>
+								<th>VOLUNTEER ID</th>
+								<th>VOLUNTEER NAME</th>
+								<th>STUDY NAME</th>
+								<th>DATE</th>
+								<th>ACTION</th>
+							</tr>
+							<tr ng-repeat="e in names | filter:searchBy">
+								<td>{{e.volunteerId}}</td>
+								<td>{{e.volunteerName}}</td>
+								<td>{{e.experimentType}}</td>
+								<td>{{e.date}}</td>
 
-				<table class="table table-hover table-bordered">
-					<tr>
-						<th>ID</th>
-						<th>EXPERIMENT TYPE</th>
-						<th>VOLUNTEER ID</th>
-						<th>VOLUNTEER NAME</th>
-						<th>DATE</th>
-
-
-					</tr>
-					<tr ng-repeat="e in names | filter:searchBy">
-						<td>{{e.id}}</td>
-						<td>{{e.experimentType}}</td>
-						<td>{{e.volunteerId}}</td>
-						<td>{{e.volunteerName}}</td>
-						<td>{{e.date}}</td>
-
-						<td><a
-							href="${pageContext.servletContext.contextPath}/view_patientTrail?id={{e.id}}"><span
-								class="glyphicon glyphicon-eye-open"></span></a> <sec:authorize
-								access="hasRole('ROLE_ADMIN')">
-								<a
-									href="${pageContext.servletContext.contextPath}/edit_patientTrail?id={{e.id}}"><span
-									class="glyphicon glyphicon-pencil"></span></a>
-								<!-- Button to trigger modal -->
-								<a ng-click="openDeleteModal(e.id)"><span
-									class="glyphicon glyphicon-trash"></span></a>
-							</sec:authorize>
-							</div> <!-- /.modal-dialog -->
-							</div> <!-- /.modal --></td>
-						<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
+								<td><a
+									href="${pageContext.servletContext.contextPath}/view_patientTrail?id={{e.id}}"><span
+										class="glyphicon glyphicon-eye-open"></span></a> <sec:authorize
+										access="hasRole('ROLE_ADMIN')">
+										<a
+											href="${pageContext.servletContext.contextPath}/edit_patientTrail?id={{e.id}}"><span
+											class="glyphicon glyphicon-pencil"></span></a>
+										<!-- Button to trigger modal -->
+										<a ng-click="openDeleteModal(e.id)"><span
+											class="glyphicon glyphicon-trash"></span></a>
+									</sec:authorize>
+									</div> <!-- /.modal-dialog -->
+									</div> <!-- /.modal --></td>
+								<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
 								class="glyphicon glyphicon-trash"></span></a></td> -->
-					</tr>
-				</table>
+							</tr>
+						</table>
 
 
 
 
-				<div class="panel-footer">
-					<div class="row">
-						<div class="col col-xs-4">Page No:</div>
-						<div class="container">
-							<ul class="pagination">
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col col-xs-4">Page No:</div>
+								<div class="container">
+									<ul class="pagination">
 
-								<li ng-repeat="i in numlist track by $index"><a
-									ng-click="goToPage($index + 1)"><span class="active">{{$index
-											+ 1}}</span></a></li>
-							</ul>
+										<li ng-repeat="i in numlist track by $index"><a
+											ng-click="goToPage($index + 1)"><span class="active">{{$index
+													+ 1}}</span></a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-	<!--  <script>
-var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, $http) {
-    $http.get("list3")
-    .then(function (response) {$scope.names = response.data;});
-});
-</script>-->
+
 	</div>
 
 </body>

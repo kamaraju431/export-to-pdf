@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <title>AIZANT</title>
 <meta charset="utf-8">
@@ -38,7 +39,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" width="100px">
-            <li><a href="/Sample/displaypatienttrail" style="color:#ffffff">HOME</a></li>
+            <li><a href="/Sample/display_patientTrail" style="color:#ffffff">HOME</a></li>
+          
+             <li><a href="/Sample/experiments" style="color:#ffffff">STUDY</a></li>
+          
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WHY WE <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -59,20 +63,22 @@
                  <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
               </div>
           </form>
+         
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle navbar-img" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              ACCOUNT 
+              <a href="#" class="dropdown-toggle navbar-img" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("loggedInUser")%>
+              
              <img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
 									class="img-circle">
               </a>
               <ul class="dropdown-menu">
-           
+           		
                <li><a href="${pageContext.request.contextPath}/Logout">Log out</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Settings</a></li>
               </ul>
+             
             </li>
           </ul>
         </div>

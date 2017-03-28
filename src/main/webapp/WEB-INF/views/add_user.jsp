@@ -26,10 +26,7 @@
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-				<A href="#"><%=session.getAttribute("loggedInUser")%></A> <A
-					href="${pageContext.request.contextPath}/Logout">Logout</A> <br>
-			</div>
+			
 			<div
 				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -39,11 +36,12 @@
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
 								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+									src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSAkfruQ08cqE2z_cXt2IgAtgmFUiyc_aq82Edt4SsOeybyJyE3"
 									class="img-circle img-responsive">
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
+							
 								<c:url var="add_user" value="add_user"></c:url>
 								<form:form commandName="User" method="post" action="store_user">
 									<table class="table table-user-information">
@@ -64,10 +62,11 @@
 															path="email"></form:errors></font></td>
 											</tr>
 											<tr>
-												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
+												<td><form:label path="authority">Role :</form:label></td>
+												<td><form:input path="authority" /> <font color="red"><form:errors
+															path="authority"></form:errors></font></td>
 											</tr>
+											
 											<td><input type="submit" value="submit"
 												class="btn-success" /></td>
 										</tbody>

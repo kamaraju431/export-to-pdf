@@ -34,10 +34,7 @@
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-				<A href="#"><%=session.getAttribute("loggedInUser")%></A> <A
-					href="${pageContext.request.contextPath}/Logout">Logout</A> <br>
-			</div>
+		
 
 			<div
 				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
@@ -50,9 +47,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
-								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
-									class="img-circle img-responsive">
+								
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
@@ -60,32 +55,34 @@
 									<tbody>
 										<tr>
 											<td>ID:</td>
-											<td>${patienttrail.id}</td>
+											<td>${patient_Trail.id}</td>
 										</tr>
 										<tr>
-											<td>Experiment Type:</td>
-											<td>${patienttrail.experimentType}</td>
+											<td>Study:</td>
+											<td>${patient_Trail.experimentType}</td>
 										</tr>
 										<tr>
 											<td>Volunteer ID:</td>
-											<td>${patienttrail.volunteerId}</td>
+											<td>${patient_Trail.volunteerId}</td>
 										</tr>
 
 
 										<tr>
 											<td>Volunteer Name:</td>
-											<td>${patienttrail.volunteerName}</td>
+											<td>${patient_Trail.volunteerName}</td>
 										</tr>
 										<tr>
-											<td>Volunteer Name:</td>
-											<td>${patienttrail.date}</td>
+											<td>Date:</td>
+											<td>${patient_Trail.date}</td>
 										</tr>
 
 									</tbody>
 								</table>
 
-								<a href="edit_patientTrail?id=${patienttrail.id}"
+								<a href="edit_patientTrail?id=${patient_Trail.id}"
 									class="btn btn-primary">EDIT</a>
+									
+									<a href="Jasper?id=${patient_Trail.id}" class="btn btn-primary">PRINT</a>
 
 							</div>
 						</div>

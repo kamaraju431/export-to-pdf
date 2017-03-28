@@ -1,4 +1,4 @@
-package com.aizant.model;
+package com.aizant.Application;
 
 import java.util.Properties;
 
@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,15 +16,20 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.aizant.DAO.PatientTrailDAO;
-import com.aizant.DAO.PatientTrailDAOImpl;
-import com.aizant.DAO.ExperimentTypeDAO;
-import com.aizant.DAO.ExperimentTypeDAOImpl;
+
 import com.aizant.DAO.LoginDAO;
 import com.aizant.DAO.LoginDAOImpl;
-
+import com.aizant.DAO.StudyDAO;
+import com.aizant.DAO.StudyDAOImpl;
+import com.aizant.DAO.StudyVolunteerDAO;
+import com.aizant.DAO.StudyVolunteerDAOImpl;
 import com.aizant.DAO.UserDAO;
 import com.aizant.DAO.UserDAOImpl;
+
+import com.aizant.model.Login;
+import com.aizant.model.Study;
+import com.aizant.model.StudyVolunteer;
+import com.aizant.model.User;
 
 @Configuration
 @ComponentScan("com.aizant")
@@ -33,7 +39,7 @@ public class ApplicationContextConfig {
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizant");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizantTracking");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;
@@ -57,8 +63,8 @@ public class ApplicationContextConfig {
 		sessionFactoryBuilder.addProperties(getHibernateProperties());
 		sessionFactoryBuilder.addAnnotatedClass(Login.class);
 		sessionFactoryBuilder.addAnnotatedClass(User.class);
-		sessionFactoryBuilder.addAnnotatedClass(ExperimentType.class);
-		sessionFactoryBuilder.addAnnotatedClass(PatientTrail.class);
+		sessionFactoryBuilder.addAnnotatedClass(Study.class);
+		sessionFactoryBuilder.addAnnotatedClass(StudyVolunteer.class);
 		return sessionFactoryBuilder.buildSessionFactory();
 	}
 
@@ -82,14 +88,14 @@ public class ApplicationContextConfig {
 	}
 
 	@Autowired
-	@Bean(name = "patienttrailDAO")
-	public PatientTrailDAO getPatientTrailDAO(SessionFactory sessionFactory) {
-		return new PatientTrailDAOImpl(sessionFactory);
+	@Bean(name = "studyDAO")
+	public StudyDAO getPatientTrailDAO(SessionFactory sessionFactory) {
+		return new StudyDAOImpl(sessionFactory);
 	}
 
 	@Autowired
-	@Bean(name = "experimentTypeDAO")
-	public ExperimentTypeDAO getExperimentTypeDAO(SessionFactory sessionFactory) {
-		return new ExperimentTypeDAOImpl(sessionFactory);
+	@Bean(name = "studyVolunteerDAO")
+	public StudyVolunteerDAO getExperimentTypeDAO(SessionFactory sessionFactory) {
+		return new StudyVolunteerDAOImpl(sessionFactory);
 	}
 }

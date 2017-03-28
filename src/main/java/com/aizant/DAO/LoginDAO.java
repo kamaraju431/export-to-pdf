@@ -14,4 +14,5 @@ public interface LoginDAO {
 	public void Update(Login login);
 
 	public void delete(int id);
+	
 }

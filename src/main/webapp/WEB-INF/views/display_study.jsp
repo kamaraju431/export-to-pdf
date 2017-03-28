@@ -1,3 +1,4 @@
+
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -8,11 +9,11 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
 	ng-app="myApp">
 <head>
-<title>AIZANT::AllUsers</title>
+<title>AIZANT::All_Study</title>
 <link rel="stylesheet"
 	href='<x:url value="/resources/css/bootstrap.min.css"></x:url>' />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/display.css" />
+	href="<%=request.getContextPath()%>/resources/css/display_user.css" />
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -48,40 +49,50 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col col-xs-6">
-						<h3 class="panel-title">experiments</h3>
+						<h3 class="panel-title">Study</h3>
 					</div>
 					<div class="col col-xs-6 text-right">
-						<a href="add_experiment"><button type="button"
-								class="btn btn-sm btn-primary btn-create">Add
-								Experiment</button></a>
+						<a href="add_study"><button type="button"
+								class="btn btn-sm btn-primary btn-create">Add Study</button></a>
 					</div>
 				</div>
 			</div>
 
-			<div ng-controller="experimentCtrl">
+			<div ng-controller="studyCtrl">
 
 				<table class="table table-hover table-bordered">
 					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Length</th>
 
+						<th>Name</th>
+						<th>Number of Sample</th>
+						<th>Sample CollectionSize(in ml)</th>
+						<th>Periods</th>
+						<th>Client Study ID</th>
+						<th>Date</th>
 
 					</tr>
 					<tr ng-repeat="s in names | filter:searchBy">
-						<td>{{s.id}}</td>
+
 						<td>{{s.name}}</td>
 						<td>{{getLengthFromSamples(s.sample)}}</td>
+						<td>{{s.sampleCollectionSize_in_ml}}</td>
+						<td>{{s.periods}}</td>
+						<td>{{s.clientStudyId}}</td>
+						<td>{{s.date}}</td>
 
 
 
 						<td><a
-							href="${pageContext.servletContext.contextPath}/experiment_view?id={{s.id}}"><span
-								class="glyphicon glyphicon-eye-open"></span></a> <a
-							href="${pageContext.servletContext.contextPath}/edit_experimentType?id={{s.id}}"><span
-								class="glyphicon glyphicon-pencil"></span></a> <!-- Button to trigger modal -->
-							<button ng-click="openDeleteModal(s.id)"
-								class="glyphicon glyphicon-trash"></button>
+							href="${pageContext.servletContext.contextPath}/view_study?id={{s.id}}"><span
+								class="glyphicon glyphicon-eye-open"></span></a> <sec:authorize
+								access="hasRole('ROLE_ADMIN')">
+								<a
+									href="${pageContext.servletContext.contextPath}/edit_study?id={{s.id}}"><span
+									class="glyphicon glyphicon-pencil"></span></a>
+								<!-- Button to trigger modal -->
+								<a ng-click="openDeleteModal(e.id)"><span
+									class="glyphicon glyphicon-trash"></span></a>
+							</sec:authorize>
 							</div> <!-- /.modal-dialog -->
 							</div> <!-- /.modal --></td>
 						<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
@@ -92,15 +103,16 @@
 
 
 
+
 				<div class="panel-footer">
 					<div class="row">
-						<div class="col col-xs-4">Page 1 of 5</div>
+						<div class="col col-xs-4">Page No:</div>
 						<div class="container">
 							<ul class="pagination">
-								<li class="disabled"><a href="#">«</a></li>
-								<li ng-repeat="i in numlist track by $index">
-									<button ng-click="goToPage($index + 1)">{{$index + 1}}</button>
-								</li>
+
+								<li ng-repeat="i in numlist track by $index"><a
+									ng-click="goToPage($index + 1)"><span class="active">{{$index
+											+ 1}}</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,11 +120,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-
-	</div>
-
+	
 
 
 </body>

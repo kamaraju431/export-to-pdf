@@ -1,6 +1,8 @@
 package com.aizant.controller;
 
+
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.LoginDAO;
@@ -47,18 +50,20 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping("/")
-	public ModelAndView display2() {
-		ModelAndView log = new ModelAndView("Login");
-		return log;
+	public ModelAndView display() {
+		ModelAndView m4 = new ModelAndView("Login");
+		return m4;
 	}
+
 
 	/*
 	 * ------------------------------------- View All Users
 	 * --------------------------------------
 	 */
 	@RequestMapping("/display_user")
-	public ModelAndView retriveRecords() {
+	public ModelAndView retriveRecords() throws Exception {
 		ModelAndView m1 = new ModelAndView("display_user");
+		
 		return m1;
 	}
 
@@ -113,7 +118,8 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute User user) {
+	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute User user,
+			@RequestParam(value="", required=false) String filter) {
 		List<User> list;
 
 		System.out.println("Page number " + page);
@@ -165,18 +171,19 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/store_user", method = RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
+	public ModelAndView addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
 		System.out.println(user.getId());
 		System.out.println(user.getUsername());
 		System.out.println(user.getPassword());
 		System.out.println(user.getEmail());
-		System.out.println(user.getRole());
-		System.out.println(user.getStatus());
+		System.out.println(user.getAuthority());
+		System.out.println(user.getEnabled());
+		
 
 		if (result.hasErrors()) {
 			System.out.println("hi");
 
-			return "add_user";
+			return new ModelAndView("redirect:/add_user");
 		}
 		Login login = new Login();
 		System.out.println("hello storeUser");
@@ -186,12 +193,12 @@ public class HomeController {
 		login.setUsername(user.getUsername());
 		login.setPassword(user.getPassword());
 		login.setEmail(user.getEmail());
-		login.setStatus(user.getStatus());
+		login.setEnabled(user.getEnabled());
 
-		login.setRole(user.getRole());
+		login.setAuthority(user.getAuthority());
 
 		loginDao.save(login);
-		return "display_user";
+		return new ModelAndView("redirect:/display_user");
 	}
 
 	/*
@@ -210,14 +217,14 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session)
-			throws Exception {
+	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+
 		System.out.println("hi");
 		/*
 		 * ------------------------------------- Admin Page
 		 * --------------------------------------
 		 */
-		if (request.isUserInRole("ROLE_ADMIN")) {
+	if (request.isUserInRole("ROLE_ADMIN")) {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
@@ -240,8 +247,7 @@ public class HomeController {
 		}
 
 	}
-
-	/*
+		/*
 	 * ------------------------------------- View User
 	 * --------------------------------------
 	 */

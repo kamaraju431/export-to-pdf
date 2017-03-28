@@ -5,14 +5,14 @@ var modalTemplate =
 		+ "<button ng-click='x()'type='button' class='close' data-dismiss='modal'>x</button>"
 		+ "<h4 class='modal-title'>Warning!</h4>"
 		+ "</div>"
-		+ "<div class='modal-body'>Your current session will  5 minutes{{s.id}}</div>"
+		+ "<div class='modal-body'>Are you sure You want to Delete{{s.id}}</div>"
 		+ "<div class='modal-footer'>"
 		+ "<button ng-click='cancel()' type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
 		+
 
-		"<button ng-click='delete()' type='button' class='btn btn-primary' data-dismiss='modal'>Delete changes</button>	</div>";
+		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
 
-app.controller('PatientTrailCtrl', function($scope, $http, $uibModal) {
+app.controller('StudyVolunteerCtrl', function($scope, $http, $uibModal) {
 	$http.get('list2?page=1').then(function(response) {
 		$scope.names = response.data;
 	});
@@ -36,19 +36,36 @@ app.controller('PatientTrailCtrl', function($scope, $http, $uibModal) {
 
 		});
 		
-	
-		
 	  };
 	
-	$scope.goToPage = function(pageNumber) {
-		console.log('GOIN TO A NEW PAGE');
-		$scope.currentPage = pageNumber;
-		$http.get('list2?page=' + pageNumber).then(function(response) {
-			$scope.names = response.data;
-			$scope.currentPage = 1;
-		
-		});
-	}
+	  $scope.goToPage = function(pageNumber) {
+			console.log('GOIN TO A NEW PAGE');
+			$scope.currentPage = pageNumber;
+			var searchUrl = 'list2?page=' + pageNumber +
+				($scope.filter ? ('&filter=' + $scope.filter) : '');
+			$http.get(searchUrl).then(function(response) {
+				$scope.names = response.data;
+			});
+		}
+	$scope.search = function(){
+		console.log('search.........');
+		$scope.filter=$scope.tempfilter;
+		console.log('search.........');
+			$http.get('list2?page=1&filter='+$scope.filter).then(function(response) {
+				console.log('ID modal');
+				$scope.names = response.data;
+				angular.copy($scope.names, response.data);
+				console.log('patientTrail', $scope.names);
+			});
+			
+			$http.get('pageCount').then(function(response) {
+				$scope.pagecount = response.data;
+				console.log('Page count', response.data)
+				angular.copy(
+						$scope.numlist,
+						new Array($scope.pagecount))
+			});
+	};
 });
 
 app.controller('deleteModalController', function($scope, $http, $uibModalInstance, id) {

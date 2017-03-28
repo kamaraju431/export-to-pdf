@@ -29,23 +29,27 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
+
 	<br>
 	<br>
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-				<A href="#"><%=session.getAttribute("loggedInUser")%></A> <A
-					href="${pageContext.request.contextPath}/Logout">Logout</A> <br>
-			</div>
+
 
 			<div
-				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+				class="col-xs-12 col-sm-12 
+				col-md-1 col-lg-3 
+				col-xs-offset-0 
+				col-sm-offset-0 
+				col-md-offset-3 
+				col-lg-offset-0 toppad">
+
 
 
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h3 class="panel-title">${experimentType.name}</h3>
+						<h3 class="panel-title">${study.name}</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -58,36 +62,48 @@
 							<div class=" col-md-9 col-lg-9 ">
 								<table class="table table-user-information">
 									<tbody>
-										<tr>
-											<td>ID:</td>
-											<td>${experimentType.id}</td>
-										</tr>
+										
 										<tr>
 											<td>Experiment Name:</td>
-											<td>${experimentType.name}</td>
+											<td>${study.name}</td>
 										</tr>
 										<tr>
-											<td>Cliquot</td>
-											<td>${experimentType.aliquot}</td>
+											<td>Aliquot</td>
+											<td>${study.aliquot}</td>
+										</tr>
+										<tr>
+											<td>Sample Collection Size(in ml)</td>
+											<td>${study.sampleCollectionSize_in_ml}</td>
+										</tr>
+										<tr>
+											<td>Periods</td>
+											<td>${study.periods}</td>
+										</tr>
+										<tr>
+											<td>Client Study ID</td>
+											<td>${study.clientStudyId}</td>
 										</tr>
 
 										<tr>
 										<tr>
 											<td>Collection Times</td>
-											<td>${experimentType.sample}</td>
+											<td>${study.sample}</td>
 
 										</tr>
 
 									</tbody>
 								</table>
 
-								<a href="edit_experimentType?id=${experimentType.id}"
-									class="btn btn-primary">EDIT</a>
+								<a href="edit_study?id=${study.id}" class="btn btn-primary">EDIT</a>
+								<a href="Jasper?id=${study.id}" class="btn btn-primary">print</a>
 
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			</div>
+			</div>
+			
 </body>
 </html>

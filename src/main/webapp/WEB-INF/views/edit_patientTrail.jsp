@@ -25,10 +25,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-				<A href="#"><%=session.getAttribute("loggedInUser")%></A> <A
-					href="${pageContext.request.contextPath}/Logout">Logout</A> <br>
-			</div>
+			
 			<div
 				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -52,28 +49,28 @@
 										<tbody>
 											<tr>
 												<td><form:label path="id">Id:</form:label></td>
-												<td><form:input path="id" value="${patienttrail.id}"
+												<td><form:input path="id" value="${patient_Trail.id}"
 														text="readonly" /></td>
 											</tr>
 											<tr>
-												<td><form:label path="experimentType">Experiment Id:</form:label></td>
+												<td><form:label path="experimentType">Study Name:</form:label></td>
 												<td><form:input path="experimentType"
-														value="${patienttrail.experimentType}" text="readonly" /></td>
+														value="${patient_Trail.experimentType}" text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="date">Date :</form:label></td>
 												<td><form:input path="date"
-														value="${patienttrail.date}" text="readonly" /></td>
+														value="${patient_Trail.date}" text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="volunteerId">Volunteer Id:</form:label></td>
 												<td><form:input path="volunteerId"
-														value="${patienttrail.volunteerId}" text="readonly" /></td>
+														value="${patient_Trail.volunteerId}" text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="volunteerName">Volunteer Name:</form:label></td>
 												<td><form:input path="volunteerName"
-														value="${patienttrail.volunteerName}" text="readonly" /></td>
+														value="${patient_Trail.volunteerName}" text="readonly" /></td>
 											</tr>
 											<td><input type="submit" value="submit" /></td>
 										</tbody>

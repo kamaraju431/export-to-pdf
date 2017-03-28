@@ -22,7 +22,7 @@
 	<br>
 	<br>
 	<br>
-
+	
 	<div class="container">
 		<div class="row">
 			
@@ -37,14 +37,14 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
-								<img alt="User Pic"
-									src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+							<img alt="User Pic"
+									src="http://previews.123rf.com/images/krisdog/krisdog1308/krisdog130800150/21822848-An-illustration-of-a-cartoon-scientist-holding-a-test-tube-and-clipboard-in-a-white-lab-coat-perform-Stock-Vector.jpg"
 									class="img-circle img-responsive">
 							</div>
 
 							<div class=" col-md-9 col-lg-9 ">
 								<form:form modelAttribute="ExperimentType" method="post"
-									action="update_experimentType">
+									action="updateexperimentType">
 									<table class="table table-user-information">
 										<tbody>
 											<tr>
@@ -64,10 +64,10 @@
 											</tr>
 											<tr>
 												<td><form:label path="sample">Collection Times:</form:label></td>
-												<td><form:input path="sample"
-														value="${experimentType.sample}" text="readonly" /></td>
+												<td><form:input path="sample" value="${experimentType.sample}"
+														text="readonly" /></td>
 											</tr>
-
+											
 											<td><input type="submit" value="submit" /></td>
 										</tbody>
 									</table>

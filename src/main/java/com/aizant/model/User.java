@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+
 @Table(name = "User")
 @Component
 public class User {
@@ -25,18 +26,13 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
-	private boolean status = true;
+	private boolean enabled = true;
 
-	private String role = "ROLE_USER";
+	private String authority = "ROLE_USER";
+	
 
 	/* --------------- Getter setters --------------------- */
-	public String getRole() {
-		return role;
-	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public String getUsername() {
 		return username;
@@ -53,7 +49,6 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -61,7 +56,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -70,12 +65,22 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean getStatus() {
-		return status;
+	public boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+	
+	
 }

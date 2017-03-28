@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
+
 @Table(name = "Login")
 @Component
 public class Login {
@@ -17,17 +18,12 @@ public class Login {
 	private String username;
 	private String password;
 	private String email;
-	private boolean status = true;
-	private String role = "ROLE_USER";
+	private boolean enabled = true;
+	private String authority = "ROLE_USER";
 
 	/* --------------- Getter setters --------------------- */
-	public String getRole() {
-		return role;
-	}
+	
 
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public int getId() {
 		return id;
@@ -43,6 +39,22 @@ public class Login {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	public String getPassword() {
@@ -61,12 +73,6 @@ public class Login {
 		this.username = username;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+	
 
 }

@@ -50,7 +50,9 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> list() {
 
 		Session session = sessionFactory.openSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		List<User> list = session.createQuery("from User").list();
+		tx.commit();
 		session.close();
 		return list;
 	}
@@ -59,8 +61,11 @@ public class UserDAOImpl implements UserDAO {
 	public List getAllUsers() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		List list = session.createQuery("from User").list();
+		tx.commit();
 		session.close();
+
 		return list;
 	}
 
@@ -77,29 +82,34 @@ public class UserDAOImpl implements UserDAO {
 		return id;
 
 	}
+@Transactional
+public List<User> getUserByPage(int pageid,int total){  
+	Session session = sessionFactory.openSession();
 
-	public List<User> getUserByPage(int pageid, int total) {
-		Session session = sessionFactory.openSession();
+	Query query = session.createQuery("FROM User");
+	query.setFirstResult((pageid - 1) * total + 1);
+	query.setMaxResults(total);
+	
+	
+	List<User> list =(List<User>) query.getResultList();
 
-		Query query = session.createQuery("FROM User");
-		query.setFirstResult((pageid - 1) * total + 1);
-		query.setMaxResults(total);
-
-		List<User> list = (List<User>) query.getResultList();
-
-		session.close();
-		return list;
-	}
+	session.close();
+	return list;
+        }
 
 	@Override
 	public long getPageCount() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
+		org.hibernate.Transaction tx = session.beginTransaction();
 		long count = (long) session.createQuery("SELECT COUNT(id) FROM User").getSingleResult();
 		System.out.println("Count from db " + count);
+		tx.commit();
 		session.close();
 
 		return (int) Math.ceil(count / 10.0);
 	}
 
+	
 }
+// TODO Auto-generated method stub
