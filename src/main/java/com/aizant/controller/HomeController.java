@@ -19,7 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aizant.DAO.UserDAO;
 import com.aizant.Services.IUserService;
 import com.aizant.Services.UserService;
-
+import com.aizant.model.Study;
 import com.aizant.model.User;
 import com.google.gson.Gson;
 
@@ -77,30 +77,46 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "edit_user", method = RequestMethod.GET)
-	public ModelAndView edituser(@RequestParam int id, @ModelAttribute("User") User user) {
-		System.out.println("hello kamu............");
-		User u1 = userDao.get(id);
-		System.out.println("hai.............");
-
+	public ModelAndView edituser(@RequestParam String id,
+			@ModelAttribute("User") User user) {
+	User u1 = userDao.get(id);
 		return new ModelAndView("edit_user", "user", u1);
 	}
-
-	@RequestMapping("/edit_user")
-	public String editUser() {
-		return "edit_user";
-	}
+//	@RequestMapping("/edit_user")
+//	public String editUser() {
+//		return "edit_user";
+//	}
 
 	/*
 	 * ------------------------------------- Update User
 	 * --------------------------------------
 	 */
+	
 	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
-	public ModelAndView updateuser(HttpServletRequest request, @Valid @ModelAttribute("User") User user) {
+	public ModelAndView updateuser(HttpServletRequest request,@RequestParam String id,@ModelAttribute("User") User user) {
+		System.out.println(user.getId());
+		user.setId(id);
+		userDao.saveOrUpdate(user);
+		return new ModelAndView("redirect:/display_user");
+	}
+	/*
+	 * ------------------------------------- Store User
+	 * --------------------------------------
+	 */
+
+	@RequestMapping(value = "/store_user", method = RequestMethod.POST)
+	public ModelAndView addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
+		if (result.hasErrors()) {
+			System.out.println("hi");
+
+			return new ModelAndView("redirect:/add_user");
+		}
+	
+
 		userService.registerNewUserAccount(user);
 		userDao.saveOrUpdate(user);
-		return new ModelAndView("display_user");
+		return new ModelAndView("redirect:/display_user");
 	}
-	
 	/*
 	 * ------------------------------------- Page Count
 	 * --------------------------------------
@@ -157,31 +173,8 @@ public class HomeController {
 		return new User();
 	}
 
-	/*
-	 * ------------------------------------- Store User
-	 * --------------------------------------
-	 */
 
-	@RequestMapping(value = "/store_user", method = RequestMethod.POST)
-	public ModelAndView addUser(@Valid @ModelAttribute("User") User user, BindingResult result) {
-		System.out.println(user.getId());
-		System.out.println(user.getUsername());
-		System.out.println(user.getPassword());
-		System.out.println(user.getEmail());
-		System.out.println(user.getRole());
-		System.out.println(user.getEnabled());
-		
-
-		if (result.hasErrors()) {
-			System.out.println("hi");
-
-			return new ModelAndView("redirect:/add_user");
-		}
 	
-
-		userService.registerNewUserAccount(user);
-		return new ModelAndView("redirect:/display_user");
-	}
 
 	/*
 	 * ------------------------------------- Login Error(fail to login)
@@ -234,7 +227,7 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "view_user", method = RequestMethod.GET)
-	public ModelAndView viewuser(@RequestParam int id, @ModelAttribute User user) {
+	public ModelAndView viewuser(@RequestParam String id, @ModelAttribute User user) {
 		System.out.println(id);
 		System.out.println(user.getId());
 		User use = userDao.get(id);
@@ -247,7 +240,7 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/deleteuser", method = RequestMethod.POST)
-	public @ResponseBody String deleteuser(@RequestParam int userId) {
+	public @ResponseBody String deleteuser(@RequestParam String userId) {
 		System.out.println("hello " + userId);
 
 		userDao.delete(userId);

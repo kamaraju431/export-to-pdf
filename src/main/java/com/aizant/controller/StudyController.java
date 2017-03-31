@@ -26,8 +26,6 @@ import com.google.gson.Gson;
 public class StudyController {
 	@Autowired
 	private StudyDAO studyDao;
-	@Autowired
-	private StudyVolunteerDAO study_volunteerDao;
 	
 	SessionFactory sessionFactory;
 

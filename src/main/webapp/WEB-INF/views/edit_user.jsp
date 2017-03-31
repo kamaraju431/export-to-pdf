@@ -50,21 +50,23 @@
 									action="update_user">
 									<table class="table table-user-information">
 										<tbody>
-											<tr>
-												<td><form:label path="id">User ID:</form:label></td>
-												<td><form:input path="id" value="${user.id}"
-														text="readonly" /></td>
+									       <tr hidden>
+												<td><form:label path="id">ID :</form:label></td>
+												<td><form:input path="id"
+														value="${user.id}" text="readonly" /></td>
 											</tr>
 											<tr>
 												<td><form:label path="username">User Name :</form:label></td>
 												<td><form:input path="username"
 														value="${user.username}" text="readonly" /></td>
 											</tr>
-										 <tr>
+											
+											<tr hidden>
 												<td><form:label path="password">password:</form:label></td>
 												<td><form:input path="password"
 														value="${user.password}" text="readonly" /></td>
 											</tr>
+									
 											<tr>
 												<td><form:label path="email">Email:</form:label></td>
 												<td><form:input path="email" value="${user.email}"

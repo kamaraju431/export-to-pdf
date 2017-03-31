@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public void delete(int id) {
+	public void delete(String id) {
 		User userToDelete = new User();
 		userToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(userToDelete);
@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public User get(int id) {
+	public User get(String id) {
 		String hql = "from User where id=" + "'" + id + "'";
 		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
 		List<User> listUser = (List<User>) query.getResultList();
@@ -82,7 +82,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public int deleteUser(int id) {
+	public String deleteUser(String id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();

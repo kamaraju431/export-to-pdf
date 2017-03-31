@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -15,16 +19,15 @@ import org.springframework.stereotype.Component;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "id")
-	private int id;
+	private String id;
 	private String username;
 	private String email;
 	private String password;
 	private boolean enabled = true;
-
 	private String role = "ROLE_MONITOR/QA";
-	
 
 	/* --------------- Getter setters --------------------- */
 
@@ -35,11 +38,12 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -50,7 +54,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -75,7 +79,4 @@ public class User {
 		this.role = role;
 	}
 
-	
-	
-	
 }

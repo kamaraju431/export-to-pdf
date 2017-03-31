@@ -10,9 +10,9 @@
 
 		<intercept-url access="hasRole('ROLE_ADMIN')" pattern="/admin**" />
 
-		<intercept-url access="hasRole('ROLE_MONITOR/QA')" pattern="/user**" />
-
-		<intercept-url pattern="/add_user**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_MONITER/QA')" />
+		<intercept-url access="hasRole('ROLE_MONITOR/QA')"
+			pattern="/user**" />
+		<intercept-url pattern="/add_user**" access="isAuthenticated()" />
 		<intercept-url pattern="/add_study**" access="isAuthenticated()" />
 		<intercept-url pattern="/add_studyVolunteer**" access="isAuthenticated()" />
 		<intercept-url pattern="/display_user**" access="isAuthenticated()" />
@@ -25,7 +25,6 @@
 		<intercept-url pattern="/edit_user**" access="isAuthenticated()" />
 		<intercept-url pattern="/edit_study**" access="isAuthenticated()" />
 		<intercept-url pattern="/edit_studyVolunteer**" access="isAuthenticated()" />
-		<intercept-url pattern="/logoutsuccess**" access="isAuthenticated()" />
 
 
 

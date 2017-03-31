@@ -7,16 +7,16 @@ import com.aizant.model.User;
 public interface UserDAO {
 	public List<User> list();
 
-	public User get(int id);
+	public User get(String id);
 	public User getByUsername(String username);
 
 	public void saveOrUpdate(User user);
 
-	public void delete(int id);
+	public void delete(String id);
 
 	public List getAllUsers();
 
-	public int deleteUser(int id);
+	public String deleteUser(String id);
 
 	public List<User> getUserByPage(int pageid, int total);
 

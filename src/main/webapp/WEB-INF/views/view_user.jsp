@@ -58,10 +58,7 @@
 							<div class=" col-md-9 col-lg-9 ">
 								<table class="table table-user-information">
 									<tbody>
-										<tr>
-											<td>ID:</td>
-											<td>${user.id}</td>
-										</tr>
+										
 										<tr>
 											<td>User Name:</td>
 											<td>${user.username}</td>

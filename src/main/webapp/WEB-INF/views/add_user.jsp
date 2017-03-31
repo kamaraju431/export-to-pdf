@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
@@ -16,7 +17,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<style type="text/css">
+.errStyle {
+	color: red;
+	font-style: italic;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 
@@ -47,6 +54,7 @@
 
 								<c:url var="add_user" value="add_user"></c:url>
 								<form:form commandName="User" method="post" action="store_user">
+									<form:errors path="*" cssClass="errStyle" element="div" />
 									<table class="table table-user-information">
 										<tbody>
 											<tr>
@@ -61,7 +69,8 @@
 											</tr>
 											<tr>
 												<td><form:label path="email">Email :</form:label></td>
-												<td><form:input path="email" /> <font color="red"><form:errors
+												<td><form:input path="email" />
+													<font color="red"><form:errors
 															path="email"></form:errors></font></td>
 											</tr>
 											<tr>

@@ -49,27 +49,30 @@
 		<div class="panel panel-default panel-table">
 			<div class="panel-heading">
 				<div class="row">
-					<div class="col col-xs-6">
-						<h3 class="panel-title">Study Volunteers</h3>
-					</div>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<div class="col col-xs-6">
+							<h3 class="panel-title">Study Volunteers</h3>
+						</div>
+					</sec:authorize>
 					<div class="col col-xs-6 text-center">
-						
-							<form class="navbar-form" role="search">
-								
-									<div class="input-group custom-search-form">
-										<input type="text" ng-model="searchBy" class="form-control"><!--ng-model="tempfilter"  -->
-										<span class="input-group-btn">
-											<button class="btn btn-primary" ng-click="search()"
-												type="button">
-												<span class="glyphicon glyphicon-search"></span>
-											</button>
-										</span>
-									</div>
-									<a href="add_studyVolunteer"><button type="button"
-											class="btn btn-sm btn-primary btn-create">Add
-											Study Volunteer</button></a>
 
-							
+						<form class="navbar-form" role="search">
+
+							<div class="input-group custom-search-form">
+								<input type="text" ng-model="searchBy" class="form-control">
+								<!--ng-model="tempfilter"  -->
+								<span class="input-group-btn">
+									<button class="btn btn-primary" ng-click="search()"
+										type="button">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+							<a href="add_studyVolunteer"><button type="button"
+									class="btn btn-sm btn-primary btn-create">Add Study
+									Volunteer</button></a>
+
+
 						</form>
 					</div>
 					<div>
@@ -78,15 +81,11 @@
 							<tr>
 								<th>VOLUNTEER ID</th>
 								<th>VOLUNTEER NAME</th>
-								<th>STUDY ID</th>
-								<th>DATE</th>
 								<th>ACTION</th>
 							</tr>
 							<tr ng-repeat="e in names | filter:searchBy">
 								<td>{{e.volunteerId}}</td>
 								<td>{{e.volunteerName}}</td>
-								<td>{{e.study}}</td>
-								<td>{{e.date}}</td>
 
 								<td><a
 									href="${pageContext.servletContext.contextPath}/view_studyVolunteer?id={{e.id}}"><span

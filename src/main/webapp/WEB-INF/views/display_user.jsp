@@ -77,7 +77,7 @@
 
 					<table class="table table-hover table-bordered">
 						<tr>
-							<th>ID</th>
+						
 							<th>USER NAME</th>
 							<th>EMAIL</th>
 							<th>AUTHORITY</th>
@@ -85,7 +85,7 @@
 
 						</tr>
 						<tr ng-repeat="s in names | filter:searchBy">
-							<td>{{s.id}}</td>
+						
 							<td>{{s.username}}</td>
 							<td>{{s.email}}</td>
 							<td>{{s.role}}</td>

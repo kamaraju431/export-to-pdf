@@ -20,7 +20,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 </head>
 <body>
 <div class="container">
@@ -73,7 +72,7 @@
               <ul class="dropdown-menu">
            
                <li><a href="${pageContext.request.contextPath}/Logout" target="_self">Log out</a></li>
-            
+            <li><a href="/Sample/view_user?id=${user.id}" target="_self">View Profile</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Settings</a></li>
               </ul>
