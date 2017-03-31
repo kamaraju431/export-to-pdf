@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-03-31T12:40:17 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf1cd5a3-39b4-40f1-bea8-ff4539b61036">
+	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="baseParameters" class="java.util.HashMap" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="baseDataSource" class="java.util.List" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="baseDataSource1" class="java.util.List" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="baseDataSource2" class="java.util.List" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="baseDataSource3" class="java.util.List" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="baseDataSource4" class="java.util.List" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="currentAliquot" class="java.lang.Integer"/>
+	<variable name="totalpages" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="42">
+			<staticText>
+				<reportElement x="30" y="4" width="490" height="28" uuid="5f86ba24-d23e-4b57-a1f2-83b273a811ac"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AIZANT SAMPLE TRACKING]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="132" splitType="Stretch">
+			<break>
+				<reportElement x="0" y="117" width="559" height="1" uuid="7e6ddd42-2260-4e44-9c56-dca25aa19e6d"/>
+			</break>
+			<subreport>
+				<reportElement x="114" y="8" width="104" height="92" uuid="13a17c2c-d9d7-4439-841a-fe517386af83"/>
+				<subreportParameter name="totalAliquots">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "totalAliquots")]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Period_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get("Period_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Client_Id">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Client_Id" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Subject_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Subject_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="currentAliquot">
+					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{baseDataSource1}.get($F{currentAliquot})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="225" y="8" width="104" height="92" uuid="a3de81f7-edc1-4d83-83c6-dcfdf089a118"/>
+				<subreportParameter name="totalAliquots">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "totalAliquots")]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Period_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get("Period_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Client_Id">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Client_Id" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Subject_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Subject_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="currentAliquot">
+					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{baseDataSource2}.get($F{currentAliquot})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="336" y="8" width="104" height="92" uuid="8627c415-1b57-4482-9e09-d40282ed14ec"/>
+				<subreportParameter name="totalAliquots">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "totalAliquots")]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Period_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get("Period_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Client_Id">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Client_Id" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Subject_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Subject_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="currentAliquot">
+					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{baseDataSource3}.get($F{currentAliquot})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="448" y="8" width="104" height="92" uuid="8d8e6800-13f5-4c2e-ac32-4c793261e46f"/>
+				<subreportParameter name="totalAliquots">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "totalAliquots")]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Period_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get("Period_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Client_Id">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Client_Id" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Subject_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Subject_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="currentAliquot">
+					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{baseDataSource4}.get($F{currentAliquot})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="3" y="8" width="104" height="92" uuid="990783f0-3aaa-4598-bafb-600ac5d7e805"/>
+				<subreportParameter name="totalAliquots">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "totalAliquots")]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Period_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get("Period_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Client_Id">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Client_Id" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Subject_Num">
+					<subreportParameterExpression><![CDATA[$P{baseParameters}.get( "Subject_Num" )]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="currentAliquot">
+					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{baseDataSource}.get($F{currentAliquot})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
