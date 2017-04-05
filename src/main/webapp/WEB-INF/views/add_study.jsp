@@ -20,7 +20,7 @@
 	src="<%=request.getContextPath()%>/resources/js/display_add_study_Controller.js" /></script>
 </head>
 </script>
- <style>  
+<!--  <style>  
    table, th , td {  
       border: 1px solid grey;  
       border-collapse: collapse;  
@@ -35,7 +35,7 @@
       background-color: #ffffff;  
    } 
 </style>  
-
+ -->
 
 </head>
 <body ng-app="myApp" ng-controller="addStudy" >
@@ -62,7 +62,7 @@
 							<div class=" col-md-9 col-lg-9 " align="center">
 								<form ng-submit="addStudy()">
 									<table class="table table-bordered"align="center">
-									<center>
+
 										<tbody>
 <tr>
 												<th>Client Study Id:</th>
@@ -101,10 +101,18 @@
 											
 											<tr>
 												<th>Collection times :</th>
-												<td><input type="text" style="width: 50px;"
-													ng-repeat="time in study.sample track by $index"
-													ng-model="time" required></td>
-											</tr>
+												
+												<td>
+													<table class="table table-hover table-bordered">
+												<tr type="text"ng-repeat="s in study.sampleTime">
+												<td><input type="text" style="width:50px;" ng-model="s.timePoint"></td>
+												</tr>
+												</table>
+												</td>
+												</tr>
+												</tbody>
+												
+													
 
 											<tr>
 												<th>Number of Volunteers:</th>
@@ -139,10 +147,8 @@
 									</table>
 									
 								
-									</tbody>
+								</body>
 									
-									</table>
-										</center>
 								</form>
 
 							</div>

@@ -82,19 +82,16 @@
 										</tr>
 
 										<tr>
-										<tr>
-											<td>Collection Times</td>
-											<td>${study.sample}</td>
-
-										</tr>
+									
 
 									</tbody>
 								</table>
-
+		<a href="/Sample/SampleCollections?id=${study.id}" target="_self"
+									class="btn btn-primary">PRINT</a>
 								<a href="/Sample/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
 									href="/Sample/Jasper?id=${study.id}" target="_self"
-									class="btn btn-primary">print</a>
+									class="btn btn-primary">PRINT</a>
 
 							</div>
 						</div>

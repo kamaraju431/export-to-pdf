@@ -204,8 +204,6 @@ public class HomeController {
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
 			session.setAttribute("loggedInUser", str);
-
-
 			ModelAndView m1 = new ModelAndView("Admin");
 			return m1;
 		} else {

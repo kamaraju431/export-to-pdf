@@ -5,11 +5,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -27,14 +26,16 @@ public class Study {
 	
 	private String name;
 	private int aliquot;
-	private double[] sample;
 	private int sampleCollectionSize_in_ml;
 	private int periods;
 	private String clientStudyId;
 	private String date;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-	private List<StudyVolunteer> studyVolunteers;	
+	private List<StudyVolunteer> studyVolunteers;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<SampleTime> sampleTime;
 
 	/* --------------- Getter setters --------------------- */
 	
@@ -59,12 +60,7 @@ public class Study {
 		this.aliquot = aliquot;
 	}
 	
-	public double[] getSample() {
-		return sample;
-	}
-	public void setSample(double[] sample) {
-		this.sample = sample;
-	}
+	
 	public int getSampleCollectionSize_in_ml() {
 		return sampleCollectionSize_in_ml;
 	}
@@ -96,9 +92,12 @@ public class Study {
 		this.date = date;
 	}
 
-	
-	
+	public List<SampleTime> getSampleTime() {
+		return sampleTime;
+	}
 
-	
+	public void setSampleTime(List<SampleTime> sampleTime) {
+		this.sampleTime = sampleTime;
+	}
 
 }

@@ -12,7 +12,7 @@
 
 		<intercept-url access="hasRole('ROLE_MONITOR/QA')"
 			pattern="/user**" />
-		<intercept-url pattern="/add_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/add_user**" access="isAuthenticated()" /> 
 		<intercept-url pattern="/add_study**" access="isAuthenticated()" />
 		<intercept-url pattern="/add_studyVolunteer**" access="isAuthenticated()" />
 		<intercept-url pattern="/display_user**" access="isAuthenticated()" />

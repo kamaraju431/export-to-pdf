@@ -12,7 +12,7 @@ app.controller('viewStudyController', function($scope, $http, $location) {
 		$scope.periodsCount = $scope.study.periods;
 		$scope.periodsArr = new Array($scope.study.periods);
 		console.log('VEDHA periods count', $scope.periodsCount, $scope.periodsArr, $scope.periodsArr);
-	});
+});
 
 });
  

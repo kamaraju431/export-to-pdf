@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-04-05T13:03:51 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AizantStudyVolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c265d5d3-c923-43c3-ae17-affa6d591970">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="volunteerParameters" class="com.aizant.model.VolunteerParameters" isForPrompting="false"/>
+	<parameter name="volunteerDataSource" class="java.util.HashMap" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DS"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="4" width="260" height="34" uuid="b383dcc2-f740-488f-8472-044a134e47a8"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STUDY VOLUNTEERS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="246" splitType="Stretch">
+			<subreport>
+				<reportElement x="-19" y="1" width="140" height="87" uuid="70bc137d-3f32-465c-954d-edd6fb85724e"/>
+				<subreportParameter name="baseParameters">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseParameters()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="baseDataSource">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource().get($F{id})]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="baseDataSource1">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource1().get($F{id})]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="baseDataSource2">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource2().get($F{id})]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="baseDataSource3">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource3().get($F{id})]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="baseDataSource4">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource4().get($F{id})]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subreportPath">
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getSubreportPath()]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{volunteerDataSource}.get($F{id})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

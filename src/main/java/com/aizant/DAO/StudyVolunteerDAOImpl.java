@@ -53,88 +53,65 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 
 	@Transactional
 	public void save(List<StudyVolunteer> volunteers) {
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		for (StudyVolunteer volunteer : volunteers) {
 			session.save(volunteer);
 		}
-		tx.commit();
-		session.close();
 	}
 
 	@Transactional
 	public List<StudyVolunteer> list() {
 
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		List<StudyVolunteer> list = session.createQuery("from StudyVolunteer").list();
-		tx.commit();
-		session.close();
 		return list;
 	}
 
 	@Transactional
 	public List getAllStudyVolunteer() {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		List list = session.createQuery("from StudyVolunteer").list();
-		tx.commit();
-		session.close();
 		return list;
 	}
 
 	@Transactional
 	public String deleteStudyVolunteer(String id) {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
-
+		Session session = sessionFactory.getCurrentSession();
 		StudyVolunteer study_Volunteer = (StudyVolunteer) session.load(StudyVolunteer.class, id);
 		session.delete(study_Volunteer);
-		tx.commit();
-
-		session.close();
 		return id;
 
 	}
 
 	@Override
+	@Transactional
 	public long getPageCount() {
 		// TODO Auto-generated method stub
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		long count = (long) session.createQuery("SELECT COUNT(id) FROM StudyVolunteer").getSingleResult();
 		System.out.println("Count from db " + count);
-		tx.commit();
-		session.close();
-
 		return (int) Math.ceil(count / 10.0);
 	}
 
 	@Transactional
 	public List<StudyVolunteer> getExperimentByPage(int pageid, int total) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 
 		Query query = session.createQuery("FROM StudyVolunteer");
 		query.setFirstResult((pageid - 1) * total + 1);
 		query.setMaxResults(total);
 
 		List<StudyVolunteer> list = (List<StudyVolunteer>) query.getResultList();
-	
-
-		session.close();
 		return list;
 	}
 
 	@Override
+	@Transactional
 	public void addVolunteersToStudy(List<StudyVolunteer> studyVolunteers) {
-		Session session = sessionFactory.openSession();
-		org.hibernate.Transaction tx = session.beginTransaction();
+		Session session = sessionFactory.getCurrentSession();
 		sessionFactory.getCurrentSession().save(studyVolunteers);
-		tx.commit();
-		session.close();
-
 	}
 
 }

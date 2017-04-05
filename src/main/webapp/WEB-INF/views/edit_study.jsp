@@ -21,7 +21,7 @@
 	src="<%=request.getContextPath()%>/resources/js/display_edit_study_Controller.js" /></script>
 </head>
 </script>
- <style>  
+<!--  <style>  
    table, th , td {  
       border: 1px solid grey;  
       border-collapse: collapse;  
@@ -36,7 +36,7 @@
       background-color: #ffffff;  
    } 
 </style>  
-
+ -->
 
 </head>
 <body ng-app="editStudyApp" ng-controller="editStudyController" >
@@ -81,15 +81,19 @@
 													ng-model="study.aliquot"></td>
 											</tr>
 											<tr>
-												<th>Sample Collection Size(in ml):</th>
+												<th>sampleCollectionSize(ml):</th>
 												<td><input type="text"
 													ng-model="study.sampleCollectionSize_in_ml"></td>
 											</tr>
 											<tr>
 												<th>Periods:</th>
-												<td><input type="text"
+												<td><select
 													ng-model="study.periods" required>
-														</td>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+												</select></td>
 											</tr>
 											<tr>
 												<th>Number of samples:</th>
@@ -98,10 +102,18 @@
 											
 											<tr>
 												<th>Collection times :</th>
-												<td><input type="text" style="width: 50px;"
-													ng-repeat="time in study.sample track by $index"
-													ng-model="time" required></td>
-											</tr>
+												
+												<td>
+													<table class="table table-hover table-bordered">
+												<tr type="text"ng-repeat="s in study.sampleTime">
+												<td><input type="text" style="width:50px;" ng-model="s.timePoint"></td>
+												</tr>
+												</table>
+												</td>
+												</tr>
+												
+												
+													
 
 											<tr>
 												<th>Number of Volunteers:</th>
@@ -134,9 +146,8 @@
 
 											</tr>
 									</table>
-									
-								
 									</tbody>
+									
 									
 									</table>
 										</center>

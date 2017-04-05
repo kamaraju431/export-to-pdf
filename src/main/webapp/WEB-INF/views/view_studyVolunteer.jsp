@@ -24,10 +24,12 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/viewuser.css" />
+	<script
+	src="<%=request.getContextPath()%>/resources/js/display_view_study_Controller.js" /></script>
 	
 
 </head>
-<body>
+<body ng-app="viewStudyApp" ng-controller="viewStudyController">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
@@ -73,9 +75,8 @@
 								</table>
 
 								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
-									class="btn btn-primary">EDIT</a> <a
-									href="Jasper?id=${study_Volunteer.id}" class="btn btn-primary">Print
-									Barcode</a>
+									class="btn btn-primary">EDIT</a>
+							
 
 							</div>
 						</div>
@@ -99,8 +100,8 @@
 								</h3>
 							</div>
 							<div class="col col-xs-6 text-right">
-						<a href="#"><button type="button"
-								class="btn btn-sm btn-primary btn-create">Print</button></a>
+						<a href="/Sample/SampleCollections?id=${study.id}" target="_self"
+									class="btn btn-primary">PRINT</a>
 					</div>
 
 						</div>

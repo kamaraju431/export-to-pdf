@@ -9,10 +9,10 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 	$http.get('/Sample/study?id=' + studyId).then(function(response) {
 		console.log('VEDHA response', response.data);
 		$scope.study = response.data;
-		$scope.sampleCount = $scope.study.sample.length;
+		$scope.sampleCount = $scope.study.sampleTime.length;
 		$scope.volunteerCount = $scope.study.studyVolunteers.length;
 		$scope.$watch("sampleCount", function(newValue, oldValue) {
-			var sampleLength = $scope.study.sample.length;
+			var sampleLength = $scope.study.sampleTime.length;
 			var newLength = parseInt(newValue);
 
 			if (sampleLength === newLength) {
@@ -20,10 +20,10 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 			}
 			if (sampleLength < newLength) {
 				for (var i = 0; i < (newLength - sampleLength); i++)
-					$scope.study.sample.push("");
+					$scope.study.sampleTime.push({timePoint:''+(sampleLength+i)});
 			} else {
 				for (var i = 0; i < (sampleLength - newLength); i++)
-					$scope.study.sample.pop("");
+					$scope.study.sampleTime.pop("");
 			}
 		});
 		$scope.$watch("volunteerCount", function(newValue, oldValue) {

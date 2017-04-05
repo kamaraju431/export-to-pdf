@@ -54,7 +54,7 @@
 												<td><form:label path="id">ID :</form:label></td>
 												<td><form:input path="id"
 														value="${user.id}" text="readonly" /></td>
-											</tr>
+											</tr> 
 											<tr>
 												<td><form:label path="username">User Name :</form:label></td>
 												<td><form:input path="username"

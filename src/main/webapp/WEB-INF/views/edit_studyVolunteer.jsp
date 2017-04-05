@@ -50,7 +50,7 @@
 									action="update_studyVolunteer">
 									<table class="table table-user-information">
 										<tbody>
-											<tr>
+											<tr hidden>
 												<td><form:label path="id">Id:</form:label></td>
 												<td><form:input path="id" value="${study_Volunteer.id}"
 														text="readonly" /></td>

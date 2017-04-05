@@ -16,14 +16,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+import com.aizant.DAO.SampleTimeDAO;
+import com.aizant.DAO.SampleTimeDAOImpl;
 import com.aizant.DAO.StudyDAO;
 import com.aizant.DAO.StudyDAOImpl;
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.DAO.StudyVolunteerDAOImpl;
 import com.aizant.DAO.UserDAO;
 import com.aizant.DAO.UserDAOImpl;
-
+import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
 import com.aizant.model.User;
@@ -36,7 +37,7 @@ public class ApplicationContextConfig {
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizant");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizantTracking");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;
@@ -61,6 +62,7 @@ public class ApplicationContextConfig {
 		sessionFactoryBuilder.addAnnotatedClass(User.class);
 		sessionFactoryBuilder.addAnnotatedClass(Study.class);
 		sessionFactoryBuilder.addAnnotatedClass(StudyVolunteer.class);
+		sessionFactoryBuilder.addAnnotatedClass(SampleTime.class);
 		return sessionFactoryBuilder.buildSessionFactory();
 	}
 
@@ -88,5 +90,10 @@ public class ApplicationContextConfig {
 	@Bean(name = "studyDAO")
 	public StudyDAO getStudyDAO(SessionFactory sessionFactory) {
 		return new StudyDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "sampleTimeDAO")
+	public SampleTimeDAO getSampleTimeDAO(SessionFactory sessionFactory) {
+		return new SampleTimeDAOImpl(sessionFactory);
 	}
 }

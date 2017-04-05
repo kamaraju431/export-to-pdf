@@ -8,7 +8,6 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 	$scope.study = {
 		name : ' ',
 		aliquot : 0,
-		sample : [],
 		sampleCollectionSize_in_ml : 0,
 		periods : "1",
 		clientStudyId : ' ',
@@ -21,10 +20,16 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 			volunteerId : 'V ID ',
 			volunteerName : 'V NAME'
 		} ],
+		sampleTime:[{
+			timePoint:0.0,
+			
+		},{
+			timePoint:''
+		}],
 		
 	};
 	$scope.$watch("sampleCount", function(newValue, oldValue) {
-		var sampleLength = $scope.study.sample.length;
+		var sampleLength = $scope.study.sampleTime.length;
 		var newLength = parseInt(newValue);
 
 		if (sampleLength === newLength) {
@@ -32,10 +37,10 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		}
 		if (sampleLength < newLength) {
 			for (var i = 0; i < (newLength - sampleLength); i++)
-				$scope.study.sample.push("");
+				$scope.study.sampleTime.push({timePoint:''+(sampleLength+i)});
 		} else {
 			for (var i = 0; i < (sampleLength - newLength); i++)
-				$scope.study.sample.pop("");
+				$scope.study.sampleTime.pop("");
 		}
 	});
 	$scope.$watch("volunteerCount", function(newValue, oldValue) {
@@ -58,7 +63,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 	});
 
 	$scope.addStudy = function() {
-		$http.post('store_study', $scope.study).then(
+		$http.post('/Sample/store_study', $scope.study).then(
 				function(result)
 
 				{

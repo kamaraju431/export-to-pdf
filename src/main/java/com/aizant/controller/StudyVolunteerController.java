@@ -55,10 +55,8 @@ public class StudyVolunteerController {
 		s.split(",");
 		String[] volunteerId = study_Volunteer.getVolunteerId().split(",");
 		String[] volunteerName = study_Volunteer.getVolunteerName().split(",");
-		System.out.println(volunteerId == volunteerName);
 		for (int i = 0; i < volunteerId.length; i++) {
 			StudyVolunteer newexp = new StudyVolunteer();
-			System.out.println("hai*******");
 			newexp.setVolunteerId(volunteerId[i]);
 
 			newexp.setVolunteerName(volunteerName[i]);
@@ -80,8 +78,6 @@ public class StudyVolunteerController {
 
 	@RequestMapping(value = "view_studyVolunteer", method = RequestMethod.GET)
 	public ModelAndView viewvolunteer(@RequestParam String id, @ModelAttribute StudyVolunteer study_Volunteer) {
-		System.out.println(id);
-		System.out.println(study_Volunteer.getId());
 		StudyVolunteer exp = study_VolunteerDao.get(id);
 		return new ModelAndView("view_studyVolunteer", "study_Volunteer", exp);
 
@@ -104,10 +100,7 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "edit_studyVolunteer", method = RequestMethod.GET)
 	public ModelAndView edituser(@RequestParam String id, @ModelAttribute("StudyVolunteer") StudyVolunteer study_Volunteer) {
-		System.out.println("hello kamu............");
 		StudyVolunteer u1 = study_VolunteerDao.get(id);
-		System.out.println("hai.............");
-
 		return new ModelAndView("edit_studyVolunteer", "study_Volunteer", u1);
 	}
 
@@ -118,7 +111,6 @@ public class StudyVolunteerController {
 	@RequestMapping(value = "/update_studyVolunteer", method = RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request,
 			@Valid @ModelAttribute("StudyVolunteer") StudyVolunteer study_Volunteer) {
-		System.out.println("UPDATINGGGGG");
 		study_VolunteerDao.Update(study_Volunteer);
 		study_VolunteerDao.save(study_Volunteer);
 		return new ModelAndView("display_studyVolunteer");
@@ -130,9 +122,6 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "/delete_studyVolunteer", method = RequestMethod.POST)
 	public @ResponseBody String deleteexp(@RequestParam String id) {
-		System.out.println("hello " + id);
-		study_VolunteerDao.delete(id);
-
 		Gson u = new Gson();
 		String json = u.toJson(id);
 		return json;
@@ -145,10 +134,7 @@ public class StudyVolunteerController {
 	@RequestMapping(value = "/pageCount2", method = RequestMethod.GET)
 	public @ResponseBody String showPage(@ModelAttribute StudyVolunteer study_Volunteer) {
 		List<StudyVolunteer> list;
-		System.out.println("HEREEEEE Getting page3");
-
 		long pc = study_VolunteerDao.getPageCount();
-		System.out.println("result"+ study_VolunteerDao.getPageCount() );
 		Gson u = new Gson();
 		String json = u.toJson(pc);
 		return json;
@@ -163,15 +149,9 @@ public class StudyVolunteerController {
 	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute StudyVolunteer study_Volunteer,
 			@RequestParam(value="", required=false) String filter) {
 		List<StudyVolunteer> list;
-
-		System.out.println("Page number " + page);
 		if (page > 0) {
-
-			System.out.println("Page Count" + study_VolunteerDao.getPageCount());
-			System.out.println("Getting page2");
 			list = study_VolunteerDao.getExperimentByPage(page, 10);
 		} else {
-			System.out.println("Getting all patients");
 			list = study_VolunteerDao.list();
 		}
 		Gson u = new Gson();
