@@ -6,7 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
-<title>AIZANT::Adduser</title>
+<title>AIZANT::AddBloodSample</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -52,31 +52,41 @@
 
 							<div class=" col-md-9 col-lg-9 ">
 
-								<c:url var="add_user" value="add_user"></c:url>
-								<form:form commandName="User" method="post" action="store_user">
+								<c:url var="add_BloodSampleCollection" value="add_BloodSampleCollection"></c:url>
+								<form:form commandName="BloodSampleCollection" method="post" action="store_BloodSampleCollection">
 									<form:errors path="*" cssClass="errStyle" element="div" />
 									<table class="table table-user-information">
 										<tbody>
 											<tr>
-												<td><form:label path="username">Username :</form:label></td>
-												<td><form:input path="username" /> <font color="red"><form:errors
-															path="username"></form:errors></font></td>
+												<td><form:label path="date">Date :</form:label></td>
+												<td><form:input path="date" /> <font color="red"><form:errors
+															path="date"></form:errors></font></td>
 											</tr>
 											<tr>
-												<td><form:label path="password">Password :</form:label></td>
-												<td><form:input path="password" /> <font color="red"><form:errors
-															path="password"></form:errors></font></td>
+												<td><form:label path="time">Time :</form:label></td>
+												<td><form:input path="time" /> <font color="red"><form:errors
+															path="time"></form:errors></font></td>
 											</tr>
 											<tr>
-												<td><form:label path="email">Email :</form:label></td>
-												<td><form:input path="email"/>
+												<td><form:label path="period">Period :</form:label></td>
+												<td><form:input path="period" />
 													<font color="red"><form:errors
-															path="email"></form:errors></font></td>
+															path="period"></form:errors></font></td>
 											</tr>
 											<tr>
-												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
+												<td><form:label path="scanTime">Scan Time :</form:label></td>
+												<td><form:input path="scanTime" /> <font color="red"><form:errors
+															path="scanTime"></form:errors></font></td>
+											</tr>
+											<tr>
+												<td><form:label path="volunteerId">Volunteer Id :</form:label></td>
+												<td><form:input path="volunteerId" /> <font color="red"><form:errors
+															path="volunteerId"></form:errors></font></td>
+											</tr>
+											<tr>
+												<td><form:label path="comments">Comments* :</form:label></td>
+												<td><form:input path="comments" /> <font color="red"><form:errors
+															path="comments"></form:errors></font></td>
 											</tr>
 
 											<td><input type="submit" value="submit"

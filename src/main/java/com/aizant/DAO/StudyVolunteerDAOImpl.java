@@ -117,7 +117,7 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		Session session = sessionFactory.openSession();
 
 		Query query = session.createQuery("FROM StudyVolunteer");
-		query.setFirstResult((pageid - 1) * total + 1);
+		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
 
 		List<StudyVolunteer> list = (List<StudyVolunteer>) query.getResultList();

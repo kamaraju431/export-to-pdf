@@ -19,6 +19,7 @@ var modalTemplate =
 app.controller('studyCtrl', function($scope, $http, $uibModal) {
 	$http.get('list3?page=1').then(function(response) {
 		$scope.names = response.data;
+		console.log('Data', response.data)
 	});
 
 	$http.get('pageCount3').then(function(response) {
@@ -56,7 +57,7 @@ app.controller('studyCtrl', function($scope, $http, $uibModal) {
 		$scope.currentPage = pageNumber;
 		$http.get('list3?page=' + pageNumber).then(function(response) {
 			$scope.names = response.data;
-			$scope.currentPage = 1;
+			$scope.currentPage =pageNumber;
 		});
 	}
 });

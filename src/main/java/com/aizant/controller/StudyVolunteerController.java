@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.model.StudyVolunteer;
-
 import com.google.gson.Gson;
 
 @Controller
@@ -179,5 +178,6 @@ public class StudyVolunteerController {
 		System.out.println("NAMES LIST: " + json);
 		return json;
 	}
+	
 
 }

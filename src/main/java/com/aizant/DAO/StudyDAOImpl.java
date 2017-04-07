@@ -40,32 +40,13 @@ public class StudyDAOImpl  implements StudyDAO {
 		String hql ="from Study where id="+"'"+id+"'";
 		Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);
 		List<Study> listStudy =(List<Study>) query.getResultList();
-		if(listStudy != null || listStudy.isEmpty())
+		if(listStudy != null && !listStudy.isEmpty())
 		{
 			return listStudy.get(0);
 		}	
 		return null;
 	
 	}
-//	
-//	@Transactional
-//	public Study getEager(int id)
-//	{
-//		String hql ="from Study where id="+"'"+id+"'";
-//		Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);
-//		List<Study> listStudy =(List<Study>) query.getResultList();
-//		if(listStudy != null && !listStudy.isEmpty())
-//		{
-//			Study study = listStudy.get(0);
-//			System.out.println("lengt........................");
-//			study.setStudyVolunteers(study.getStudyVolunteers());
-//			return listStudy.get(0);
-//		}	
-//		
-//		return null;
-//	
-//	}
-	
 	
 @Transactional
 	public Study getbyName(String name) {
@@ -108,7 +89,7 @@ public List<Study> getStudyByPage(int pageid,int total){
 	Session session = sessionFactory.openSession();
 
 	Query query = session.createQuery("FROM Study");
-	query.setFirstResult((pageid - 1) * total + 1);
+	query.setFirstResult((pageid - 1) * total);
 	query.setMaxResults(total);
 	
 	

@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+#round-button {
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border: 2px solid #f5f5f5;
+	border-radius: 50%;
+	text-align: center;
+	display: inline-block;
+	background: #5E9DC8;
+	font-size: 16px;
+	font-weight: bold;
+}
+#round-button:hover{
+	cursor: pointer;
+}
+#round-button.selected{
+	color: white;
+	background-color: #6C3483;
+}

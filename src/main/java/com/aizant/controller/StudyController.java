@@ -133,11 +133,6 @@ public class StudyController {
 		String json = u.toJson(list);
 		return json;
 	}
-	@RequestMapping("Blood_Sample_Collection_Record")
-	public ModelAndView display() {
-		ModelAndView m4 = new ModelAndView("BloodSampleCollectionRecord");
-		return m4;
-	}
 	
 	
 }

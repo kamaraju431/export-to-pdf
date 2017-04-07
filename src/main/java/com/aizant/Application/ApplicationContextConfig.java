@@ -12,18 +12,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+import com.aizant.DAO.BloodSampleCollectionDAO;
+import com.aizant.DAO.BloodSampleCollectionDAOImpl;
 import com.aizant.DAO.StudyDAO;
 import com.aizant.DAO.StudyDAOImpl;
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.DAO.StudyVolunteerDAOImpl;
 import com.aizant.DAO.UserDAO;
 import com.aizant.DAO.UserDAOImpl;
-
+import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
 import com.aizant.model.User;
@@ -61,6 +60,7 @@ public class ApplicationContextConfig {
 		sessionFactoryBuilder.addAnnotatedClass(User.class);
 		sessionFactoryBuilder.addAnnotatedClass(Study.class);
 		sessionFactoryBuilder.addAnnotatedClass(StudyVolunteer.class);
+		sessionFactoryBuilder.addAnnotatedClass(BloodSampleCollection.class);
 		return sessionFactoryBuilder.buildSessionFactory();
 	}
 
@@ -88,5 +88,11 @@ public class ApplicationContextConfig {
 	@Bean(name = "studyDAO")
 	public StudyDAO getStudyDAO(SessionFactory sessionFactory) {
 		return new StudyDAOImpl(sessionFactory);
+	}
+
+	@Autowired
+	@Bean(name = "bloodSampleCollectionDAO")
+	public BloodSampleCollectionDAO getBloodSampleCollectionDAO(SessionFactory sessionFactory) {
+		return new BloodSampleCollectionDAOImpl(sessionFactory);
 	}
 }

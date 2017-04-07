@@ -23,7 +23,8 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/pagination.css" />
 
 <!-- Bootstrap modals -->
 <link rel="stylesheet"
@@ -60,6 +61,7 @@
 								<span class="input-group-btn">
 									<button class="btn btn-primary" ng-click="search()"
 										type="button">
+										
 										<span class="glyphicon glyphicon-search"></span>
 									</button>
 								</span>
@@ -118,7 +120,7 @@
 								<ul class="pagination">
 
 									<li ng-repeat="i in numlist track by $index"><a
-										ng-click="goToPage($index + 1)"><span class="active">{{$index
+										ng-click="goToPage($index + 1)" id="round-button" ng-class="$index+1 === currentPage ? 'selected' : ''"><span>{{$index
 												+ 1}}</span></a></li>
 								</ul>
 							</div>
