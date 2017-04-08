@@ -13,9 +13,14 @@
 <title>AIZANT::View_Study_Volunteer</title>
 <link rel="stylesheet"
 	href='<x:url value="/resources/css/bootstrap.min.css"></x:url>' />
-<script src='<x:url value="/resources/js/jquery.min.js"></x:url>'></script>
-<script src='<x:url value="/resources/js/bootstrap.min.js"></x:url>'></script>
-<script src='<x:url value="/resources/js/angular.min.js"></x:url>'></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -24,16 +29,18 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/viewuser.css" />
-	<script
-	src="<%=request.getContextPath()%>/resources/js/display_view_study_Controller.js" /></script>
-	
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/period_button.css" />
+
+<script
+	src="<%=request.getContextPath()%>/resources/js/BloodSampleCollection.js" /></script>
 
 </head>
-<body ng-app="viewStudyApp" ng-controller="viewStudyController">
+<body ng-app="myApp"ng-controller="BloodSampleCollectionCtrl">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
-	<br/>
+	<br />
 	<div class="container">
 		<div class="section">
 
@@ -43,9 +50,7 @@
 
 
 				<div class="panel panel-info">
-					<div class="panel-heading">
-						
-					</div>
+					<div class="panel-heading"></div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center">
@@ -75,8 +80,8 @@
 								</table>
 
 								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
-									class="btn btn-primary">EDIT</a>
-							
+									class="btn btn-primary">EDIT</a> 
+								
 
 							</div>
 						</div>
@@ -84,10 +89,10 @@
 				</div>
 			</div>
 		</div>
-	
-<div class="section right">
 
-<br>
+		<div class="section right">
+
+			<br>
 
 			<div class="col-md-7 col-md-offset-1">
 
@@ -100,46 +105,71 @@
 								</h3>
 							</div>
 							<div class="col col-xs-6 text-right">
-						<a href="/Sample/SampleCollections?id=${study.id}" target="_self"
-									class="btn btn-primary">PRINT</a>
-					</div>
+
+								<b>Periods :</b> <span ng-click="onClick(1)"id="round-button" ng-class="p1=== currentSamples  ? 'selected' : ''">P1</span>
+								<span ng-click="onClick(2)" id="round-button">P2</span> <span
+									ng-click="onClick(3)" id="round-button">P3</span> <span
+									ng-click="onClick(4)" id="round-button">P4</span>
+								 	
+									<!-- <a href="/Sample/records?id={{x.id}}" class="btn btn-primary" target="_self">Print
+									</a> -->
+							</div>
+							<a 	href="records?id=${bloodSampleCollection.id}" class="btn btn-primary" target="_self">Print
+									</a> 
 
 						</div>
 					</div>
-
+					<!-- <div>
+						<table>
+							<tr>
+								 <td ng-repeat="time in periodsArr track by $index"><span
+									ng-click="ClickPeriods()" id="round-button">P{{$index+1}}
+								</span></td> 
+								<td></td>
+							</tr>
+						</table>
+					</div> -->
 					<div>
 
 						<table class="table table-hover table-bordered">
 							<tr>
 
 								<th>Date</th>
-								<th>Time Point (hr)</th>
-								<th>Scheduled Time of Collection</th>
-								<th>Changed Scheduled Time of Collection</th>
-								<th>Actual Time ofCollection</th>
+								<th>Time</th>
+								<th>Period</th>
+								<th>Scan Time</th>
+								<th>Volunteer Id</th>
 								<th>Comments*</th>
 
 							</tr>
-							<tr ng-repeat="a in study.studyVolunteers">
+							<tr ng-repeat="x in currentSamples">
+						
 
-								<td></td>
+								<td>{{x.date}}</td>
+								<td>{{x.time}}</td>
+								<td>{{x.period}}</td>
+								<td>{{x.scanTime}}</td>
+								<td>{{x.volunteerId}}</td>
+								<td>{{x.comments}}</td>
 
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+<!-- 
+                            <a ng-href="/Sample/records?id={{x.id}}"
+									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+								<td></td> -->
+								 <td><a ng-href="/Sample/records?id={{x.id}}" class="btn btn-primary" target="_self">Print
+									</a></td>
+							
 
-
-
-								
 							</tr>
 						</table>
 					</div>
+
+
 				</div>
 			</div>
-</div>
-</div>
+		</div>
+
+	</div>
 
 </body>
 <%@ include file="/WEB-INF/views/template/footer.jsp"%>

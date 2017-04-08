@@ -52,6 +52,7 @@
 						<h3 class="panel-title">Study</h3>
 					</div>
 					<div class="col col-xs-6 text-right">
+					<input type="text" ng-model="searchBy" align="center" placeholder="Search here">
 						<a href="add_study"><button type="button"
 								class="btn btn-sm btn-primary btn-create">Add Study</button></a>
 					</div>

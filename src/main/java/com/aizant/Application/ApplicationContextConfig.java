@@ -16,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.aizant.DAO.BloodSampleCollectionDAO;
+import com.aizant.DAO.BloodSampleCollectionDAOImpl;
 import com.aizant.DAO.SampleTimeDAO;
 import com.aizant.DAO.SampleTimeDAOImpl;
 import com.aizant.DAO.StudyDAO;
@@ -24,6 +26,7 @@ import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.DAO.StudyVolunteerDAOImpl;
 import com.aizant.DAO.UserDAO;
 import com.aizant.DAO.UserDAOImpl;
+import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
@@ -63,6 +66,7 @@ public class ApplicationContextConfig {
 		sessionFactoryBuilder.addAnnotatedClass(Study.class);
 		sessionFactoryBuilder.addAnnotatedClass(StudyVolunteer.class);
 		sessionFactoryBuilder.addAnnotatedClass(SampleTime.class);
+		sessionFactoryBuilder.addAnnotatedClass(BloodSampleCollection.class);
 		return sessionFactoryBuilder.buildSessionFactory();
 	}
 
@@ -95,5 +99,10 @@ public class ApplicationContextConfig {
 	@Bean(name = "sampleTimeDAO")
 	public SampleTimeDAO getSampleTimeDAO(SessionFactory sessionFactory) {
 		return new SampleTimeDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "bloodSampleCollectionDAO")
+	public BloodSampleCollectionDAO getBloodSampleCollectionDAO(SessionFactory sessionFactory) {
+		return new BloodSampleCollectionDAOImpl(sessionFactory);
 	}
 }

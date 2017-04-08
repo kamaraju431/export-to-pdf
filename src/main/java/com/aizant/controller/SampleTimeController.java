@@ -82,7 +82,7 @@ public class SampleTimeController {
 		
 
 	@Transactional
-	@RequestMapping(value = "/list4", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/list5", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody String showList2(@ModelAttribute SampleTime sampleTime) {
 		List<SampleTime> list=new ArrayList<SampleTime>();
 		

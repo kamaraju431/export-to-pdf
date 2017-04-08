@@ -30,6 +30,8 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/viewuser.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/period_button.css" />
 
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_view_study_Controller.js" /></script>
@@ -82,13 +84,11 @@
 										</tr>
 
 										<tr>
-									
-
 									</tbody>
 								</table>
-		<a href="/Sample/SampleCollections?id=${study.id}" target="_self"
-									class="btn btn-primary">PRINT</a>
-								<a href="/Sample/edit_study?id=${study.id}" target="_self"
+								<a href="/Sample/SampleCollections?id=${study.id}"
+									target="_self" class="btn btn-primary">PRINT</a> <a
+									href="/Sample/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
 									href="/Sample/Jasper?id=${study.id}" target="_self"
 									class="btn btn-primary">PRINT</a>
@@ -113,17 +113,16 @@
 									<b>Study Volunteers</b>
 								</h3>
 							</div>
-
+							<div class="col col-xs-6 text-right">
+								Periods :<b ng-repeat="time in periodsArr track by $index">
+									<span ng-click="onClick($index+1)" id="round-button"
+									ng-class="$index+1 === currentPeriod ? 'selected' : ''">P{{$index+1}}
+								</span>
+								</b>
+							</div>
 						</div>
 					</div>
-					<div>
-						<table>
-							<tr>
-								<td ng-repeat="time in periodsArr track by $index"><input
-									type="button" value="period" class="btn btn-warning"></td>
-							</tr>
-						</table>
-					</div>
+					
 					<div>
 
 						<table class="table table-hover table-bordered">

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-04-08T12:50:22 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67b7c1c7-fbfc-4f5e-a96f-eccfa37d595c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="date" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["date"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="period" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA["period"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="time" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA["time"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="scan_Time" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["scanTime"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="comment" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["comments"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="volunteer_id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["volunteerId"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="11" width="100" height="19" uuid="1ad3792e-a036-434b-918c-3c9f4a64d35c"/>
+				<text><![CDATA[sample records]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="129" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="33" width="60" height="18" uuid="25acacbf-7a5f-4cc2-9659-8c02611d1de9"/>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="33" width="60" height="18" uuid="dd78e92a-471b-4c39-b8e8-51295e3c6c47"/>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="33" width="60" height="19" uuid="dbaacd55-d0d4-454f-91d4-11240540e394"/>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="31" width="60" height="20" uuid="fead2757-e46d-4585-803b-4920054b4f2e"/>
+				<textFieldExpression><![CDATA[$P{volunteer_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="31" width="60" height="20" uuid="8dbabd97-623d-4225-bc67-6633aa9596b4"/>
+				<textFieldExpression><![CDATA[$P{comment}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="59" height="20" uuid="28f5e1ee-dce5-4690-85cd-4eca7cfb6ff7"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="60" height="20" uuid="e2a8468a-fc89-4e18-bdb5-a52270f7ce26"/>
+				<text><![CDATA[Time(hr)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="60" height="20" uuid="d1015241-abf6-4a44-86d7-52341c5005b1"/>
+				<text><![CDATA[Period]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="60" height="20" uuid="3a9635cc-a602-4c7a-9678-73801bcbd290"/>
+				<text><![CDATA[ScanTime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="60" height="20" uuid="6797b21b-0f74-4ea5-8eb0-0e2acdd63533"/>
+				<text><![CDATA[Volunteer Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="0" width="60" height="20" uuid="61e6d9e8-007d-47d6-bb57-8aca00f3e6ff"/>
+				<text><![CDATA[Comments]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="33" width="60" height="18" uuid="30867f75-ddec-439a-8e15-fb198cd7eab7"/>
+				<textFieldExpression><![CDATA[$P{scan_Time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

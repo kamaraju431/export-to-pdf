@@ -4,8 +4,8 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import ="net.sf.jasperreports.engine.*"%>
 <%@ page import ="net.sf.jasperreports.engine.data.*"%>
-<%@ page import="com.aizant.model.Sample"%>
-<%@ page import="com.aizant.model.Study"%>
+<%@ page import="com.aizant.model.BloodSampleRecord"%>
+<%@ page import="com.aizant.model.BloodSampleCollection"%>
 
 
 
@@ -18,24 +18,34 @@
 <%
 
 try{
-	  Study study=(Study)request.getAttribute("study");
+	BloodSampleCollection bloodCollections=(BloodSampleCollection)request.getAttribute("bloodCollection");
 
-	 double[] sampleTimes={0.00, 1.00, 2.00,4.00};// (double[]) request.getAttribute("SampleTime");
-	 String date=study.getDate();
-	List<Sample> sam=new ArrayList<Sample>();
-	  for (int i=0; i< sampleTimes.length; i++) {
-		  sam.add(new Sample(i,date));	 
+	 double time= bloodCollections.getTime();// (double[]) request.getAttribute("SampleTime");
+	 String date= bloodCollections.getDate();
+	 int period=bloodCollections.getPeriod();
+	 String scanTime=bloodCollections.getScanTime();
+     String comments=bloodCollections.getComments(); 
+	 String volunteerId=bloodCollections.getVolunteerId();
+	List<BloodSampleRecord> record=new ArrayList<BloodSampleRecord>();
+	  {
+		// record.add(new BloodSampleRecord(sampledate,sampletime,sampleperiod,samplescanTime,samplecomments,samplevolunteerId));
+	 	 record.add(new BloodSampleRecord(time));
+		 record.add(new BloodSampleRecord(date));
+		 record.add(new BloodSampleRecord(period));
+		 record.add(new BloodSampleRecord(scanTime));
+		 record.add(new BloodSampleRecord(comments));	
+		 record.add(new BloodSampleRecord(volunteerId)); 
 	  }
 	 
-	  JRDataSource jrDataSource=new JRBeanCollectionDataSource(sam);
-	  System.out.println("date" + study.getDate());
+	  JRDataSource jrDataSource=new JRBeanCollectionDataSource(record);
+
 	 
 String jrxmlFile=session.getServletContext().getRealPath("/reports/SampleCollectionReport.jrxml");
 
 HashMap<String, Object> CollectionParameters = new HashMap<String, Object>();
 
 CollectionParameters.put("collectionDataSource",jrDataSource);
-//CollectionParameters.put("date",study.getDate());
+
 InputStream input = new FileInputStream(new File(jrxmlFile));
 JasperReport report = JasperCompileManager.compileReport(input);
 
