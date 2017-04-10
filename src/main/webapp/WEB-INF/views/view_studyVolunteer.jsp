@@ -108,11 +108,16 @@
 							</div>
 							<div class="col col-xs-6 text-right">
 
-								<b>Periods :</b> <span ng-click="onClick(1)"id="round-button">P1</span>
-								<span ng-click="onClick(2)" id="round-button">P2</span> <span
-									ng-click="onClick(3)" id="round-button">P3</span> <span
-									ng-click="onClick(4)" id="round-button">P4</span><a href="#"><button
-										type="button" class="btn btn-sm btn-primary btn-create">Print</button></a>
+								<b>Periods :</b> <span ng-click="onClick(1)" id="round-button"
+									ng-class="1 = bloodSampleCollection.p1 ? 'selected' : ''">P1</span>
+								<span ng-click="onClick(2)" id="round-button"
+									ng-class="2 = bloodSampleCollection.p2 ? 'selected' : ''">P2</span>
+								<span ng-click="onClick(3)" id="round-button"
+									ng-class="3 = bloodSampleCollection.p3 ? 'selected' : ''">P3</span>
+								<span ng-click="onClick(4)" id="round-button"
+									ng-class="4 = bloodSampleCollection.p4 ? 'selected' : ''">P4</span><a
+									href="#"><button type="button"
+										class="btn btn-sm btn-primary btn-create">Print</button></a>
 							</div>
 
 						</div>

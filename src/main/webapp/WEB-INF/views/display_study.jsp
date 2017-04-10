@@ -54,9 +54,11 @@
 
 					<div class="col col-xs-6 text-right">
 						<input type="text" ng-model="searchBy" align="center"
-							placeholder="Search" /> <a href="add_study"><button
-								type="button" class="btn btn-sm btn-primary btn-create">Add
-								Study</button></a>
+							placeholder="Search Here" />
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<a href="add_study"><button type="button"
+									class="btn btn-sm btn-primary btn-create">Add Study</button></a>
+						</sec:authorize>
 					</div>
 				</div>
 			</div>
@@ -72,6 +74,7 @@
 						<th>Periods</th>
 						<th>Client Study ID</th>
 						<th>Date</th>
+						<th>Action</th>
 
 					</tr>
 					<tr ng-repeat="s in names | filter:searchBy">
@@ -115,7 +118,8 @@
 
 								<li ng-repeat="i in numlist track by $index"><a
 									ng-click="goToPage($index + 1)" id="round-button"
-									ng-class="$index+1 === currentPage ? 'selected' : ''"><span>{{$index + 1}}</span></a></li>
+									ng-class="$index+1 === currentPage ? 'selected' : ''"><span>{{$index
+											+ 1}}</span></a></li>
 							</ul>
 						</div>
 					</div>

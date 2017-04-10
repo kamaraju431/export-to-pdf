@@ -12,35 +12,33 @@
 	<br>
 	<br>
 	<br>
-<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="form-wrap">
-						<h1>Hello Admin...!!!</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-wrap" align="center">
+					<h1>Hello Admin...!!!</h1>
 
-						
-							<div class="form-group">
-								<a href="display_user"><span class="glyphicon glyphicon-bookmark"></span>
-			Manage Users</a>
-							</div>
-							<div class="form-group">
-								<a href="display_studyVolunteer"><span
-			class="glyphicon glyphicon-bookmark"></span> Manage Study Volunteer</a>
-							</div>
-							<div class="form-group">
-								<a href="display_study"><span
-			class="glyphicon glyphicon-bookmark"></span> Manage Study</a>
-							</div>
 
-							<a href="${pageContext.request.contextPath}/Logout">Log out</a>
-						<hr>
+					<div class="form-group">
+						<a href="display_user"><span
+							class="glyphicon glyphicon-bookmark"></span> Manage Users</a>
 					</div>
+
+					<div class="form-group">
+						<a href="display_study"><span
+							class="glyphicon glyphicon-bookmark"></span> Manage Study</a>
+					</div>
+
+
+					<hr>
 				</div>
-				<!-- /.col-xs-12 -->
 			</div>
-			<!-- /.row -->
+			<!-- /.col-xs-12 -->
 		</div>
-		<!-- /.container --> </section>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+	</section>
 
 </body>
 </html>

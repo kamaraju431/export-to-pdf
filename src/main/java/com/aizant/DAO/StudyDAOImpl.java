@@ -12,7 +12,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aizant.model.Study;
-
+/**
+* The Study DAO Impl program implements an application that
+* simply displays get the data by using id and we are performing CRUD operations like Delete and Save or Update and Pagination
+* using list we are getting the from DB to front end.
+*/
 @Repository("studyDAO")
 
 public class StudyDAOImpl  implements StudyDAO {

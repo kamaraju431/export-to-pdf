@@ -13,7 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.Study;
-
+/**
+* The Blood Sample Collection DAO Impl program implements an application that
+* simply displays get the data by using id and we are performing CRUD operations like Delete and Save or Update
+* using list we are getting the from DB to front end.
+*/
 @Repository("bloodSampleCollectionDAO")
 
 public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
@@ -23,6 +27,7 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 	public BloodSampleCollectionDAOImpl(SessionFactory sessionFactory){
 		this.sessionFactory=sessionFactory;
 	}
+	
 	@Transactional
 	public String saveOrUpdate(BloodSampleCollection bloodSampleCollection) {
 		sessionFactory.getCurrentSession().saveOrUpdate(bloodSampleCollection);

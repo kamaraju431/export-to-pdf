@@ -19,21 +19,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.servlet.ModelAndView;
-
 import com.aizant.DAO.UserDAO;
 import com.aizant.Services.IUserService;
-import com.aizant.Services.UserService;
-import com.aizant.model.Study;
 import com.aizant.model.User;
 import com.google.gson.Gson;
-
+/**
+ * The Home Controller implements that simply for user modules like register and login and authuntication.here we are using Request mapping to the URL.
+ * here we are getting data by using list, adding users and updating,edit,delete
+ * logout functionality
+ */
 @Controller
 public class HomeController {
 	/*
@@ -270,5 +269,6 @@ public class HomeController {
 		response.sendRedirect("j_spring_security_logout");
 
 	}
+	
 
 }

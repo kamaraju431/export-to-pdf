@@ -19,7 +19,7 @@
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_add_study_Controller.js" /></script>
 </head>
-</script>
+
  <style>  
    table, th , td {  
       border: 1px solid grey;  

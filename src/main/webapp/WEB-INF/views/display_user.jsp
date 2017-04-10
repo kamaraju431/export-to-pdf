@@ -56,15 +56,10 @@
 						<form class="navbar-form" role="search">
 
 							<div class="input-group custom-search-form" align="center">
-								<input type="text" ng-model="searchBy" class="form-control">
+								<input type="text" ng-model="searchBy" placeholder="Search Here">
 								<!-- ng-model="tempfilter" -->
-								<span class="input-group-btn">
-									<button class="btn btn-primary" ng-click="search()"
-										type="button">
-										
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-								</span>
+							
+							
 							</div>
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<a href="add_user"><button type="button"

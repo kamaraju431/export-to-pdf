@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+* The Bar Code Controller  implements an application that
+* simply generating a barcode.here we are using Request mapping to the URL.
+* creating object for Data Matrix Bean
+*/
 
 @Controller
 public class BarCodeController {
