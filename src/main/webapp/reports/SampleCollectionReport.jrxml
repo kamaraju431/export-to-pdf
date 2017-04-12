@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T13:56:59 -->
+<!-- 2017-04-12T17:49:52 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleCollectionReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="977f59f9-8b5d-41d9-8d53-05c304e03ef7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -122,30 +122,139 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA["collectionDataSample"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Client_Id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["CLIENT ID"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Period_Num" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA["period_num"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Subject_Num" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["sub_num"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
+	<title>
 		<band height="50">
 			<staticText>
-				<reportElement x="33" y="7" width="470" height="30" uuid="3742e714-807f-481a-8a5c-384f725aa12f"/>
+				<reportElement x="34" y="10" width="470" height="30" uuid="3742e714-807f-481a-8a5c-384f725aa12f"/>
 				<textElement textAlignment="Center">
 					<font size="20"/>
 				</textElement>
 				<text><![CDATA[BLOOD SAMPLE COLLECTION RECORD ]]></text>
 			</staticText>
 			<line>
-				<reportElement x="43" y="31" width="450" height="1" uuid="1202d42d-3d36-4f0a-8581-9a9f2306544f"/>
+				<reportElement x="41" y="33" width="450" height="1" uuid="1202d42d-3d36-4f0a-8581-9a9f2306544f"/>
 			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="105">
+			<rectangle>
+				<reportElement x="11" y="5" width="530" height="81" uuid="974827ee-ee41-41ec-82c5-b4bb8e849eb5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="11" y="5" width="530" height="21" uuid="457e8a9e-8bc2-4ac1-a0da-9defa2cef1ec"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="11" y="26" width="530" height="21" uuid="af3f0e7f-7210-4a0f-8a66-7d264d47c9c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="11" y="68" width="530" height="22" uuid="3600a398-9305-4100-98f9-b4083f1fdfeb"/>
+			</rectangle>
+			<line>
+				<reportElement x="164" y="5" width="1" height="63" uuid="162e03a3-8573-4926-8493-a6ba7cf1361a"/>
+			</line>
+			<line>
+				<reportElement x="241" y="5" width="1" height="21" uuid="228054a1-eebb-46ee-aae3-912ddc4a8160"/>
+			</line>
+			<line>
+				<reportElement x="241" y="47" width="1" height="43" uuid="0ae2af3d-702f-4c93-aab2-12e2e88c4a3b"/>
+			</line>
+			<line>
+				<reportElement x="328" y="5" width="1" height="21" uuid="0781592f-b628-480d-9916-858cbf7c54da"/>
+			</line>
+			<line>
+				<reportElement x="390" y="5" width="1" height="21" uuid="fbd4a52b-7dc9-44b7-94ba-84a3d02bc695"/>
+			</line>
+			<line>
+				<reportElement x="471" y="5" width="1" height="21" uuid="951229a6-f01d-43ca-ade0-8d1450077eb5"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="11" width="72" height="17" uuid="2483812f-2ad9-430b-800f-1509ed52d509"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Project No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="31" width="139" height="20" uuid="f5c45053-20db-46bc-b60f-feb7def33f6c"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volume of Blood Sample:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="51" width="90" height="17" uuid="efd1304e-d9b8-4b8e-9d2f-aaa07c74216b"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anticoagulant used]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="71" width="213" height="15" uuid="3ba939e5-f266-4953-9301-d6fb19d69076"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject is dosed at scheduled time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="9" width="60" height="16" uuid="50e14f0e-8ade-45de-ae12-cbf87787645e"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Period No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="9" width="69" height="16" uuid="9c44a5da-ba00-4aa1-a619-2f06210fce5a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject No:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="472" y="47" width="1" height="43" uuid="3595e1e2-4c76-4cf8-a8a0-9577e4b2bd36"/>
+			</line>
+			<line>
+				<reportElement x="329" y="68" width="1" height="22" uuid="7309257e-f407-4a13-b1d0-8e9de19416fc"/>
+			</line>
+			<staticText>
+				<reportElement x="247" y="51" width="130" height="17" uuid="d0e5db2a-bbc9-4d13-8f24-bc13d7e4e64e"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Schedule dosing time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="71" width="110" height="15" uuid="17388fea-f136-4b36-b5d3-3b925fcec51a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[If No,Actual Dosing time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="70" width="73" height="16" uuid="d5a88468-fc98-4db8-a9a5-f847c323f870"/>
+				<text><![CDATA[|   Yes    |    No]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="138">
+		<band height="145">
 			<componentElement>
-				<reportElement x="10" y="34" width="530" height="101" uuid="ad7fd675-bb38-44b6-8f18-0a41e581c85a">
+				<reportElement mode="Transparent" x="11" y="43" width="551" height="90" forecolor="#FAFAFA" uuid="ad7fd675-bb38-44b6-8f18-0a41e581c85a">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
@@ -156,98 +265,92 @@
 					<datasetRun subDataset="BloodSamples" uuid="5ff79690-5f95-4b33-8803-3f1543eb8a2a">
 						<dataSourceExpression><![CDATA[$P{collectionDataSource}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="88" uuid="93f84511-6387-45cf-b00b-13f5495839cb">
+					<jr:column width="70" uuid="93f84511-6387-45cf-b00b-13f5495839cb">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="a18f2cc1-4259-48eb-b4b8-37e5da5f5fa0"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="a18f2cc1-4259-48eb-b4b8-37e5da5f5fa0"/>
 								<text><![CDATA[Date]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="b9406366-6fdb-4deb-993d-3c4e5aad0dc2"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="b9406366-6fdb-4deb-993d-3c4e5aad0dc2"/>
 								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="88" uuid="5757979a-5c1a-4c04-bf23-83f5ecfee463">
+					<jr:column width="70" uuid="5757979a-5c1a-4c04-bf23-83f5ecfee463">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="19ba87bc-cc34-44b5-9cae-049422d8df6c"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="19ba87bc-cc34-44b5-9cae-049422d8df6c"/>
 								<text><![CDATA[Time Point(hr)]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="a6812262-234c-4646-9c07-2bccc9a08968"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="a6812262-234c-4646-9c07-2bccc9a08968"/>
 								<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="88" uuid="02ae9fc4-a5f7-4d29-96e8-30d5058ad0a5">
+					<jr:column width="70" uuid="02ae9fc4-a5f7-4d29-96e8-30d5058ad0a5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="86bda6ee-6fe3-4afb-b8e1-33cd3f24b3b4"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="86bda6ee-6fe3-4afb-b8e1-33cd3f24b3b4"/>
 								<text><![CDATA[Period]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="9e7ad2ba-8cc0-4b50-8b14-7728932caf48"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="9e7ad2ba-8cc0-4b50-8b14-7728932caf48"/>
 								<textFieldExpression><![CDATA[$F{period}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="88" uuid="8d40ce9d-b10b-4605-933f-5137e2ac1716">
+					<jr:column width="70" uuid="8d40ce9d-b10b-4605-933f-5137e2ac1716">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="534fdfce-cbda-4c07-a4ed-10dcb6854809"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="534fdfce-cbda-4c07-a4ed-10dcb6854809"/>
 								<text><![CDATA[ScanTime]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="ba3c2ffa-205b-4346-a148-4d7cf314aff9"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="ba3c2ffa-205b-4346-a148-4d7cf314aff9"/>
 								<textFieldExpression><![CDATA[$F{scanTime}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="88" uuid="dce813fd-1e58-490f-80a2-cb9da80fceec">
+					<jr:column width="70" uuid="dce813fd-1e58-490f-80a2-cb9da80fceec">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="24b4645a-d8b3-495e-8710-17bb5bf6085d"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="24b4645a-d8b3-495e-8710-17bb5bf6085d"/>
 								<text><![CDATA[VolunteerId]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="d684f0fe-dd6c-43f9-ac4d-e4498b06bc97"/>
+								<reportElement x="0" y="0" width="70" height="30" uuid="d684f0fe-dd6c-43f9-ac4d-e4498b06bc97"/>
 								<textFieldExpression><![CDATA[$F{volunteerId}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="88" uuid="1bc98581-42ee-4516-bb38-e9a50badffbe">
+					<jr:column width="180" uuid="c4cd0fa9-e433-4038-be6c-a87cea1b2034">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="30" uuid="ec6b1512-2b24-4916-ae1c-292a5a5dcbaf"/>
+								<reportElement x="0" y="0" width="180" height="30" uuid="0730d215-2381-4ac1-b586-f84f15458d1e"/>
 								<text><![CDATA[Comments*]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="88" height="30" uuid="cf94b3b6-8c91-4607-adea-6267eb8d19b8"/>
+								<reportElement x="0" y="0" width="180" height="30" uuid="d6509c86-f0bc-437b-8274-e7129c83ba3d"/>
 								<textFieldExpression><![CDATA[$F{comments}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -260,28 +363,81 @@
 		<band height="50"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="70">
+		<band height="186">
 			<staticText>
-				<reportElement x="0" y="10" width="150" height="20" uuid="02bd4838-5c59-40ac-ad10-52f08d006fe3"/>
+				<reportElement x="0" y="83" width="150" height="20" uuid="02bd4838-5c59-40ac-ad10-52f08d006fe3"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SupervisedBy:_________]]></text>
+				<text><![CDATA[Supervised By:_________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="414" y="10" width="136" height="20" uuid="6445fc52-0e30-4d4e-9537-fac86970a330"/>
+				<reportElement x="414" y="83" width="136" height="20" uuid="6445fc52-0e30-4d4e-9537-fac86970a330"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Checked By:__________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="30" width="90" height="20" uuid="68d47905-866a-4fbe-b5b2-2de47c0cc5f5"/>
+				<reportElement x="74" y="103" width="90" height="20" uuid="68d47905-866a-4fbe-b5b2-2de47c0cc5f5"/>
 				<text><![CDATA[(Sign&Date)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="476" y="30" width="86" height="20" uuid="6703a933-0ef6-480e-b941-14f1e2e9c5c4"/>
+				<reportElement x="476" y="103" width="86" height="20" uuid="6703a933-0ef6-480e-b941-14f1e2e9c5c4"/>
 				<text><![CDATA[(Sign&Date)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="13" y="0" width="528" height="60" uuid="fea0c42c-63e8-4228-a658-168f0d143282"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="13" y="0" width="528" height="30" uuid="6b8f44b2-c0a7-4fd7-b632-7844d9faae76"/>
+			</rectangle>
+			<line>
+				<reportElement x="169" y="0" width="1" height="60" uuid="4cd08a9d-69bb-4d3f-a72b-8bf4fd4a0213"/>
+			</line>
+			<line>
+				<reportElement x="234" y="0" width="1" height="60" uuid="51a80197-2a39-4ef4-a864-0c8a6af862ab"/>
+			</line>
+			<staticText>
+				<reportElement x="16" y="7" width="151" height="17" uuid="b0fefafd-0c31-4a70-a4a9-c64de21cfa0c"/>
+				<text><![CDATA[Recannulation(if any) time&date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="35" width="151" height="20" uuid="12a22bb5-bfc5-4bc2-b1fe-a1f867b2fa2a"/>
+				<text><![CDATA[Cannula removal time&date]]></text>
+			</staticText>
+			<line>
+				<reportElement x="304" y="1" width="1" height="60" uuid="46e6fd35-0a4f-47cc-9164-3e509aefb000"/>
+			</line>
+			<line>
+				<reportElement x="396" y="0" width="1" height="60" uuid="e3e07b43-1b74-47f4-9c29-84079454c0cf"/>
+			</line>
+			<staticText>
+				<reportElement x="243" y="0" width="58" height="30" uuid="65918c42-fa59-48bd-a83d-cc7c10cea172"/>
+				<text><![CDATA[Insertion Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="35" width="58" height="20" uuid="c65387fb-43df-46e2-b092-4a1c8357e223"/>
+				<text><![CDATA[Limb Status]]></text>
+			</staticText>
+			<line>
+				<reportElement x="455" y="0" width="1" height="60" uuid="0ed68bd4-61d5-41a5-895e-ad286ca7f510"/>
+			</line>
+			<staticText>
+				<reportElement x="402" y="7" width="49" height="19" uuid="c342440d-cdf9-4d67-b2d2-23628ce4e475"/>
+				<text><![CDATA[Done By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="35" width="49" height="20" uuid="8298ab06-064a-4b6e-a3e1-2eb74fc5ca90"/>
+				<text><![CDATA[Done By]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="3" width="75" height="24" uuid="620c87cc-9b0a-4c92-bc0f-68b2484c0045"/>
+				<text><![CDATA[ | CTIL   | CITR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="35" width="90" height="20" uuid="de1df8a9-64a8-4345-a2f2-0388a774f445"/>
+				<text><![CDATA[| Normal | Abnormal]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

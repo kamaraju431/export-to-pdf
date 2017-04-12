@@ -6,6 +6,7 @@
 <%@ page import ="net.sf.jasperreports.engine.data.*"%>
 <%@ page import="com.aizant.model.BloodSampleRecord"%>
 <%@ page import="com.aizant.model.BloodSampleCollection"%>
+<%@ page import="com.aizant.model.Study"%>
 
 
 
@@ -43,7 +44,10 @@ try{
 String jrxmlFile=session.getServletContext().getRealPath("/reports/SampleCollectionReport.jrxml");
 
 HashMap<String, Object> CollectionParameters = new HashMap<String, Object>();
-
+/*  Study study = (Study) request.getAttribute("studyCollection"); 
+CollectionParameters.put("Client_Id", study.getClientStudyId());
+CollectionParameters.put("Period_Num", study.getPeriods());
+CollectionParameters.put("Subject_Num", study.getStudyVolunteers().get(0).getVolunteerId());  */
 CollectionParameters.put("collectionDataSource",jrDataSource);
 
 InputStream input = new FileInputStream(new File(jrxmlFile));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T12:57:36 -->
+<!-- 2017-04-12T17:11:08 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dec9e481-4ee0-4ce4-9133-19d86ad149ef">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -26,30 +26,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<pageHeader>
-		<band height="6">
-			<textField>
-				<reportElement x="269" y="-20" width="140" height="20" uuid="a6923cbc-2378-46d8-9230-b8c8574231b8"/>
-				<textFieldExpression><![CDATA[(($P{currentAliquot} > 0) ? "RAI vials"+"(ALIQUOT " + $P{currentAliquot} + " of  " + $P{totalAliquots}+")" : "" +"VACUTAINER   LABELS")]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="496" y="-20" width="9" height="20" uuid="62081bf9-66db-4518-bf2b-ae9c0c1a45af"/>
-				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="465" y="-20" width="40" height="20" uuid="a637c1d6-d9b0-48e2-a396-60c597b05cba"/>
-				<text><![CDATA[Period:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="1" y="-21" width="73" height="21" uuid="382008ba-52d2-4bb1-bdb4-ec496ecabb19"/>
-				<text><![CDATA[Project No:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="51" y="-21" width="59" height="20" uuid="6793bde4-5bce-4329-9b44-e3df39b0c20b"/>
-				<textFieldExpression><![CDATA[$P{Client_Id}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageHeader>
 	<detail>
 		<band height="152" splitType="Stretch">
 			<textField>

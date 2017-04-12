@@ -117,6 +117,10 @@
 		studyParameters.put("volunteerDataSource", volunteerDataSource);
 		studyParameters.put("volunteerParameters", volunteerParameters);
 		studyParameters.put("subreportPath", volunteerReportFile);
+		studyParameters.put("Client_Id", study.getClientStudyId());
+		studyParameters.put("Period_Num", study.getPeriods());
+		studyParameters.put("totalAliquots", study.getAliquot());
+		
 		System.out.println("iam in jasper");
 		InputStream input = new FileInputStream(new File(jrxmlFile));
 		JasperReport report = JasperCompileManager.compileReport(input);

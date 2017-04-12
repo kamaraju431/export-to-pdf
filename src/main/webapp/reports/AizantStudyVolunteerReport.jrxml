@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T13:20:11 -->
+<!-- 2017-04-12T17:24:34 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AizantStudyVolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c265d5d3-c923-43c3-ae17-affa6d591970">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false">
@@ -10,6 +10,17 @@
 	<parameter name="volunteerDataSource" class="java.util.HashMap" isForPrompting="false">
 		<defaultValueExpression><![CDATA["DS"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Client_Id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["id"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Period_Num" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA["period_num"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="currentAliquot" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalAliquots" class="java.lang.Integer" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -21,7 +32,7 @@
 		<band splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="42">
+		<band height="100">
 			<staticText>
 				<reportElement x="70" y="7" width="380" height="20" uuid="eef6a622-882f-41d9-9f24-7cb8c9333df8"/>
 				<textElement textAlignment="Center">
@@ -40,6 +51,22 @@
 				<reportElement x="450" y="7" width="90" height="34" uuid="3d5e89c9-d997-4ff5-a6f0-1940ddb7268e"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="479" y="42" width="50" height="15" uuid="54acc063-8c80-451d-9101-d93334be6d09"/>
+				<text><![CDATA[Period:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-11" y="41" width="73" height="21" uuid="170c5521-61aa-4ffe-9ded-6dd4b6eed093"/>
+				<text><![CDATA[Project No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="42" width="100" height="19" uuid="0c8ce1b3-30a3-4464-a704-b93d1e79fb7b"/>
+				<textFieldExpression><![CDATA[$P{Client_Id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="42" width="40" height="15" uuid="10bdf2b6-0061-4c27-9634-2262d393b631"/>
+				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

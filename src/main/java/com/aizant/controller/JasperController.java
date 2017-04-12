@@ -39,23 +39,12 @@ public class JasperController {
 
 		return new ModelAndView("Jasper");
 	}
-	@RequestMapping("/records")
-	public ModelAndView SampleCollection(@RequestParam String id, ModelMap modelMap) {
-		BloodSampleCollection sampleCollection=bloodSampleCollectionDao.get(id);
-		modelMap.put("bloodCollection",bloodSampleCollectionDao.get(id));
-		modelMap.put("date",sampleCollection.getDate());
-		modelMap.put("period",sampleCollection.getPeriod());
-		modelMap.put("scanTime",sampleCollection.getScanTime());
-		modelMap.put("comments",sampleCollection.getComments());
-		modelMap.put("volunteerId",sampleCollection.getVolunteerId());
-		modelMap.put("time",sampleCollection.getTime());
-		return new ModelAndView("records");
-		
-	}	
+	
 	@RequestMapping("/SampleCollections")
 	public ModelAndView SampleCollections(@RequestParam String id, ModelMap modelMap) {
 		//BloodSampleCollection study = bloodSampleCollectionDao.get(id);
 		modelMap.put("bloodCollection",bloodSampleCollectionDao.get(id));
+		modelMap.put("studyCollection",studyDAO.get(id));
 		return new ModelAndView("SampleCollections");
 	
 }
