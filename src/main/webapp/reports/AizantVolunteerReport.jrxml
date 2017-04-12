@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-07T10:59:30 -->
+<!-- 2017-04-12T13:01:39 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf1cd5a3-39b4-40f1-bea8-ff4539b61036">
 	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="baseParameters" class="java.util.HashMap" isForPrompting="false">
@@ -22,13 +22,18 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
 	<parameter name="id" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="currentAliquot" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalAliquots" class="java.lang.Integer" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="currentAliquot" class="java.lang.Integer"/>
 	<variable name="totalpages" class="java.lang.String"/>
 	<detail>
-		<band height="118" splitType="Stretch">
+		<band height="99" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<subreport>
 				<reportElement x="3" y="-19" width="104" height="92" uuid="13a17c2c-d9d7-4439-841a-fe517386af83"/>
@@ -131,7 +136,7 @@
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
 			</subreport>
 			<break>
-				<reportElement x="0" y="100" width="544" height="1" uuid="6d974091-962f-42f8-b760-412f292301a0"/>
+				<reportElement x="0" y="90" width="552" height="1" uuid="ebb256d7-d3bc-4d18-a6ce-64aff0d30a9d"/>
 			</break>
 		</band>
 	</detail>

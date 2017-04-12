@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-08T10:12:50 -->
+<!-- 2017-04-12T13:56:59 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleCollectionReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="977f59f9-8b5d-41d9-8d53-05c304e03ef7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -56,6 +56,10 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FBFDFF"/>
+		</conditionalStyle>
 	</style>
 	<subDataset name="Dataset1" uuid="34795674-974b-4313-9e4f-962e9e9f8eca">
 		<queryString>
@@ -90,127 +94,160 @@
 		<field name="comments" class="java.lang.String"/>
 		<field name="volunteerId" class="java.lang.String"/>
 	</subDataset>
+	<subDataset name="SampleCollection " uuid="845df60d-c3cc-4c07-ba5f-99812888cb51">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="date" class="java.lang.String"/>
+		<field name="time" class="java.lang.Double"/>
+		<field name="period" class="java.lang.Integer"/>
+		<field name="scanTime" class="java.lang.String"/>
+		<field name="comments" class="java.lang.String"/>
+		<field name="volunteerId" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="BloodSamples" uuid="518b8dea-eadb-4998-9890-8237cda9042b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="date" class="java.lang.String"/>
+		<field name="time" class="java.lang.Double"/>
+		<field name="period" class="java.lang.Integer"/>
+		<field name="scanTime" class="java.lang.String"/>
+		<field name="comments" class="java.lang.String"/>
+		<field name="volunteerId" class="java.lang.String"/>
+	</subDataset>
 	<parameter name="collectionDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA["collectionDataSample"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="date" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="83" splitType="Stretch">
+	<pageHeader>
+		<band height="50">
 			<staticText>
-				<reportElement x="44" y="30" width="470" height="30" uuid="3742e714-807f-481a-8a5c-384f725aa12f"/>
+				<reportElement x="33" y="7" width="470" height="30" uuid="3742e714-807f-481a-8a5c-384f725aa12f"/>
 				<textElement textAlignment="Center">
 					<font size="20"/>
 				</textElement>
 				<text><![CDATA[BLOOD SAMPLE COLLECTION RECORD ]]></text>
 			</staticText>
+			<line>
+				<reportElement x="43" y="31" width="450" height="1" uuid="1202d42d-3d36-4f0a-8581-9a9f2306544f"/>
+			</line>
 		</band>
-	</title>
-	<detail>
-		<band height="248" splitType="Stretch">
+	</pageHeader>
+	<columnHeader>
+		<band height="138">
 			<componentElement>
-				<reportElement x="30" y="20" width="484" height="70" uuid="25466e3b-450b-4b97-8091-992f7c0f3324">
+				<reportElement x="10" y="34" width="530" height="101" uuid="ad7fd675-bb38-44b6-8f18-0a41e581c85a">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value="BloodSamples"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="CollectionRecord" uuid="cb530151-b8b9-4ae3-b90a-29d3008e1a27">
+					<datasetRun subDataset="BloodSamples" uuid="5ff79690-5f95-4b33-8803-3f1543eb8a2a">
 						<dataSourceExpression><![CDATA[$P{collectionDataSource}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="80" uuid="51d2b6c6-7f07-4320-95d8-ad51aa821c15">
+					<jr:column width="88" uuid="93f84511-6387-45cf-b00b-13f5495839cb">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="60bce954-58fd-4b46-a7c5-306eaa96cd27"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="a18f2cc1-4259-48eb-b4b8-37e5da5f5fa0"/>
 								<text><![CDATA[Date]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="4a0d7cb8-6280-453d-9e16-3198c139cb27"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="b9406366-6fdb-4deb-993d-3c4e5aad0dc2"/>
 								<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="7d3b012e-2e46-4977-af49-d57c5eaba65a">
+					<jr:column width="88" uuid="5757979a-5c1a-4c04-bf23-83f5ecfee463">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="f964a975-8c7d-4b7f-b64f-e271562e2edd"/>
-								<text><![CDATA[Time Points(hr)]]></text>
+								<reportElement x="0" y="0" width="88" height="30" uuid="19ba87bc-cc34-44b5-9cae-049422d8df6c"/>
+								<text><![CDATA[Time Point(hr)]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="208f3e7a-4bb6-477a-9cb2-f5beeb45d70c"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="a6812262-234c-4646-9c07-2bccc9a08968"/>
 								<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="c7743788-b085-446d-b928-2b89f13faac0">
+					<jr:column width="88" uuid="02ae9fc4-a5f7-4d29-96e8-30d5058ad0a5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="4a073052-9c59-4832-8d61-7180591d4b9f"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="86bda6ee-6fe3-4afb-b8e1-33cd3f24b3b4"/>
 								<text><![CDATA[Period]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="27e5f511-7ccb-4786-99f8-a0d2051762af"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="9e7ad2ba-8cc0-4b50-8b14-7728932caf48"/>
 								<textFieldExpression><![CDATA[$F{period}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="51bac78d-923e-4b84-a789-336524b796ad">
+					<jr:column width="88" uuid="8d40ce9d-b10b-4605-933f-5137e2ac1716">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="fff7dcc3-b08a-4812-bbd4-4f91e4cd0e6f"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="534fdfce-cbda-4c07-a4ed-10dcb6854809"/>
 								<text><![CDATA[ScanTime]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="432abf19-3143-4d90-80e9-9a2c3f7b910d"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="ba3c2ffa-205b-4346-a148-4d7cf314aff9"/>
 								<textFieldExpression><![CDATA[$F{scanTime}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="f43390c5-1371-48f9-958d-76d38734fbdd">
+					<jr:column width="88" uuid="dce813fd-1e58-490f-80a2-cb9da80fceec">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="8894e3ec-a0c4-4daf-ab87-35e5012a1cad"/>
-								<text><![CDATA[Volunteer Id]]></text>
+								<reportElement x="0" y="0" width="88" height="30" uuid="24b4645a-d8b3-495e-8710-17bb5bf6085d"/>
+								<text><![CDATA[VolunteerId]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="2082da6e-1ca6-4b0f-8d19-8547f89e89ab"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="d684f0fe-dd6c-43f9-ac4d-e4498b06bc97"/>
 								<textFieldExpression><![CDATA[$F{volunteerId}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="80" uuid="04cc9a9e-1fe7-4962-817c-3135eacfcbfc">
+					<jr:column width="88" uuid="1bc98581-42ee-4516-bb38-e9a50badffbe">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:tableHeader style="Table 1_TH" height="30" rowSpan="1">
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="6d0ff783-eccf-4873-aa45-d7ae3b8b00ea"/>
-								<text><![CDATA[Comments]]></text>
+								<reportElement x="0" y="0" width="88" height="30" uuid="ec6b1512-2b24-4916-ae1c-292a5a5dcbaf"/>
+								<text><![CDATA[Comments*]]></text>
 							</staticText>
-						</jr:tableHeader>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table 1_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="30" uuid="4225c812-f420-491c-9d9d-183bb2ae326a"/>
+								<reportElement x="0" y="0" width="88" height="30" uuid="cf94b3b6-8c91-4607-adea-6267eb8d19b8"/>
 								<textFieldExpression><![CDATA[$F{comments}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -218,5 +255,34 @@
 				</jr:table>
 			</componentElement>
 		</band>
-	</detail>
+	</columnHeader>
+	<columnFooter>
+		<band height="50"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="70">
+			<staticText>
+				<reportElement x="0" y="10" width="150" height="20" uuid="02bd4838-5c59-40ac-ad10-52f08d006fe3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SupervisedBy:_________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="10" width="136" height="20" uuid="6445fc52-0e30-4d4e-9537-fac86970a330"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked By:__________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="30" width="90" height="20" uuid="68d47905-866a-4fbe-b5b2-2de47c0cc5f5"/>
+				<text><![CDATA[(Sign&Date)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="30" width="86" height="20" uuid="6703a933-0ef6-480e-b941-14f1e2e9c5c4"/>
+				<text><![CDATA[(Sign&Date)]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
 </jasperReport>

@@ -28,13 +28,13 @@ try{
 	 String volunteerId=bloodCollections.getVolunteerId();
 	List<BloodSampleRecord> record=new ArrayList<BloodSampleRecord>();
 	  {
-		// record.add(new BloodSampleRecord(sampledate,sampletime,sampleperiod,samplescanTime,samplecomments,samplevolunteerId));
-	 	 record.add(new BloodSampleRecord(time));
+	 record.add(new BloodSampleRecord(date,time,period,scanTime,comments,volunteerId));
+ /* 	  record.add(new BloodSampleRecord(time));
 		 record.add(new BloodSampleRecord(date));
 		 record.add(new BloodSampleRecord(period));
 		 record.add(new BloodSampleRecord(scanTime));
 		 record.add(new BloodSampleRecord(comments));	
-		 record.add(new BloodSampleRecord(volunteerId)); 
+		 record.add(new BloodSampleRecord(volunteerId));  */  
 	  }
 	 
 	  JRDataSource jrDataSource=new JRBeanCollectionDataSource(record);
@@ -49,7 +49,7 @@ CollectionParameters.put("collectionDataSource",jrDataSource);
 InputStream input = new FileInputStream(new File(jrxmlFile));
 JasperReport report = JasperCompileManager.compileReport(input);
 
-JasperPrint print = JasperFillManager.fillReport(report,CollectionParameters,jrDataSource);
+JasperPrint print = JasperFillManager.fillReport(report,CollectionParameters,new JREmptyDataSource());
 JasperExportManager.exportReportToPdfStream(print,response.getOutputStream());
 response.getOutputStream().flush();
 response.getOutputStream().close();
