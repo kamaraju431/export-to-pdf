@@ -1,6 +1,5 @@
 package com.aizant.controller;
 
-
 import java.io.IOException;
 
 import java.util.List;
@@ -28,9 +27,11 @@ import com.aizant.DAO.UserDAO;
 import com.aizant.Services.IUserService;
 import com.aizant.model.User;
 import com.google.gson.Gson;
+
 /**
- * The Home Controller implements that simply for user modules like register and login and authuntication.here we are using Request mapping to the URL.
- * here we are getting data by using list, adding users and updating,edit,delete
+ * The Home Controller implements that simply for user modules like register and
+ * login and authuntication.here we are using Request mapping to the URL. here
+ * we are getting data by using list, adding users and updating,edit,delete
  * logout functionality
  */
 @Controller
@@ -39,14 +40,13 @@ public class HomeController {
 	 * ------------------------------------- DAO declaration
 	 * --------------------------------------
 	 */
-	
-	
+
 	@Autowired
 	private UserDAO userDao;
-	
+
 	@Autowired
 	private IUserService userService;
-	
+
 	SessionFactory sessionFactory;
 
 	/*
@@ -59,15 +59,14 @@ public class HomeController {
 		return m4;
 	}
 
-
 	/*
 	 * ------------------------------------- View All Users
 	 * --------------------------------------
 	 */
 	@RequestMapping("/display_user")
-	public ModelAndView retriveRecords() throws Exception {
+	public ModelAndView retriveRecords(){
 		ModelAndView m1 = new ModelAndView("display_user");
-		
+
 		return m1;
 	}
 
@@ -76,23 +75,23 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "edit_user", method = RequestMethod.GET)
-	public ModelAndView edituser(@RequestParam String id,
-			@ModelAttribute("User") User user) {
-	User u1 = userDao.get(id);
+	public ModelAndView edituser(@RequestParam String id, @ModelAttribute("User") User user) {
+		User u1 = userDao.get(id);
 		return new ModelAndView("edit_user", "user", u1);
 	}
-//	@RequestMapping("/edit_user")
-//	public String editUser() {
-//		return "edit_user";
-//	}
+	// @RequestMapping("/edit_user")
+	// public String editUser() {
+	// return "edit_user";
+	// }
 
 	/*
 	 * ------------------------------------- Update User
 	 * --------------------------------------
 	 */
-	
+
 	@RequestMapping(value = "/update_user", method = RequestMethod.POST)
-	public ModelAndView updateuser(HttpServletRequest request,@RequestParam String id,@ModelAttribute("User") User user) {
+	public ModelAndView updateuser(HttpServletRequest request, @RequestParam String id,
+			@ModelAttribute("User") User user) {
 		System.out.println(user.getId());
 		user.setId(id);
 		userDao.saveOrUpdate(user);
@@ -110,7 +109,6 @@ public class HomeController {
 
 			return new ModelAndView("redirect:/add_user");
 		}
-	
 
 		userService.registerNewUserAccount(user);
 		userDao.saveOrUpdate(user);
@@ -139,7 +137,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute User user,
-			@RequestParam(value="", required=false) String filter) {
+			@RequestParam(value = "", required = false) String filter) {
 		List<User> list;
 
 		System.out.println("Page number " + page);
@@ -172,9 +170,6 @@ public class HomeController {
 		return new User();
 	}
 
-
-	
-
 	/*
 	 * ------------------------------------- Login Error(fail to login)
 	 * --------------------------------------
@@ -191,19 +186,19 @@ public class HomeController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+	public ModelAndView checkUserOne(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws Exception {
 
 		System.out.println("hi");
 		/*
 		 * ------------------------------------- Admin Page
 		 * --------------------------------------
 		 */
-	if (request.isUserInRole("ROLE_ADMIN")) {
+		if (request.isUserInRole("ROLE_ADMIN")) {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
 			session.setAttribute("loggedInUser", str);
-
 
 			ModelAndView m1 = new ModelAndView("Admin");
 			return m1;
@@ -216,12 +211,13 @@ public class HomeController {
 			String str = auth.getName(); // get logged in username
 			session = request.getSession(true);
 			session.setAttribute("loggedInUser", str);
-//			ModelAndView m2 = new ModelAndView("display_study");
+			// ModelAndView m2 = new ModelAndView("display_study");
 			return new ModelAndView("redirect:/display_study");
 		}
 
 	}
-		/*
+
+	/*
 	 * ------------------------------------- View User
 	 * --------------------------------------
 	 */
@@ -269,6 +265,7 @@ public class HomeController {
 		response.sendRedirect("j_spring_security_logout");
 
 	}
+	
 	
 
 }

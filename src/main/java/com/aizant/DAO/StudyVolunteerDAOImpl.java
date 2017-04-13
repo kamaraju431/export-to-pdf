@@ -108,7 +108,7 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		long count = (long) session.createQuery("SELECT COUNT(id) FROM StudyVolunteer").getSingleResult();
+		Long count = (Long) session.createQuery("SELECT COUNT(id) FROM StudyVolunteer").getSingleResult();
 		System.out.println("Count from db " + count);
 		tx.commit();
 		session.close();

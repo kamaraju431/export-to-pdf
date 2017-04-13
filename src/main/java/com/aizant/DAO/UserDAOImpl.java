@@ -117,7 +117,7 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		long count = (long) session.createQuery("SELECT COUNT(id) FROM User").getSingleResult();
+		Long count =(Long) session.createQuery("SELECT COUNT(id) FROM User").getSingleResult();
 		System.out.println("Count from db " + count);
 		tx.commit();
 		session.close();

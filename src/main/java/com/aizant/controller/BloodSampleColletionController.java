@@ -20,8 +20,9 @@ import com.google.gson.Gson;
 
 /**
  * The Blood Sample Collection Controller implements that simply generating a
- * blood sample collection list for each volunteer.here we are using Request mapping to the URL.
- * here we are getting data by using list4, adding the Blood sample collection
+ * blood sample collection list for each volunteer.here we are using Request
+ * mapping to the URL. here we are getting data by using list4, adding the Blood
+ * sample collection
  */
 @Controller
 public class BloodSampleColletionController {

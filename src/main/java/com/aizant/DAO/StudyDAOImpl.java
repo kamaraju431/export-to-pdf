@@ -107,7 +107,7 @@ public List<Study> getStudyByPage(int pageid,int total){
 public long getPageCount() {
 	// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		long count= (long) session.createQuery("SELECT COUNT(id) FROM Study").getSingleResult();
+		Long count= (Long) session.createQuery("SELECT COUNT(id) FROM Study").getSingleResult();
 		System.out.println("Count from db " + count);
 		session.close();
 		

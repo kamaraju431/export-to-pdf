@@ -97,7 +97,7 @@ public class StudyVolunteerController {
 	 * --------------------------------------
 	 */
 	@RequestMapping("/display_studyVolunteer")
-	public ModelAndView retriveRecord() throws Exception {
+	public ModelAndView retriveRecord(){
 		ModelAndView m1 = new ModelAndView("display_studyVolunteer");
 
 		return m1;

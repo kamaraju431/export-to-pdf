@@ -57,6 +57,7 @@
 									<form:errors path="*" cssClass="errStyle" element="div" />
 									<table class="table table-user-information">
 										<tbody>
+										
 											<tr>
 												<td><form:label path="date">Date :</form:label></td>
 												<td><form:input path="date" /> <font color="red"><form:errors

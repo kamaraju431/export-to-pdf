@@ -28,12 +28,14 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http) {
 
 		}
 
+		$scope.selectedPeriod = 1;
 		$scope.currentSamples = $scope.bloodSampleCollection.p1;
 		console.log('data in p1', $scope.currentSamples);
 
 	});
 	$scope.onClick = function(period) {
 
+		$scope.selectedPeriod = period;
 		if (period === 1) {
 			$scope.currentSamples = $scope.bloodSampleCollection.p1;
 	

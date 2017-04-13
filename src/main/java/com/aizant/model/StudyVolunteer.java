@@ -21,13 +21,14 @@ public class StudyVolunteer {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
+
 	private String id;
 	private String volunteerId;
 	private String volunteerName;
-
+	
 	/* --------------- Getter setters --------------------- */
 
-	public String getId() {
+ 	public String getId() {
 		return id;
 	}
 
