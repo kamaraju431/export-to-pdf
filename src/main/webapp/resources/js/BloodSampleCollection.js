@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('BloodSampleCollectionCtrl', function($scope, $http,$location) {
+app.controller('BloodSampleCollectionCtrl', function($scope, $http,$location){
 	$scope.bloodSampleCollection = {
 	  
 		p1 : [],

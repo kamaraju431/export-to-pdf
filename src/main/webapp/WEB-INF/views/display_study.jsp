@@ -65,8 +65,9 @@
 					<tr>
 
 						<th>Name</th>
-						<th>Number of Sample</th>
-						<th>Sample CollectionSize(in ml)</th>
+					<!-- 	<th>Number of Sample</th> -->
+						<th>Sample 
+						CollectionSize(in ml)</th>
 						<th>Periods</th>
 						<th>Client Study ID</th>
 						<th>Date</th>
@@ -75,7 +76,7 @@
 					<tr ng-repeat="s in names | filter:searchBy">
 
 						<td>{{s.name}}</td>
-						<td>{{getLengthFromSamples(s.sample)}}</td>
+						<!-- <td>{{getLengthFromSamples(s.sample)}}</td> -->
 						<td>{{s.sampleCollectionSize_in_ml}}</td>
 						<td>{{s.periods}}</td>
 						<td>{{s.clientStudyId}}</td>

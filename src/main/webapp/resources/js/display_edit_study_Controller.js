@@ -11,6 +11,13 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 		$scope.study = response.data;
 		$scope.sampleCount = $scope.study.sampleTime.length;
 		$scope.volunteerCount = $scope.study.studyVolunteers.length;
+		
+		/*
+		 This is where the $watch function comes in.
+		$watch provides us with a way to keep calculated 
+		values up to date when the values that they depend on change. 
+		*/
+		
 		$scope.$watch("sampleCount", function(newValue, oldValue) {
 			var sampleLength = $scope.study.sampleTime.length;
 			var newLength = parseInt(newValue);

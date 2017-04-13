@@ -114,7 +114,7 @@
 									<!-- <a href="/Sample/records?id={{x.id}}" class="btn btn-primary" target="_self">Print
 									</a> -->
 							</div>
-							<a 	href="records?id=${bloodSampleCollection.id}" class="btn btn-primary" target="_self">Print
+							<a 	href="SampleCollections?id=${study_Volunteer.volunteerId}" class="btn btn-primary" target="_self">Print
 									</a> 
 
 						</div>

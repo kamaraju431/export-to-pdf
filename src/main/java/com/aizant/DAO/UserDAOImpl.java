@@ -98,7 +98,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = sessionFactory.openSession();
 
 		Query query = session.createQuery("FROM User");
-		query.setFirstResult((pageid - 1) * total + 1);
+		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
 		
 		

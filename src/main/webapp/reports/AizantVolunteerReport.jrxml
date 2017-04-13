@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T13:01:39 -->
+<!-- 2017-04-13T11:42:29 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf1cd5a3-39b4-40f1-bea8-ff4539b61036">
 	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="baseParameters" class="java.util.HashMap" isForPrompting="false">
@@ -27,6 +27,7 @@
 		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
 	</parameter>
 	<parameter name="totalAliquots" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="volunteerId" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -52,6 +53,9 @@
 				<subreportParameter name="currentAliquot">
 					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$P{volunteerId}]]></subreportParameterExpression>
+				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{baseDataSource}.get($F{currentAliquot})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
 			</subreport>
@@ -71,6 +75,9 @@
 				</subreportParameter>
 				<subreportParameter name="currentAliquot">
 					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$P{volunteerId}]]></subreportParameterExpression>
 				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{baseDataSource1}.get($F{currentAliquot})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
@@ -92,6 +99,9 @@
 				<subreportParameter name="currentAliquot">
 					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$P{volunteerId}]]></subreportParameterExpression>
+				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{baseDataSource2}.get($F{currentAliquot})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
 			</subreport>
@@ -112,6 +122,9 @@
 				<subreportParameter name="currentAliquot">
 					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
 				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$P{volunteerId}]]></subreportParameterExpression>
+				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{baseDataSource3}.get($F{currentAliquot})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
 			</subreport>
@@ -131,6 +144,9 @@
 				</subreportParameter>
 				<subreportParameter name="currentAliquot">
 					<subreportParameterExpression><![CDATA[$F{currentAliquot}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$P{volunteerId}]]></subreportParameterExpression>
 				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{baseDataSource4}.get($F{currentAliquot})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>

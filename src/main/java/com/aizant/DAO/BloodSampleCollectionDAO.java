@@ -3,7 +3,8 @@ package com.aizant.DAO;
 import java.util.List;
 
 import com.aizant.model.BloodSampleCollection;
-import com.aizant.model.Study;public interface BloodSampleCollectionDAO {
+import com.aizant.model.Study;
+import com.aizant.model.StudyVolunteer;public interface BloodSampleCollectionDAO {
 	public List<BloodSampleCollection> list();
 	public BloodSampleCollection get(String id);
 
@@ -11,6 +12,7 @@ import com.aizant.model.Study;public interface BloodSampleCollectionDAO {
 	public void delete(String id);
 	public List getAllBloodSampleCollection();
 	public String deleteBloodSampleCollection(String id);
+/*	  public BloodSampleCollection getbyId(String volunteerId) ;*/
 	
 
 

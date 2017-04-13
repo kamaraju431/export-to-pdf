@@ -100,7 +100,7 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		Session session = sessionFactory.getCurrentSession();
 
 		Query query = session.createQuery("FROM StudyVolunteer");
-		query.setFirstResult((pageid - 1) * total + 1);
+		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
 
 		List<StudyVolunteer> list = (List<StudyVolunteer>) query.getResultList();
@@ -112,6 +112,14 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 	public void addVolunteersToStudy(List<StudyVolunteer> studyVolunteers) {
 		Session session = sessionFactory.getCurrentSession();
 		sessionFactory.getCurrentSession().save(studyVolunteers);
+	}
+
+	@Override
+	public List getAllStudyCollections() {
+		Session session = sessionFactory.getCurrentSession();
+		List list = session.createQuery("from BloodSampleCollection").list();
+		return list;
+
 	}
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T17:11:08 -->
+<!-- 2017-04-13T11:39:56 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dec9e481-4ee0-4ce4-9133-19d86ad149ef">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -10,7 +10,7 @@
 	<parameter name="Period_Num" class="java.lang.Integer" isForPrompting="false">
 		<defaultValueExpression><![CDATA["period_num"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="Subject_Num" class="java.lang.String" isForPrompting="false">
+	<parameter name="volunteerId" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["sub_num"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="currentAliquot" class="java.lang.Integer" isForPrompting="false">
@@ -18,6 +18,7 @@
 		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
 	</parameter>
 	<parameter name="totalAliquots" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="Parameter1" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -37,7 +38,7 @@
 			</textField>
 			<textField>
 				<reportElement x="45" y="73" width="28" height="19" uuid="33f6611b-5ab9-4429-ba3c-c06e1f13d2e1"/>
-				<textFieldExpression><![CDATA[$P{Subject_Num}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{volunteerId}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="12" y="41" width="54" height="16" uuid="0a4d1eb9-a523-4e6d-97a1-dbdb43bf0335"/>

@@ -71,7 +71,7 @@ public class BloodSampleColletionController {
 		if (result.hasErrors()) {
 			System.out.println("hi");
 
-			return new ModelAndView("redirect:/add_user");
+			return new ModelAndView("redirect:/display_study");
 		}
 	
 

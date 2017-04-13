@@ -50,8 +50,8 @@
 
 		baseParameters.put("Client_Id", study.getClientStudyId());
 		baseParameters.put("Period_Num", study.getPeriods());
-		baseParameters.put("Subject_Num", study.getStudyVolunteers().get(0).getVolunteerId());
 		baseParameters.put("totalAliquots", study.getAliquot());
+	
 
 		volunteerParameters.setSubreportPath(baseReportFile);
 		volunteerParameters.setBaseParameters(baseParameters);
@@ -119,7 +119,11 @@
 		studyParameters.put("subreportPath", volunteerReportFile);
 		studyParameters.put("Client_Id", study.getClientStudyId());
 		studyParameters.put("Period_Num", study.getPeriods());
+		
+		System.out.println("totalAliquots"+study.getAliquot());
+		
 		studyParameters.put("totalAliquots", study.getAliquot());
+		
 		
 		System.out.println("iam in jasper");
 		InputStream input = new FileInputStream(new File(jrxmlFile));

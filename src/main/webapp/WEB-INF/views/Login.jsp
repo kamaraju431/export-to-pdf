@@ -35,7 +35,7 @@
 }
 </style>
 </head>
-<body background=http://img07.deviantart.net/274c/i/2011/109/8/8/background_m3_login_for_m1_by_andreascy-d3ecbzg.jpg>
+<body>
 
 	<%@ include file="/WEB-INF/views/template/header2.jsp"%>
 	<br>

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.Study;
+import com.aizant.model.StudyVolunteer;
 
 @Repository("bloodSampleCollectionDAO")
 
@@ -81,6 +82,18 @@ public List<BloodSampleCollection> list() {
 	session.close();
 	return list;
 }
+/*@Override
+public BloodSampleCollection getbyId(String volunteerId) {
+	String hql ="from (select * from BloodSampleCollection) as StudyVolunteer where volunteerId='" + volunteerId + "'";
+	Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);
+	List<BloodSampleCollection> listBloodSampleCollection =(List<BloodSampleCollection>) query.getResultList();
+	if(listBloodSampleCollection != null && !listBloodSampleCollection.isEmpty())
+	{
+		return listBloodSampleCollection.get(0);
+	}	
+	return null;
+
+}*/
 
 
 }

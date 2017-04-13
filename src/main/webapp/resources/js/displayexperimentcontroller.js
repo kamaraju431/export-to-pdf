@@ -17,6 +17,10 @@ var modalTemplate =
 		  
 		
 app.controller('studyCtrl', function($scope, $http, $uibModal) {
+	/*
+	   The $http.get method is used to retrieve information from the given
+	   server using a given URI. 
+	 */
 	$http.get('list3?page=1').then(function(response) {
 		$scope.names = response.data;
 	});

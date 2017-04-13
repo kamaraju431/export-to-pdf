@@ -18,6 +18,7 @@ public interface StudyVolunteerDAO {
 	public void delete(String id);
 
 	public List getAllStudyVolunteer();
+	public List getAllStudyCollections();
 	
 
 	

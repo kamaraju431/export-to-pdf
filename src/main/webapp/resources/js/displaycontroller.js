@@ -13,6 +13,10 @@ var modalTemplate =
 		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
 
 app.controller('UserCtrl', function($scope, $http, $uibModal) {
+	/*
+	 * The $http.get method is used to retrieve information from the given
+	   server using a given URI. 
+	 */
 	$http.get('list?page=1').then(function(response) {
 		$scope.names = response.data;
 	});

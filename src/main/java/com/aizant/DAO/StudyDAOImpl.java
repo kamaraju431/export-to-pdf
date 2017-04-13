@@ -107,7 +107,7 @@ public class StudyDAOImpl implements StudyDAO {
 	public List<Study> getStudyByPage(int pageid, int total) {
 		
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Study");
-		query.setFirstResult((pageid - 1) * total + 1);
+		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
 		List<Study> list = (List<Study>) query.getResultList();
 	

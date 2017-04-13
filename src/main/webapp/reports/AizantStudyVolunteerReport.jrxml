@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-12T17:24:34 -->
+<!-- 2017-04-13T11:36:20 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AizantStudyVolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c265d5d3-c923-43c3-ae17-affa6d591970">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false">
@@ -25,6 +25,7 @@
 		<![CDATA[]]>
 	</queryString>
 	<field name="id" class="java.lang.String"/>
+	<field name="volunteerId" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -48,7 +49,7 @@
 				<text><![CDATA[LABELS SHEET]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="450" y="7" width="90" height="34" uuid="3d5e89c9-d997-4ff5-a6f0-1940ddb7268e"/>
+				<reportElement x="453" y="7" width="61" height="31" uuid="3d5e89c9-d997-4ff5-a6f0-1940ddb7268e"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
@@ -57,16 +58,24 @@
 				<text><![CDATA[Period:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-11" y="41" width="73" height="21" uuid="170c5521-61aa-4ffe-9ded-6dd4b6eed093"/>
+				<reportElement x="28" y="40" width="52" height="21" uuid="170c5521-61aa-4ffe-9ded-6dd4b6eed093"/>
 				<text><![CDATA[Project No:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="40" y="42" width="100" height="19" uuid="0c8ce1b3-30a3-4464-a704-b93d1e79fb7b"/>
+				<reportElement x="80" y="40" width="100" height="19" uuid="0c8ce1b3-30a3-4464-a704-b93d1e79fb7b"/>
 				<textFieldExpression><![CDATA[$P{Client_Id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="516" y="42" width="40" height="15" uuid="10bdf2b6-0061-4c27-9634-2262d393b631"/>
 				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="47" width="100" height="30" uuid="7a28ac61-a118-4c8e-9b39-ffbde16d2c7d"/>
+				<textFieldExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="57" width="100" height="30" uuid="a1e4203a-7d88-4c98-82c5-de3060ef9d06"/>
+				<textFieldExpression><![CDATA[$P{totalAliquots}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -99,6 +108,9 @@
 				</subreportParameter>
 				<subreportParameter name="id">
 					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="volunteerId">
+					<subreportParameterExpression><![CDATA[$F{volunteerId}]]></subreportParameterExpression>
 				</subreportParameter>
 				<dataSourceExpression><![CDATA[$P{volunteerDataSource}.get($F{id})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>

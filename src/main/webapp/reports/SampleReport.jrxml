@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-08T12:50:22 -->
+<!-- 2017-04-10T13:59:09 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67b7c1c7-fbfc-4f5e-a96f-eccfa37d595c">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="date" class="java.lang.String" isForPrompting="false">
@@ -86,6 +86,9 @@
 				<reportElement x="210" y="33" width="60" height="18" uuid="30867f75-ddec-439a-8e15-fb198cd7eab7"/>
 				<textFieldExpression><![CDATA[$P{scan_Time}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="1" y="60" width="419" height="1" uuid="db785b73-c2b4-45a2-9ff4-82f83e9f4670"/>
+			</line>
 		</band>
 	</detail>
 </jasperReport>
