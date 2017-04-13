@@ -30,10 +30,14 @@
 		List<StudyVolunteer> studyVolunteers = study.getStudyVolunteers();
 		JRDataSource studyDataSource = new JRBeanCollectionDataSource(studyVolunteers);
 		List<Aliquot> aliquots = new ArrayList<Aliquot>();
+		System.out.println("study aliquots" + study.getAliquot());
+
 		for (int i = 0; i <= study.getAliquot(); i++) {
-			aliquots.add(new Aliquot(i));
+			Aliquot aliquot = new Aliquot(i);
+			System.out.println("ADDINGGG aliquot " + i + " " + aliquot.getCurrentAliquot());
+			aliquots.add(aliquot);
 		}
-		System.out.println("length" + aliquots.size());
+		System.out.println("length of aliquots" + aliquots.size());
 
 		HashMap<String, JRDataSource> volunteerDataSource = new HashMap<String, JRDataSource>();
 
