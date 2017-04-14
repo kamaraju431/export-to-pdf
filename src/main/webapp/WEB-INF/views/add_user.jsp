@@ -73,10 +73,12 @@
 													<font color="red"><form:errors
 															path="email"></form:errors></font></td>
 											</tr>
-											<tr>
+										<tr>
 												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
+												<td><form:select path="role">
+														<option value="ROLE_MONITOR/QA">ROLE_MONITOR/QA</option>
+														<option value="ROLE_ADMIN">ROLE_ADMIN</option>
+													</form:select></td>
 											</tr>
 
 											<td><input type="submit" value="submit"
