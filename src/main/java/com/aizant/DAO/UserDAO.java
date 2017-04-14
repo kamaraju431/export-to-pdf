@@ -20,9 +20,9 @@ public interface UserDAO {
 
 	public List<User> getUserByPage(int pageid, int total);
 
-	public long getPageCount();
-	
-	
-	
-	
+	public int getPageCount();
+
+
+
+
 }

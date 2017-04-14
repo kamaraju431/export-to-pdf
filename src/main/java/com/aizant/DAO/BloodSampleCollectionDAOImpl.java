@@ -73,7 +73,6 @@ public String deleteBloodSampleCollection(String id) {
 	return id;
 }
 
-@Override
 public List<BloodSampleCollection> list() {
 	Session session = sessionFactory.openSession();
 	org.hibernate.Transaction tx = session.beginTransaction();

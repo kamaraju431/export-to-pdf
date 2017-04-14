@@ -114,19 +114,17 @@ public class StudyDAOImpl implements StudyDAO {
 		return list;
 	}
 
-	@Override
 	@Transactional
-	public long getPageCount() {
+	public int getPageCount() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		long count = (long) session.createQuery("SELECT COUNT(id) FROM Study").getSingleResult();
+		Long count = (Long) session.createQuery("SELECT COUNT(id) FROM Study").getSingleResult();
 		System.out.println("Count from db " + count);
 		
 
 		return (int) Math.ceil(count / 10.0);
 	}
 
-	@Override
 	@Transactional
 	public List<Study> list() {
 		Session session = sessionFactory.getCurrentSession();

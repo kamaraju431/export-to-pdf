@@ -58,7 +58,6 @@ public class SampleTimeDAOImpl implements SampleTimeDAO {
 		return list;
 	}
 
-	@Override
 	@Transactional
 	public List<SampleTime> list() {
 		Session session = sessionFactory.getCurrentSession();

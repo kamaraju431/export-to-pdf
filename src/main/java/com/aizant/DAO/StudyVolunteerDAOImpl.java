@@ -85,12 +85,11 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 
 	}
 
-	@Override
 	@Transactional
-	public long getPageCount() {
+	public int getPageCount() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		long count = (long) session.createQuery("SELECT COUNT(id) FROM StudyVolunteer").getSingleResult();
+		Long count = (Long) session.createQuery("SELECT COUNT(id) FROM StudyVolunteer").getSingleResult();
 		System.out.println("Count from db " + count);
 		return (int) Math.ceil(count / 10.0);
 	}
@@ -107,14 +106,12 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		return list;
 	}
 
-	@Override
 	@Transactional
 	public void addVolunteersToStudy(List<StudyVolunteer> studyVolunteers) {
 		Session session = sessionFactory.getCurrentSession();
 		sessionFactory.getCurrentSession().save(studyVolunteers);
 	}
 
-	@Override
 	public List getAllStudyCollections() {
 		Session session = sessionFactory.getCurrentSession();
 		List list = session.createQuery("from BloodSampleCollection").list();

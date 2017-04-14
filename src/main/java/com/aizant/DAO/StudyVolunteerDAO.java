@@ -27,7 +27,7 @@ public interface StudyVolunteerDAO {
 
 	public List<StudyVolunteer> getExperimentByPage(int pageid, int total);
 
-	public long getPageCount();
+	public int getPageCount();
 	
 	public void addVolunteersToStudy(List<StudyVolunteer> studyVolunteers);
 

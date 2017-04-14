@@ -45,7 +45,7 @@ public class UserDAOImpl implements UserDAO {
 		return null;
 
 	}
-	
+
 	@Transactional
 	public User getByUsername(String username) {
 		String hql = "from User where username=" + "'" + username + "'";
@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return null;
 
-	}	
+	}
 
 	@Transactional
 	public List<User> list() {
@@ -94,32 +94,29 @@ public class UserDAOImpl implements UserDAO {
 		return id;
 
 	}
-	public List<User> getUserByPage(int pageid,int total){  
+	public List<User> getUserByPage(int pageid,int total){
 		Session session = sessionFactory.openSession();
 
 		Query query = session.createQuery("FROM User");
 		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
-		
-		
+
+
 		List<User> list =(List<User>) query.getResultList();
 
 		session.close();
 		return list;
-	        }
-	@Override
-	public long getPageCount() {
+	}
+
+	public int getPageCount() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		org.hibernate.Transaction tx = session.beginTransaction();
-		long count = (long) session.createQuery("SELECT COUNT(id) FROM User").getSingleResult();
+		Long count = (Long) session.createQuery("SELECT COUNT(id) FROM User").getSingleResult();
 		System.out.println("Count from db " + count);
 		tx.commit();
 		session.close();
 
 		return (int) Math.ceil(count / 10.0);
 	}
-
-	
 }
-// TODO Auto-generated method stub

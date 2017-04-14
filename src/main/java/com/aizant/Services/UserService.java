@@ -18,7 +18,6 @@ public class UserService implements IUserService {
     PasswordEncoder passwordEncoder;
      
     @Transactional
-    @Override
     public User registerNewUserAccount(User user)  {
     	System.out.println("USER BEING ADDED" + user.getUsername());
     	user.setPassword(passwordEncoder.encode(user.getPassword()));

@@ -14,7 +14,7 @@ public interface StudyDAO {
 	public String saveOrUpdate(Study study);
 	public void delete(String id);
 	public List<Study> getStudyByPage(int pageid,int total);
-	public long getPageCount();
+	public int getPageCount();
 	public List getAllStudy();
 	public String deleteStudy(String id);
     public Study getbyName(String name) ;
