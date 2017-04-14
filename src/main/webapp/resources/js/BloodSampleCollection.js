@@ -1,13 +1,14 @@
+
 var app = angular.module('myApp', []);
-app.controller('BloodSampleCollectionCtrl', function($scope, $http,$location){
+app.controller('BloodSampleCollectionCtrl', function($scope, $http) {
 	$scope.bloodSampleCollection = {
-	  
 		p1 : [],
 		p2 : [],
 		p3 : [],
 		p4 : []
 	};
 	$http.get('list4').then(function(response) {
+
 		$scope.bloodSample = response.data;
 
 		for (i = 0; i < $scope.bloodSample.length; i++) {
@@ -28,12 +29,14 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http,$location){
 
 		}
 
+		$scope.selectedPeriod = 1;
 		$scope.currentSamples = $scope.bloodSampleCollection.p1;
-	
+		console.log('data in p1', $scope.currentSamples);
 
 	});
 	$scope.onClick = function(period) {
 
+		$scope.selectedPeriod = period;
 		if (period === 1) {
 			$scope.currentSamples = $scope.bloodSampleCollection.p1;
 	

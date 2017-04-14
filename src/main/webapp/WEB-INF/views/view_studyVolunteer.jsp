@@ -36,7 +36,7 @@
 	src="<%=request.getContextPath()%>/resources/js/BloodSampleCollection.js" /></script>
 
 </head>
-<body ng-app="myApp"ng-controller="BloodSampleCollectionCtrl">
+<body>
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
@@ -80,8 +80,9 @@
 								</table>
 
 								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
-									class="btn btn-primary">EDIT</a> 
-								
+									class="btn btn-primary">EDIT</a> <%-- <a
+									href="Jasper?id=${study_Volunteer.id}" class="btn btn-primary">Print
+									Barcode</a> --%>
 
 							</div>
 						</div>
@@ -94,7 +95,8 @@
 
 			<br>
 
-			<div class="col-md-7 col-md-offset-1">
+			<div class="col-md-7 col-md-offset-1" ng-app="myApp"
+				ng-controller="BloodSampleCollectionCtrl">
 
 				<div class="panel panel-default panel-table">
 					<div class="panel-heading">
@@ -106,16 +108,17 @@
 							</div>
 							<div class="col col-xs-6 text-right">
 
-								<b>Periods :</b> <span ng-click="onClick(1)"id="round-button" ng-class="p1=== currentSamples  ? 'selected' : ''">P1</span>
-								<span ng-click="onClick(2)" id="round-button">P2</span> <span
-									ng-click="onClick(3)" id="round-button">P3</span> <span
-									ng-click="onClick(4)" id="round-button">P4</span>
-								 	
-									<!-- <a href="/Sample/records?id={{x.id}}" class="btn btn-primary" target="_self">Print
-									</a> -->
+								<b>Periods :</b> <span ng-click="onClick(1)" id="round-button"
+									ng-class="selectedPeriod === 1? 'selected' : ''">P1</span>
+								<span ng-click="onClick(2)" id="round-button"
+									ng-class="selectedPeriod === 2? 'selected' : ''">P2</span>
+								<span ng-click="onClick(3)" id="round-button"
+									ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span>
+								<span ng-click="onClick(4)" id="round-button"
+									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span><a
+									href="SampleCollections?id=${study_Volunteer.id}"><button type="button"
+										class="btn btn-sm btn-primary btn-create">PRINT</button></a>
 							</div>
-							<a 	href="SampleCollections?id=${study_Volunteer.volunteerId}" class="btn btn-primary" target="_self">Print
-									</a> 
 
 						</div>
 					</div>
@@ -143,7 +146,6 @@
 
 							</tr>
 							<tr ng-repeat="x in currentSamples">
-						
 
 								<td>{{x.date}}</td>
 								<td>{{x.time}}</td>
@@ -152,13 +154,8 @@
 								<td>{{x.volunteerId}}</td>
 								<td>{{x.comments}}</td>
 
-<!-- 
-                            <a ng-href="/Sample/records?id={{x.id}}"
-									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-								<td></td> -->
-								 <td><a ng-href="/Sample/records?id={{x.id}}" class="btn btn-primary" target="_self">Print
-									</a></td>
-							
+
+
 
 							</tr>
 						</table>

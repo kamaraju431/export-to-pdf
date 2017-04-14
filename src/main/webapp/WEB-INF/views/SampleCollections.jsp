@@ -38,6 +38,7 @@ try{
 		 record.add(new BloodSampleRecord(volunteerId));  */  
 	  }
 	 
+	  
 	  JRDataSource jrDataSource=new JRBeanCollectionDataSource(record);
 
 	 
