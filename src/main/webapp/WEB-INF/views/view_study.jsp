@@ -10,7 +10,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-<base href="/Sample">
+<base href="/aizantit">
 <title>AIZANT::View_Study</title>
 <link rel="stylesheet"
 	href='<x:url value="/resources/css/bootstrap.min.css"></x:url>' />
@@ -86,11 +86,11 @@
 										<tr>
 									</tbody>
 								</table>
-								<a href="/Sample/SampleCollections?id=${study.id}"
+								<a href="/aizantit/SampleCollections?id=${study.id}"
 									target="_self" class="btn btn-primary">PRINT</a> <a
-									href="/Sample/edit_study?id=${study.id}" target="_self"
+									href="/aizantit/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
-									href="/Sample/Jasper?id=${study.id}" target="_self"
+									href="/aizantit/Jasper?id=${study.id}" target="_self"
 									class="btn btn-primary">PRINT</a>
 
 							</div>
@@ -142,7 +142,7 @@
 
 
 
-								<td><a ng-href="/Sample/view_studyVolunteer?id={{a.id}}"
+								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}"
 									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 								<td></td>
 								<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span

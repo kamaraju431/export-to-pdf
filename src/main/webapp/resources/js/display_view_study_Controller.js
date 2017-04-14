@@ -7,7 +7,7 @@ app.controller('viewStudyController', function($scope, $http, $location) {
 	var studyId = $location.search().id;
 
 
-	$http.get('/Sample/study?id=' + studyId).then(function(response) {
+	$http.get('/aizantit/study?id=' + studyId).then(function(response) {
 		
 		console.log('VEDHA response', response.data);
 	

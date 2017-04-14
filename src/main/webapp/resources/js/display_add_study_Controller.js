@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['aizant.directives']);
 
 app.controller('addStudy', function($scope, $http, $log, $window) {
 	// $http.post('/add_study').then(function(response){
@@ -12,21 +12,13 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		periods : "1",
 		clientStudyId : ' ',
 		date : '',
-		studyVolunteers : [ {
-			volunteerId : ' ',
-			volunteerName : ' ',
-
-		}, {
-			volunteerId : 'V ID ',
-			volunteerName : 'V NAME'
+		studyVolunteers : [{
+			volunteerId : 'V ID 1',
+			volunteerName : 'V NAME 1',
 		} ],
 		sampleTime:[{
 			timePoint:0.0,
-			
-		},{
-			timePoint:''
 		}],
-		
 	};
 	
 	/*
@@ -42,6 +34,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		if (sampleLength === newLength) {
 			return;
 		}
+		
 		if (sampleLength < newLength) {
 			for (var i = 0; i < (newLength - sampleLength); i++)
 				$scope.study.sampleTime.push({timePoint:''+(sampleLength+i)});
@@ -50,6 +43,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 				$scope.study.sampleTime.pop("");
 		}
 	});
+	
 	$scope.$watch("volunteerCount", function(newValue, oldValue) {
 		var sampleLength = $scope.study.studyVolunteers.length;
 		var newLength = parseInt(newValue);
@@ -60,8 +54,8 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		if (sampleLength < newLength) {
 			for (var i = 0; i < (newLength - sampleLength); i++)
 				$scope.study.studyVolunteers.push({
-					volunteerId : 'V ID ' + (sampleLength + i),
-					volunteerName : 'V NAME' + (sampleLength + i)
+					volunteerId : 'V ID ' + (sampleLength + i + 1),
+					volunteerName : 'V NAME' + (sampleLength + i + 1)
 				});
 		} else {
 			for (var i = 0; i < (sampleLength - newLength); i++)
@@ -70,16 +64,14 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 	});
 
 	$scope.addStudy = function() {
-		$http.post('/Sample/store_study', $scope.study).then(
+		$http.post('/aizantit/store_study', $scope.study).then(
 				function(result)
 
 				{
-					console.log('FINISHHHHEEDDDD');
 					var url = "http://" + $window.location.host
-							+ "/Sample/display_study";
+							+ "/aizantit/display_study";
 					$log.log(url);
 					$window.location.href = url;
-
 				});
 
 	};

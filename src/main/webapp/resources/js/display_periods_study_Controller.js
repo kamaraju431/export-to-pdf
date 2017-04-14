@@ -20,7 +20,7 @@ app.controller('periodsStudyController', function($scope, $http, $log, $window,
 	   server using a given URI. 
 	 */
 
-	    $http.get('/Sample/study?id=' + studyId).then(function(response) {
+	    $http.get('/aizantit/study?id=' + studyId).then(function(response) {
 		console.log('VEDHA response', response.data);
 		$scope.study = response.data;
 		$scope.periodsCount = $scope.study.periods.length;

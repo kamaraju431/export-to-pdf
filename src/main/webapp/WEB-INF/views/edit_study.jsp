@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="n">
 <head>
- <base href="/Sample">
+ <base href="aizantit">
 <title>AIZANT::Adduser</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,26 +18,11 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
+	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>
+<script
 	src="<%=request.getContextPath()%>/resources/js/display_edit_study_Controller.js" /></script>
 </head>
 </script>
-<!--  <style>  
-   table, th , td {  
-      border: 1px solid grey;  
-      border-collapse: collapse;  
-      padding: 5px;  
-   }  
-     
-   table tr:nth-child(odd) {  
-      background-color: #f2f2f2;  
-   }  
-  
-   table tr:nth-child(even) {  
-      background-color: #ffffff;  
-   } 
-</style>  
- -->
-
 </head>
 <body ng-app="editStudyApp" ng-controller="editStudyController" >
 
@@ -88,13 +73,20 @@
 											<tr>
 												<th>Periods:</th>
 												<td><select
-													ng-model="study.periods" required>
+													ng-model="study.periods" 
+													convert-to-number 
+													required>
 														<option value="1">1</option>
 														<option value="2">2</option>
 														<option value="3">3</option>
 														<option value="4">4</option>
 												</select></td>
 											</tr>
+											<tr>
+												<th>Date :</th>
+												<td><input type="text" ng-model="study.date"
+													placeholder="dd/mm/yyyy"></td>
+											</tr>											
 											<tr>
 												<th>Number of samples:</th>
 												<td><input type="text" ng-model="sampleCount"></td>
@@ -134,8 +126,6 @@
 															<td><input type="text" ng-model="a.volunteerId"></td>
 															<td><input type="text" ng-model="a.volunteerName"></td>
 														</tr>
-														<th>Date :</th>
-												<td><input type="text" ng-model="study.date" placeholder="dd/mm/yyyy"></td>
 											</tr>
 																	<td><input type="submit" value="submit"
 										class="btn-success" /></td>

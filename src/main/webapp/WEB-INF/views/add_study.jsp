@@ -18,27 +18,13 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_add_study_Controller.js" /></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>	
 </head>
 </script>
-<!--  <style>  
-   table, th , td {  
-      border: 1px solid grey;  
-      border-collapse: collapse;  
-      padding: 5px;  
-   }  
-     
-   table tr:nth-child(odd) {  
-      background-color: #f2f2f2;  
-   }  
-  
-   table tr:nth-child(even) {  
-      background-color: #ffffff;  
-   } 
-</style>  
- -->
 
 </head>
-<body ng-app="myApp" ng-controller="addStudy" >
+<body ng-app="myApp" ng-controller="addStudy">
 
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
@@ -54,30 +40,28 @@
 				col-md-offset-0 
 				col-lg-offset-3 toppad">
 
-			
-			<div class="center">
-					<div class="panel-body" align="center" >
+
+				<div class="center">
+					<div class="panel-body" align="center">
 						<div class="row">
 							<div class="col-md-3 col-lg-3 " align="center"></div>
 							<div class=" col-md-9 col-lg-9 " align="center">
 								<form ng-submit="addStudy()">
-									<table class="table table-bordered"align="center">
+									<table class="table table-bordered" align="center">
 
 										<tbody>
-<tr>
+											<tr>
 												<th>Client Study Id:</th>
-												<td><input type="text" 
-												ng-model="study.clientStudyId"></td>
+												<td><input type="text" ng-model="study.clientStudyId"></td>
 											</tr>
 											<tr>
-												<th>Study name:</td>
-												<td><input type="text"
-													ng-model="study.name"></td>
+												<th>Study name:
+												</td>
+												<td><input type="text" ng-model="study.name"></td>
 											</tr>
 											<tr>
 												<th>Number of Aliquots:</th>
-												<td><input type="text"
-													ng-model="study.aliquot"></td>
+												<td><input type="text" ng-model="study.aliquot"></td>
 											</tr>
 											<tr>
 												<th>sampleCollectionSize(ml):</th>
@@ -87,7 +71,9 @@
 											<tr>
 												<th>Periods:</th>
 												<td><select
-													ng-model="study.periods" required>
+													ng-model="study.periods" 
+													convert-to-number 
+													required>
 														<option value="1">1</option>
 														<option value="2">2</option>
 														<option value="3">3</option>
@@ -95,69 +81,66 @@
 												</select></td>
 											</tr>
 											<tr>
+												<th>Date :</th>
+												<td><input type="text" ng-model="study.date"
+													placeholder="dd/mm/yyyy"></td>
+											</tr>
+											<tr>
 												<th>Number of samples:</th>
 												<td><input type="text" ng-model="sampleCount"></td>
 											</tr>
-											
+
 											<tr>
-												<th>Collection times :</th>
-												
+												<th>Collection times(in hrs) :</th>
+
 												<td>
 													<table class="table table-hover table-bordered">
-												<tr type="text"ng-repeat="s in study.sampleTime">
-												<td><input type="text" style="width:50px;" ng-model="s.timePoint"></td>
-												</tr>
-												</table>
-												</td>
-												</tr>
-												</tbody>
-												
-													
-
-											<tr>
-												<th>Number of Volunteers:</th>
-												<td><input type="text" ng-model="volunteerCount"></td>
-											</tr>
-
-											<tr>
-												<th>Volunteers:</th>
-												<td>
-
-													<table class="table table-hover table-bordered">
-														<tr>
-															<th>Id</th>
-															<th>Name</th>
+														<tr type="text" ng-repeat="s in study.sampleTime">
+															<td><input type="text" style="width: 50px;"
+																ng-model="s.timePoint"></td>
 														</tr>
-														<tr type="text"
-															ng-repeat="a in study.studyVolunteers">
-															<td><input type="text" ng-model="a.volunteerId"></td>
-															<td><input type="text" ng-model="a.volunteerName"></td>
-														</tr>
-														<th>Date :</th>
-												<td><input type="text" ng-model="study.date" placeholder="dd/mm/yyyy"></td>
-											</tr>
-																	<td><input type="submit" value="submit"
-										class="btn-success" /></td>
-													
 													</table>
 												</td>
-											
-
 											</tr>
-									</table>
-									
-								
-								</body>
-									
-								</form>
+										</tbody>
+										<tr>
+											<th>Number of Volunteers:</th>
+											<td><input type="text" ng-model="volunteerCount"></td>
+										</tr>
+										<tr>
+											<th>Volunteers:</th>
+											<td>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+												<table class="table table-hover table-bordered">
+													<tr>
+														<th>Id</th>
+														<th>Name</th>
+													</tr>
+													<tr type="text" ng-repeat="a in study.studyVolunteers">
+														<td><input type="text" ng-model="a.volunteerId"></td>
+														<td><input type="text" ng-model="a.volunteerName"></td>
+													</tr>
+
+													<td><input type="submit" value="submit"
+														class="btn-success" /></td>
+
+												</table>
+											</td>
+
+
+										</tr>
+									</table>
+</body>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 

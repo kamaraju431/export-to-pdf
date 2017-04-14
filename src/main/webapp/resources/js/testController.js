@@ -20,10 +20,10 @@ app.controller('add_BloodSampleCollection', function($scope, $http, $log, $windo
 	};
 
 	$scope.add_BloodSampleCollection = function() {
-		$http.post('/Sample/store_studyVolunteer_blood', $scope.study_Volunteer).then(function(result)
+		$http.post('/aizantit/store_studyVolunteer_blood', $scope.study_Volunteer).then(function(result)
 				{
 					var url = "http://" + $window.location.host
-							+ "/Sample/display_study";
+							+ "/aizantit/display_study";
 					$log.log(url);
 					$window.location.href = url;
 
