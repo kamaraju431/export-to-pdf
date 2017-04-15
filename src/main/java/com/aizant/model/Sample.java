@@ -3,14 +3,14 @@ package com.aizant.model;
 
 public class Sample {
 	private double time;
-	private String date;
+	private String id;
 	
-	public String getDate() {
-		return date;
+	public String getId() {
+		return id;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public double getTime() {
@@ -24,7 +24,12 @@ public class Sample {
 	public Sample(double time, String date) {
 		super();
 		this.time = time;
-		this.date = date;
+		this.id= id;
+	}
+
+	public Sample(String id) {
+		super();
+		this.id = id;
 	}
 
 	public Sample(double time) {

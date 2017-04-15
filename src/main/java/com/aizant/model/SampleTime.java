@@ -30,5 +30,23 @@ public class SampleTime {
 	public void setTimePoint(double timePoint) {
 		this.timePoint = timePoint;
 	}
+	public SampleTime(String id) {
+		super();
+		this.id = id;
+	}
+
+	public SampleTime() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SampleTime(double timePoint) {
+		super();
+		this.timePoint = timePoint;
+	}
+	public SampleTime(double timePoint, String id) {
+		super();
+		this.timePoint = timePoint;
+		this.id= id;
+	}
 	
 }

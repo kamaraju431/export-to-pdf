@@ -59,7 +59,7 @@
 										<tbody>
 											<tr>
 												<td><form:label path="date">Date :</form:label></td>
-												<td><form:input path="date" /> <font color="red"><form:errors
+												<td><form:input path="date" placeholder="DD/MM/YYYY"/> <font color="red"><form:errors
 															path="date"></form:errors></font></td>
 											</tr>
 											<tr>

@@ -55,35 +55,39 @@
 		baseParameters.put("Client_Id", study.getClientStudyId());
 		baseParameters.put("Period_Num", study.getPeriods());
 		baseParameters.put("totalAliquots", study.getAliquot());
+	/* 	baseParameters.put("id", study.getStudyVolunteers().get(0).getId()); */
+		
 	
 
 		volunteerParameters.setSubreportPath(baseReportFile);
 		volunteerParameters.setBaseParameters(baseParameters);
 
-		List<Sample> sam = new ArrayList<Sample>();
-		List<Sample> sam1 = new ArrayList<Sample>();
-		List<Sample> sam2 = new ArrayList<Sample>();
-		List<Sample> sam3 = new ArrayList<Sample>();
-		List<Sample> sam4 = new ArrayList<Sample>();
+		List<SampleTime> sam = new ArrayList<SampleTime>();
+		List<SampleTime> sam1 = new ArrayList<SampleTime>();
+		List<SampleTime> sam2 = new ArrayList<SampleTime>();
+		List<SampleTime> sam3 = new ArrayList<SampleTime>();
+		List<SampleTime> sam4 = new ArrayList<SampleTime>();
 		System.out.println("hi hello");
 
 		List<SampleTime> sampleTimes =(List<SampleTime>) request.getAttribute("sampleTimes");
-		System.out.println("after hello" + sampleTimes);
+		System.out.println("sampletime ID" + sampleTimes.get(0).getId());
 		for (int j = 0; j < sampleTimes.size(); j++) {
 			int remainder = j % 5;
 			System.out.println("SAMPLE TIME" + sampleTimes.get(j));
 			if (remainder == 0) {
-				sam.add(new Sample(sampleTimes.get(j).getTimePoint()));
+		    sam.add(sampleTimes.get(j));
 			} else if (remainder == 1) {
-				sam1.add(new Sample(sampleTimes.get(j).getTimePoint()));
+	        sam1.add(sampleTimes.get(j));
 			} else if (remainder == 2) {
-				sam2.add(new Sample(sampleTimes.get(j).getTimePoint()));
+			sam2.add(sampleTimes.get(j));
 			} else if (remainder == 3) {
-				sam3.add(new Sample(sampleTimes.get(j).getTimePoint()));
+				sam3.add(sampleTimes.get(j));
 			} else {
-				sam4.add(new Sample(sampleTimes.get(j).getTimePoint()));
+				sam4.add(sampleTimes.get(j));
 			}
+			
 		}
+		
 		System.out.println("after hello1");
 		HashMap<String, List<JRDataSource>> baseDataSourcesMap = new HashMap<String, List<JRDataSource>>();
 		HashMap<String, List<JRDataSource>> baseDataSourcesMap1 = new HashMap<String, List<JRDataSource>>();

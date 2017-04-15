@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-13T14:59:13 -->
+<!-- 2017-04-15T16:19:31 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReport" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="0" bottomMargin="0" uuid="dec9e481-4ee0-4ce4-9133-19d86ad149ef">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -15,71 +15,75 @@
 	</parameter>
 	<parameter name="currentAliquot" class="java.lang.Integer" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
-		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[(($P{currentAliquot} > 0) ? "ALQ" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></defaultValueExpression>
 	</parameter>
 	<parameter name="totalAliquots" class="java.lang.Integer" isForPrompting="false"/>
 	<parameter name="Parameter1" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["id"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="time" class="java.lang.Double"/>
+	<field name="timePoint" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String"/>
 	<variable name="Page_Num" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="115" splitType="Stretch">
+		<band height="122" splitType="Stretch">
 			<textField>
-				<reportElement x="40" y="55" width="15" height="15" uuid="273dfd5a-b7f4-4461-aa6d-077350a0e525"/>
+				<reportElement x="51" y="67" width="15" height="15" uuid="273dfd5a-b7f4-4461-aa6d-077350a0e525"/>
 				<textElement>
 					<font fontName="Consolas"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="45" y="70" width="30" height="15" uuid="33f6611b-5ab9-4429-ba3c-c06e1f13d2e1"/>
+				<reportElement x="56" y="80" width="30" height="15" uuid="33f6611b-5ab9-4429-ba3c-c06e1f13d2e1"/>
 				<textFieldExpression><![CDATA[$P{volunteerId}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="10" y="40" width="40" height="15" uuid="0a4d1eb9-a523-4e6d-97a1-dbdb43bf0335"/>
+				<reportElement x="20" y="54" width="40" height="15" uuid="0a4d1eb9-a523-4e6d-97a1-dbdb43bf0335"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Client_Id}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="-6" y="55" width="50" height="15" forecolor="#050404" uuid="b3134336-b8ce-406b-addf-959c4b352508"/>
+				<reportElement positionType="Float" x="5" y="67" width="50" height="15" forecolor="#050404" uuid="b3134336-b8ce-406b-addf-959c4b352508"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Per. No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-6" y="70" width="50" height="15" uuid="b9402378-8e08-4ee5-8007-7fce7f858071"/>
+				<reportElement x="5" y="80" width="50" height="15" uuid="b9402378-8e08-4ee5-8007-7fce7f858071"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sub. No.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="15" y="85" width="40" height="15" uuid="e5de39ca-80c7-413a-b580-6a237bfe642a"/>
-				<textFieldExpression><![CDATA[$F{time}+"hr"]]></textFieldExpression>
+				<reportElement x="18" y="94" width="40" height="15" uuid="e5de39ca-80c7-413a-b580-6a237bfe642a"/>
+				<textFieldExpression><![CDATA[$F{timePoint}+"hr"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="100" width="60" height="15" uuid="08b4f96f-32bf-487d-8fad-cecd29501d4e"/>
-				<textFieldExpression><![CDATA[(($P{currentAliquot} > 0) ? "Aliquots" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></textFieldExpression>
+				<reportElement x="8" y="106" width="60" height="15" uuid="08b4f96f-32bf-487d-8fad-cecd29501d4e"/>
+				<textFieldExpression><![CDATA[(($P{currentAliquot} > 0) ? "ALQ" + $P{currentAliquot} + " of " + $P{totalAliquots} : "")]]></textFieldExpression>
 			</textField>
 			<rectangle radius="1">
-				<reportElement mode="Transparent" x="-13" y="-1" width="95" height="116" backcolor="#F5F7F7" uuid="fc3a4937-559e-4748-ac1a-723d126fcd49"/>
+				<reportElement mode="Transparent" x="-12" y="0" width="95" height="120" backcolor="#F5F7F7" uuid="fc3a4937-559e-4748-ac1a-723d126fcd49"/>
 				<graphicElement>
 					<pen lineWidth="2.0"/>
 				</graphicElement>
 			</rectangle>
 			<componentElement>
-				<reportElement x="15" y="10" width="30" height="30" uuid="89f2f566-1f9d-4e23-82d2-cd97f5b1cf4b"/>
-				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<jr:codeExpression><![CDATA["123456789"]]></jr:codeExpression>
-				</jr:DataMatrix>
+				<reportElement mode="Transparent" x="-5" y="-1" width="81" height="59" uuid="241b854e-237b-44b2-b0f6-011490c57613"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$P{id}+"_"+$P{Period_Num}+"_"+$P{currentAliquot}+"_"+$F{id}]]></jr:codeExpression>
+				</jr:QRCode>
 			</componentElement>
 		</band>
 	</detail>
