@@ -71,13 +71,13 @@ public class BloodSampleColletionController {
 		if (result.hasErrors()) {
 			System.out.println("hi");
 
-			return new ModelAndView("redirect:/display_study");
+			return new ModelAndView("redirect:/add_BloodSampleCollection");
 		}
 	
 
 	
 		bloodSampleColletionDao.saveOrUpdate(bloodSampleCollection);
-		return new ModelAndView("redirect:/add_BloodSampleCollection");
+		return new ModelAndView("redirect:/display_study");
 	}
 	
 	/*

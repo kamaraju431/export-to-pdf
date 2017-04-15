@@ -71,6 +71,7 @@
 												<td><form:label path="email">Email :</form:label></td>
 												<td><form:input path="email" />
 													<font color="red"><form:errors
+
 															path="email"></form:errors></font></td>
 											</tr>
 										<tr>

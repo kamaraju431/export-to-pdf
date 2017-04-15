@@ -1,8 +1,20 @@
-var app = angular.module('myApp', [], function($locationProvider) {
+var app = angular.module('myApp', ['ui.bootstrap'], function($locationProvider) {
 	$locationProvider.html5Mode(true);
 });
 
-app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location) {
+var modalTemplate = 
+		"<div class='modal-header'>"
+		+ "<button ng-click='x()'type='button' class='close' data-dismiss='modal'>x</button>"
+		+ "<h4 class='modal-title'>Warning!</h4>"
+		+ "</div>"
+		+ "<div class='modal-body'>Are you sure You want to Delete{{x.id}}</div>"
+		+ "<div class='modal-footer'>"
+		+ "<button ng-click='cancel()' type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+		+
+
+		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
+
+app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $uibModal) {
 	var id = $location.search().id;
 	var currentPeriod = parseInt($location.search().period);
 	$scope.bloodSampleCollection = {
@@ -52,4 +64,46 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location) {
 		$scope.onClick(currentPeriod || 1);
 		console.log('data in p1', $scope.currentSamples);		
 	});
+
+	$scope.openDeleteModal = function(id) {
+		var modalInstance = $uibModal.open({
+			template : modalTemplate,
+			controller : 'deleteModalController',
+			resolve : {
+				id : function() {
+					return id;
+				}
+			}
+
+		});
+		
+	
+		
+	  };
+	
+});
+
+app.controller('deleteModalController', function($scope, $http, $uibModalInstance, id) {
+	console.log('VEDHAAA ID modal', id);
+
+	$scope.id = id;
+	$scope.delete = function() {
+		var body = { BloodSampleColletionId: $scope.id };
+		console.log('VEDHA deleting', body);
+		$http.post('deleteBloodSampleCollecion?BloodSampleColletionId=' + $scope.id).then(function(response) {
+			console.log('VEDHAAA HEREE DELETED');
+			$uibModalInstance.close('deleted');	
+			location.reload();
+		
+			
+			
+		});
+	};
+	$scope.cancel = function() {
+		$uibModalInstance.dismiss('cancel');
+
+	};
+	$scope.x = function() {
+		$uibModalInstance.dismiss('x');
+	};
 });
