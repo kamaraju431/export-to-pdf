@@ -18,6 +18,7 @@ public class BloodSampleCollection {
 	private String date;
 	private double time;
 	private int period;
+	private int aliquot;
 	private String scanTime;
 	private String comments;
 	private String volunteerId;
@@ -63,7 +64,10 @@ public class BloodSampleCollection {
 	public void setVolunteerId(String volunteerId) {
 		this.volunteerId = volunteerId;
 	}
-
-	
-
+	public int getAliquot() {
+		return aliquot;
+	}
+	public void setAliquot(int aliquot) {
+		this.aliquot = aliquot;
+	}
 }
