@@ -35,7 +35,7 @@
 	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-tpls-2.5.0.min.js" /></script>
 
 <script
-	src="<%=request.getContextPath()%>/resources/js/displayexperimentcontroller.js" /></script>
+	src="<%=request.getContextPath()%>/resources/js/displayStudyController.js" /></script>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>

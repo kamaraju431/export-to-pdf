@@ -130,23 +130,19 @@
 
 								<th>Volunteer ID</th>
 								<th>Volunteer Name</th>
-								<th>Action</th>
 								<th>Status</th>
-
-							</tr>
+								<th>Action</th>
+						</tr>
 							<tr ng-repeat="a in study.studyVolunteers">
 
 								<td>{{a.volunteerId}}</td>
 
 								<td>{{a.volunteerName}}</td>
-
-
-
+								<td>{{hasStarted(a) ? 'In Progress' : 'Not Started'}}</td>
+	
 								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}"
 									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 								<td></td>
-								<!-- <a href="${pageContext.servletContext.contextPath}/deleteuser?id={{s.id}}"><span
-								class="glyphicon glyphicon-trash"></span></a></td> -->
 							</tr>
 						</table>
 					</div>
