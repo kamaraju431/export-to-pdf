@@ -45,7 +45,7 @@ public class StudyController {
 	@RequestMapping(value = "edit_study", method = RequestMethod.GET)
 	public ModelAndView editexperimenttype(@RequestParam String id,
 			@ModelAttribute("Study") Study study) {
-	        Study e1 = studyDao.get(id);
+	        Study e1 = studyService.get(id);
 		return new ModelAndView("edit_study", "study", e1);
 	}
 
@@ -53,7 +53,7 @@ public class StudyController {
 	@Transactional
 	@RequestMapping(value = "study", method = RequestMethod.GET)
 	public @ResponseBody String getStudy(@RequestParam String id){
-		Study study=studyDao.get(id);
+		Study study=studyService.get(id);
 
 		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson(study);
@@ -66,7 +66,7 @@ public class StudyController {
 	@RequestMapping(value = "view_study", method = RequestMethod.GET)
 	public ModelAndView view(@RequestParam String id,
 		@ModelAttribute Study study) {
-		Study s1  = studyDao.get(id);
+		Study s1  = studyService.get(id);
 		return new ModelAndView("view_study","study",s1);
 		
 	}

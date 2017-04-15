@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyVolunteerDAO;
+import com.aizant.Services.IStudyVolunteerService;
 import com.aizant.model.StudyVolunteer;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class StudyVolunteerController {
@@ -27,7 +29,10 @@ public class StudyVolunteerController {
 	 */
 	@Autowired
 	private StudyVolunteerDAO studyVolunteerDao;
-
+	
+	@Autowired
+	private IStudyVolunteerService studyVolunteerService;
+	
 	@ModelAttribute("StudyVolunteer")
 	public StudyVolunteer createExperiment() {
 		return new StudyVolunteer();
@@ -101,6 +106,19 @@ public class StudyVolunteerController {
 		return json;
 	}
 
+	/*
+	 * ------------------------------------- Delete PaatientTrail
+	 * --------------------------------------
+	 */
+	@RequestMapping(value = "/study_volunteer", method = RequestMethod.GET)
+	@Transactional
+	public @ResponseBody String getStudyVolunteer(@RequestParam String id) {
+		StudyVolunteer studyVolunteer = studyVolunteerService.get(id);
+		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+		String json = u.toJson(studyVolunteer.getStudy());
+		return json;
+	}
+	
 	/*
 	 * ------------------------------------- Page count PaatientTrail
 	 * --------------------------------------

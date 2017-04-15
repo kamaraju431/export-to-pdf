@@ -140,7 +140,7 @@
 								<td>{{a.volunteerName}}</td>
 								<td>{{hasStarted(a) ? 'In Progress' : 'Not Started'}}</td>
 	
-								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}"
+								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}&period={{currentPeriod}}"
 									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 								<td></td>
 							</tr>

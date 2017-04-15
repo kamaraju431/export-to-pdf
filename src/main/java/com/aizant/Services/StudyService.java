@@ -26,4 +26,11 @@ public class StudyService implements IStudyService{
     		studyVolunteerDao.saveOrUpdate(volunteer);
     	}
     }
+    
+    @Transactional
+    public Study get(String id) {
+    	Study study = studyDao.get(id);
+    	study.getStudyVolunteers();
+    	return study;
+    }
 }    

@@ -12,16 +12,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aizant.DAO.BloodSampleCollectionDAO;
 import com.aizant.DAO.StudyDAO;
 import com.aizant.DAO.StudyVolunteerDAO;
-import com.aizant.model.BloodSampleCollection;
+import com.aizant.Services.IStudyService;
 import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
-import com.aizant.model.StudyVolunteer;
 
 @Controller
 public class JasperController {
 
 	@Autowired
 	private StudyDAO studyDAO;
+	
+	@Autowired IStudyService studyService;
 
 	@Autowired
 	private BloodSampleCollectionDAO bloodSampleCollectionDao;
@@ -31,7 +32,7 @@ public class JasperController {
 	@RequestMapping("/Jasper")
 	@Transactional
 	public ModelAndView Jasper(@RequestParam String id, ModelMap modelMap) {
-		Study study = studyDAO.get(id);
+		Study study = studyService.get(id);
 		List<SampleTime> sampleTimes = study.getSampleTime();
 		System.out.println("GOT samples?" + sampleTimes);
 		modelMap.put("study",studyDAO.get(id));
@@ -44,7 +45,7 @@ public class JasperController {
 	public ModelAndView SampleCollections(@RequestParam String id, ModelMap modelMap) {
 		//BloodSampleCollection study = bloodSampleCollectionDao.get(id);
 		modelMap.put("bloodCollection",bloodSampleCollectionDao.get(id));
-		modelMap.put("studyCollection",studyDAO.get(id));
+		modelMap.put("studyCollection",studyService.get(id));
 		return new ModelAndView("SampleCollections");
 	
 }

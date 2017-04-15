@@ -36,7 +36,9 @@
 	src="<%=request.getContextPath()%>/resources/js/BloodSampleCollection.js" /></script>
 
 </head>
-<body>
+<base href="/aizantit">
+<body ng-app="myApp"
+				ng-controller="BloodSampleCollectionCtrl">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
 	<br>
 	<br>
@@ -95,8 +97,7 @@
 
 			<br>
 
-			<div class="col-md-7 col-md-offset-1" ng-app="myApp"
-				ng-controller="BloodSampleCollectionCtrl">
+			<div class="col-md-7 col-md-offset-1">
 
 				<div class="panel panel-default panel-table">
 					<div class="panel-heading">

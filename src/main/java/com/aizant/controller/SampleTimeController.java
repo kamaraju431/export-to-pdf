@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.SampleTimeDAO;
-import com.aizant.DAO.StudyDAO;
 import com.aizant.model.SampleTime;
-import com.aizant.model.Study;
 import com.google.gson.Gson;
 
 @Controller

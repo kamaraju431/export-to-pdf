@@ -4,4 +4,5 @@ import com.aizant.model.Study;
 
 public interface IStudyService {
     void saveOrUpdate(Study study);
+    Study get(String id);
 }    

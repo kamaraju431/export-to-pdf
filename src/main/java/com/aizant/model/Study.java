@@ -41,7 +41,7 @@ public class Study {
 	@Expose
 	private String date;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="study")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="study")
 	@JsonManagedReference
 	@Expose
 	private List<StudyVolunteer> studyVolunteers;
