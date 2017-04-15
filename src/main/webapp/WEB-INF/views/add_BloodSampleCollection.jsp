@@ -75,6 +75,12 @@
 															path="period"></form:errors></font></td>
 											</tr>
 											<tr>
+												<td><form:label path="aliquot">Aliquot :</form:label></td>
+												<td><form:input path="aliquot" />
+													<font color="red"><form:errors
+															path="aliquot"></form:errors></font></td>
+											</tr>
+											<tr>
 												<td><form:label path="scanTime">Scan Time :</form:label></td>
 												<td><form:input path="scanTime" /> <font color="red"><form:errors
 															path="scanTime"></form:errors></font></td>

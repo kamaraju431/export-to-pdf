@@ -62,7 +62,7 @@
 												<td><form:input path="username" /> <font color="red"><form:errors
 															path="username"></form:errors></font></td>
 											</tr>
-										
+
 											<tr>
 												<td><form:label path="password">Password :</form:label></td>
 												<td><form:input path="password" /> <font color="red"><form:errors
@@ -70,14 +70,15 @@
 											</tr>
 											<tr>
 												<td><form:label path="email">Email :</form:label></td>
-												<td><form:input path="email"/>
-													<font color="red"><form:errors
+												<td><form:input path="email" /> <font color="red"><form:errors
 															path="email"></form:errors></font></td>
 											</tr>
 											<tr>
 												<td><form:label path="role">Role :</form:label></td>
-												<td><form:input path="role" /> <font color="red"><form:errors
-															path="role"></form:errors></font></td>
+												<td><form:select path="role">
+														<option value="ROLE_MONITOR/QA">ROLE_MONITOR/QA</option>
+														<option value="ROLE_ADMIN">ROLE_ADMIN</option>
+													</form:select></td>
 											</tr>
 
 											<td><input type="submit" value="submit"

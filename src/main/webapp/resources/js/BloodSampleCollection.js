@@ -1,11 +1,24 @@
-var app = angular.module('myApp', []);
-app.controller('BloodSampleCollectionCtrl', function($scope, $http) {
+var app = angular.module('myApp', [ 'ui.bootstrap' ]);
+
+var modalTemplate = 
+		"<div class='modal-header'>"
+		+ "<button ng-click='x()'type='button' class='close' data-dismiss='modal'>x</button>"
+		+ "<h4 class='modal-title'>Warning!</h4>"
+		+ "</div>"
+		+ "<div class='modal-body'>Are you sure You want to Delete{{x.id}}</div>"
+		+ "<div class='modal-footer'>"
+		+ "<button ng-click='cancel()' type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+		+
+
+		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
+
+app.controller('BloodSampleCollectionCtrl', function($scope, $http, $uibModal) {
 	$scope.bloodSampleCollection = {
-		p1 : [],
-		p2 : [],
-		p3 : [],
-		p4 : []
-	};
+			p1 : [],
+			p2 : [],
+			p3 : [],
+			p4 : []
+		};
 	$http.get('list4').then(function(response) {
 
 		$scope.bloodSample = response.data;
@@ -33,19 +46,61 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http) {
 		console.log('data in p1', $scope.currentSamples);
 
 	});
-	$scope.onClick = function(period) {
 
-		$scope.selectedPeriod = period;
-		if (period === 1) {
-			$scope.currentSamples = $scope.bloodSampleCollection.p1;
+	$scope.openDeleteModal = function(id) {
+		var modalInstance = $uibModal.open({
+			template : modalTemplate,
+			controller : 'deleteModalController',
+			resolve : {
+				id : function() {
+					return id;
+				}
+			}
+
+		});
+		
 	
-		} else if (period === 2) {
-			$scope.currentSamples = $scope.bloodSampleCollection.p2;
-		} else if (period === 3) {
-			$scope.currentSamples = $scope.bloodSampleCollection.p3;
-		} else {
-			$scope.currentSamples = $scope.bloodSampleCollection.p4;
-		}
-	}
+		
+	  };
+	
+	 
+	  $scope.onClick = function(period) {
 
+			$scope.selectedPeriod = period;
+			if (period === 1) {
+				$scope.currentSamples = $scope.bloodSampleCollection.p1;
+		
+			} else if (period === 2) {
+				$scope.currentSamples = $scope.bloodSampleCollection.p2;
+			} else if (period === 3) {
+				$scope.currentSamples = $scope.bloodSampleCollection.p3;
+			} else {
+				$scope.currentSamples = $scope.bloodSampleCollection.p4;
+			}
+		}
+});
+
+app.controller('deleteModalController', function($scope, $http, $uibModalInstance, id) {
+	console.log('VEDHAAA ID modal', id);
+
+	$scope.id = id;
+	$scope.delete = function() {
+		var body = { BloodSampleColletionId: $scope.id };
+		console.log('VEDHA deleting', body);
+		$http.post('deleteBloodSampleCollecion?BloodSampleColletionId=' + $scope.id).then(function(response) {
+			console.log('VEDHAAA HEREE DELETED');
+			$uibModalInstance.close('deleted');	
+			location.reload();
+		
+			
+			
+		});
+	};
+	$scope.cancel = function() {
+		$uibModalInstance.dismiss('cancel');
+
+	};
+	$scope.x = function() {
+		$uibModalInstance.dismiss('x');
+	};
 });

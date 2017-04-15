@@ -45,8 +45,8 @@ div.bhoechie-tab-menu ul.list-group>a:last-child{
 div.bhoechie-tab-menu ul.list-group>a.active,
 div.bhoechie-tab-menu ul.list-group>a.active .glyphicon,
 div.bhoechie-tab-menu ul.list-group>a.active .fa{
-  background-color: #004c99;
-  background-image: #5A55A3;
+  background-color: #1fa67b;
+  background-image: #1fa67b;
   color: #ffffff;
 }
 div.bhoechie-tab-menu ul.list-group>a.active:after{

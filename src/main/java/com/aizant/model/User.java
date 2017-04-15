@@ -27,7 +27,7 @@ public class User {
 	private String email;
 	private String password;
 	private boolean enabled = true;
-	private String role = "ROLE_MONITOR/QA";
+	private String role;
 
 	/* --------------- Getter setters --------------------- */
 

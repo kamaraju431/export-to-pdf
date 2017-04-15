@@ -34,6 +34,13 @@
 
 <script
 	src="<%=request.getContextPath()%>/resources/js/BloodSampleCollection.js" /></script>
+<!-- Bootstrap modals -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/ui-bootstrap-custom-2.5.0-csp.css" />
+<script
+	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-2.5.0.min.js" /></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-tpls-2.5.0.min.js" /></script>
 
 </head>
 <body>
@@ -81,7 +88,7 @@
 
 								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
 									class="btn btn-primary">EDIT</a> <a
-									href="Jasper?id=${study_Volunteer.id}" class="btn btn-primary">Print
+									href="SampleCollections?id=${study_Volunteer.id}" class="btn btn-primary">Print
 									Barcode</a>
 
 							</div>
@@ -105,19 +112,19 @@
 								<h3 class="panel-title">
 									<b>Blood Sample Collection Record</b>
 								</h3>
+								<a
+									href="add_BloodSampleCollection" class="btn btn-primary">ADD</a>
 							</div>
 							<div class="col col-xs-6 text-right">
 
 								<b>Periods :</b> <span ng-click="onClick(1)" id="round-button"
-									ng-class="selectedPeriod === 1? 'selected' : ''">P1</span>
-								<span ng-click="onClick(2)" id="round-button"
-									ng-class="selectedPeriod === 2? 'selected' : ''">P2</span>
-								<span ng-click="onClick(3)" id="round-button"
-									ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span>
-								<span ng-click="onClick(4)" id="round-button"
-									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span><a
-									href="#"><button type="button"
-										class="btn btn-sm btn-primary btn-create">Print</button></a>
+									ng-class="selectedPeriod === 1? 'selected' : ''">P1</span> <span
+									ng-click="onClick(2)" id="round-button"
+									ng-class="selectedPeriod === 2? 'selected' : ''">P2</span> <span
+									ng-click="onClick(3)" id="round-button"
+									ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span> <span
+									ng-click="onClick(4)" id="round-button"
+									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span>
 							</div>
 
 						</div>
@@ -141,8 +148,9 @@
 								<th>Time</th>
 								<th>Period</th>
 								<th>Scan Time</th>
-								<th>Volunteer Id</th>
+						
 								<th>Comments*</th>
+								<th>Action</th>
 
 							</tr>
 							<tr ng-repeat="x in currentSamples">
@@ -151,9 +159,10 @@
 								<td>{{x.time}}</td>
 								<td>{{x.period}}</td>
 								<td>{{x.scanTime}}</td>
-								<td>{{x.volunteerId}}</td>
+						
 								<td>{{x.comments}}</td>
-
+								<td><a ng-click="openDeleteModal(x.id)"><span
+										class="glyphicon glyphicon-trash"></span></a></td>
 
 
 
@@ -169,5 +178,5 @@
 	</div>
 
 </body>
-<%@ include file="/WEB-INF/views/template/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/template/footer.jsp"%> --%>
 </html>
