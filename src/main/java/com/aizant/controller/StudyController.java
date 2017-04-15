@@ -39,7 +39,7 @@ public class StudyController {
 	 */
 
 	@RequestMapping(value = "edit_study", method = RequestMethod.GET)
-	public ModelAndView editexperimenttype(@RequestParam String id,
+	public ModelAndView studytype(@RequestParam String id,
 			@ModelAttribute("Study") Study study) {
 	        Study e1 = studyDao.get(id);
 		return new ModelAndView("edit_study", "study", e1);
@@ -75,7 +75,7 @@ public class StudyController {
 	 */
 
 	@RequestMapping(value = "/update_study", method = RequestMethod.POST)
-	public ModelAndView updateexperimentType(HttpServletRequest request,
+	public ModelAndView updateStudyType(HttpServletRequest request,
 			@Valid @ModelAttribute("Study") Study study, BindingResult result) {
 		studyDao.saveOrUpdate(study);
 		return new ModelAndView("redirect:/display_study");
@@ -138,12 +138,12 @@ public class StudyController {
 	 * ------------------------------------- delete study
 	 * --------------------------------------
 	 */
-	@RequestMapping(value = "/deleteexperiment", method = RequestMethod.POST)
-	public @ResponseBody String deleteexperiment(@RequestParam String experimentTypeId) {
-		studyDao.delete(experimentTypeId);
+	@RequestMapping(value = "/deleteStudy", method = RequestMethod.POST)
+	public @ResponseBody String deleteStudy(@RequestParam String studyTypeId) {
+		studyDao.delete(studyTypeId);
 
 		Gson u = new Gson();
-		String json = u.toJson(experimentTypeId);
+		String json = u.toJson(studyTypeId);
 		return json;
 	}
 	/*

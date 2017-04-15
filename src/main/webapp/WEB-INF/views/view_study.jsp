@@ -86,9 +86,7 @@
 										<tr>
 									</tbody>
 								</table>
-								<a href="/Sample/SampleCollections?id=${study.id}"
-									target="_self" class="btn btn-primary">PRINT</a> <a
-									href="/Sample/edit_study?id=${study.id}" target="_self"
+								<a href="/Sample/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
 									href="/Sample/Jasper?id=${study.id}" target="_self"
 									class="btn btn-primary">PRINT</a>
@@ -122,7 +120,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div>
 
 						<table class="table table-hover table-bordered">
@@ -130,8 +128,9 @@
 
 								<th>Volunteer ID</th>
 								<th>Volunteer Name</th>
-								<th>Action</th>
 								<th>Status</th>
+								<th>Action</th>
+								
 
 							</tr>
 							<tr ng-repeat="a in study.studyVolunteers">
@@ -139,9 +138,7 @@
 								<td>{{a.volunteerId}}</td>
 
 								<td>{{a.volunteerName}}</td>
-
-
-
+                                 <td> </td>
 								<td><a ng-href="/Sample/view_studyVolunteer?id={{a.id}}"
 									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 								<td></td>

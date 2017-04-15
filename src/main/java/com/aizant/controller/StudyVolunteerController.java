@@ -29,7 +29,7 @@ public class StudyVolunteerController {
 	private StudyVolunteerDAO study_VolunteerDao;
 
 	@ModelAttribute("StudyVolunteer")
-	public StudyVolunteer createExperiment() {
+	public StudyVolunteer createVolunteer() {
 		return new StudyVolunteer();
 	}
 	/*

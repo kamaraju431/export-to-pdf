@@ -49,7 +49,7 @@ app.controller('studyCtrl', function($scope, $http, $uibModal) {
 
 		});
 		
-		modalInstance.result.then(function(experimentTypeId) {  
+		modalInstance.result.then(function(studyTypeId) {  
 			
 			
 		})
@@ -69,9 +69,9 @@ app.controller('deleteModalController', function($scope, $http, $uibModalInstanc
 	console.log('VEDHAAA ID modal', id, 153);
 	$scope.id = id;
 	$scope.delete = function() {
-		var body = { experimentTypeId: $scope.id };
+		var body = { studyTypeId: $scope.id };
 		console.log('VEDHA deleting', body);
-		$http.post('deleteexperiment?experimentTypeId=' + $scope.id).then(function(response) {
+		$http.post('deleteStudy?studyTypeId=' + $scope.id).then(function(response) {
 			console.log('VEDHAAA HEREE DELETED', response);
 			$uibModalInstance.close('deleted');	
 			location.reload();

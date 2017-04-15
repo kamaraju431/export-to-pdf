@@ -70,6 +70,11 @@
 												ng-model="study.clientStudyId"></td>
 											</tr>
 											<tr>
+												<th>Date :</th>
+												<td><input type="text" ng-model="study.date"
+													placeholder="dd/mm/yyyy"></td>
+											</tr>
+											<tr>
 												<th>Study name:</td>
 												<td><input type="text"
 													ng-model="study.name"></td>
@@ -133,9 +138,7 @@
 															<td><input type="text" ng-model="a.volunteerId"></td>
 															<td><input type="text" ng-model="a.volunteerName"></td>
 														</tr>
-														<th>Date :</th>
-												<td><input type="text" ng-model="study.date" placeholder="dd/mm/yyyy"></td>
-											</tr>
+										
 																	<td><input type="submit" value="submit"
 										class="btn-success" /></td>
 													

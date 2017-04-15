@@ -80,7 +80,10 @@
 								</table>
 
 								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
-									class="btn btn-primary">EDIT</a> <%-- <a
+									class="btn btn-primary">EDIT</a> <a
+									href="SampleCollections?id=${study_Volunteer.id}"><button
+										type="button" class="btn btn-sm btn-primary btn-create">Print Blood Sample Record</button></a>
+								<%-- <a
 									href="Jasper?id=${study_Volunteer.id}" class="btn btn-primary">Print
 									Barcode</a> --%>
 
@@ -115,9 +118,8 @@
 								<span ng-click="onClick(3)" id="round-button"
 									ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span>
 								<span ng-click="onClick(4)" id="round-button"
-									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span><a
-									href="SampleCollections?id=${study_Volunteer.id}"><button type="button"
-										class="btn btn-sm btn-primary btn-create">PRINT</button></a>
+									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span>
+								
 							</div>
 
 						</div>
