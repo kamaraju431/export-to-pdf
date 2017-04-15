@@ -28,9 +28,10 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location) {
 	}
 	
 	$http.get('/aizantit/study_volunteer?id=' + id).then(function(response) {
-		console.log('STUDY VOLUNTEER RESPONSE' + response.data);
-		$scope.studyVolunteer = response.data;
-		$scope.bloodSample = $scope.studyVolunteer.bloodSampleCollection;
+		console.log('STUDY VOLUNTEER RESPONSE', response.data);
+		$scope.response = response.data;
+		$scope.studyVolunteer = response.data.studyVolunteer;
+		$scope.bloodSample = $scope.studyVolunteer.bloodSampleCollection || [] ;
 		
 		for (i = 0; i < $scope.bloodSample.length; i++) {
 
@@ -47,7 +48,6 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location) {
 			} else {
 				$scope.bloodSampleCollection.p4.push($scope.bloodSample[i]);
 			}
-
 		}
 		$scope.onClick(currentPeriod || 1);
 		console.log('data in p1', $scope.currentSamples);		

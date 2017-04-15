@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.Services.IStudyVolunteerService;
+import com.aizant.gson.GsonStudyExclusionStrategy;
+import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -114,13 +116,17 @@ public class StudyVolunteerController {
 	@Transactional
 	public @ResponseBody String getStudyVolunteer(@RequestParam String id) {
 		StudyVolunteer studyVolunteer = studyVolunteerService.get(id);
-		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-		String json = u.toJson(studyVolunteer.getStudy());
-		return json;
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+		String jsonStudyVolunteer = gson.toJson(studyVolunteer);
+		
+		Study study = studyVolunteer.getStudy();
+		return "{ \"studyVolunteer\": " +  jsonStudyVolunteer + 
+				", \"studyId\":\"" + study.getId() 
+				+"\",  \"studyPeriods\":" + study.getPeriods() + "}";
 	}
 	
 	/*
-	 * ------------------------------------- Page count PaatientTrail
+	 * ------------------------------------- Page count PaaientTrail
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/pageCount2", method = RequestMethod.GET)

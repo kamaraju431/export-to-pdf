@@ -68,20 +68,20 @@
 
 										<tr>
 											<td>Volunteer ID:</td>
-											<td>${study_Volunteer.volunteerId}</td>
+											<td>{{studyVolunteer.volunteerId}}</td>
 										</tr>
 
 
 										<tr>
 											<td>Volunteer Name:</td>
-											<td>${study_Volunteer.volunteerName}</td>
+											<td>{{studyVolunteer.volunteerName}}</td>
 										</tr>
 
 
 									</tbody>
 								</table>
 
-								<a href="edit_studyVolunteer?id=${study_Volunteer.id}"
+								<a ng-href="edit_studyVolunteer?id={{studyVolunteer.id}}"
 									class="btn btn-primary">EDIT</a> <%-- <a
 									href="Jasper?id=${study_Volunteer.id}" class="btn btn-primary">Print
 									Barcode</a> --%>
@@ -110,29 +110,19 @@
 							<div class="col col-xs-6 text-right">
 
 								<b>Periods :</b> <span ng-click="onClick(1)" id="round-button"
-									ng-class="selectedPeriod === 1? 'selected' : ''">P1</span>
+									ng-if="response.studyPeriods > 0" ng-class="selectedPeriod === 1? 'selected' : ''">P1</span>
 								<span ng-click="onClick(2)" id="round-button"
-									ng-class="selectedPeriod === 2? 'selected' : ''">P2</span>
+									ng-if="response.studyPeriods > 1" ng-class="selectedPeriod === 2? 'selected' : ''">P2</span>
 								<span ng-click="onClick(3)" id="round-button"
-									ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span>
+									ng-if="response.studyPeriods > 2" ng-class="selectedPeriod === 3 ? 'selected' : ''">P3</span>
 								<span ng-click="onClick(4)" id="round-button"
-									ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span><a
-									href="SampleCollections?id=${study_Volunteer.id}"><button type="button"
+									ng-if="response.studyPeriods > 3" ng-class="selectedPeriod === 4 ? 'selected' : ''">P4</span><a
+									ng-href="SampleCollections?id={{studyVolunteer.id}}"><button type="button"
 										class="btn btn-sm btn-primary btn-create">PRINT</button></a>
 							</div>
 
 						</div>
 					</div>
-					<!-- <div>
-						<table>
-							<tr>
-								 <td ng-repeat="time in periodsArr track by $index"><span
-									ng-click="ClickPeriods()" id="round-button">P{{$index+1}}
-								</span></td> 
-								<td></td>
-							</tr>
-						</table>
-					</div> -->
 					<div>
 
 						<table class="table table-hover table-bordered">
