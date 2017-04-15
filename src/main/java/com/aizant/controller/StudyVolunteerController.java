@@ -1,12 +1,13 @@
 package com.aizant.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.model.StudyVolunteer;
-
 import com.google.gson.Gson;
 
 @Controller
@@ -26,7 +26,7 @@ public class StudyVolunteerController {
 	 * --------------------------------------
 	 */
 	@Autowired
-	private StudyVolunteerDAO study_VolunteerDao;
+	private StudyVolunteerDAO studyVolunteerDao;
 
 	@ModelAttribute("StudyVolunteer")
 	public StudyVolunteer createExperiment() {
@@ -44,41 +44,16 @@ public class StudyVolunteerController {
 	}
 
 	/*
-	 * ------------------------------------- Store PaatientTrail
-	 * --------------------------------------
-	 */
-	@RequestMapping("/store_studyVolunteer")
-	public ModelAndView addexpriment(HttpServletRequest request,
-			@Valid @ModelAttribute("StudyVolunteer") StudyVolunteer study_Volunteer, BindingResult result) {
-
-		String s = "what";
-		s.split(",");
-		String[] volunteerId = study_Volunteer.getVolunteerId().split(",");
-		String[] volunteerName = study_Volunteer.getVolunteerName().split(",");
-		for (int i = 0; i < volunteerId.length; i++) {
-			StudyVolunteer newexp = new StudyVolunteer();
-			newexp.setVolunteerId(volunteerId[i]);
-
-			newexp.setVolunteerName(volunteerName[i]);
-
-			study_VolunteerDao.save(newexp);
-		}
-
-		if (result.hasErrors()) {
-			return new ModelAndView("redirect:/add_studyVolunteer");
-		}
-
-		return new ModelAndView("redirect:/display_studyVolunteer");
-	}
-
-	/*
 	 * ------------------------------------- View PaatientTrail
 	 * --------------------------------------
 	 */
 
 	@RequestMapping(value = "view_studyVolunteer", method = RequestMethod.GET)
+	@Transactional
 	public ModelAndView viewvolunteer(@RequestParam String id, @ModelAttribute StudyVolunteer study_Volunteer) {
-		StudyVolunteer exp = study_VolunteerDao.get(id);
+		StudyVolunteer exp = studyVolunteerDao.get(id);
+		exp.setStudy(exp.getStudy());
+		System.out.println("STUDY VOLUNTEER STUDY?" + exp.getStudy());
 		return new ModelAndView("view_studyVolunteer", "study_Volunteer", exp);
 
 	}
@@ -100,7 +75,7 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "edit_studyVolunteer", method = RequestMethod.GET)
 	public ModelAndView edituser(@RequestParam String id, @ModelAttribute("StudyVolunteer") StudyVolunteer study_Volunteer) {
-		StudyVolunteer u1 = study_VolunteerDao.get(id);
+		StudyVolunteer u1 = studyVolunteerDao.get(id);
 		return new ModelAndView("edit_studyVolunteer", "study_Volunteer", u1);
 	}
 
@@ -111,8 +86,7 @@ public class StudyVolunteerController {
 	@RequestMapping(value = "/update_studyVolunteer", method = RequestMethod.POST)
 	public ModelAndView update(HttpServletRequest request,
 			@Valid @ModelAttribute("StudyVolunteer") StudyVolunteer study_Volunteer) {
-		study_VolunteerDao.Update(study_Volunteer);
-		study_VolunteerDao.save(study_Volunteer);
+		studyVolunteerDao.saveOrUpdate(study_Volunteer);
 		return new ModelAndView("display_studyVolunteer");
 	}
 
@@ -134,7 +108,7 @@ public class StudyVolunteerController {
 	@RequestMapping(value = "/pageCount2", method = RequestMethod.GET)
 	public @ResponseBody String showPage(@ModelAttribute StudyVolunteer study_Volunteer) {
 		List<StudyVolunteer> list;
-		long pc = study_VolunteerDao.getPageCount();
+		long pc = studyVolunteerDao.getPageCount();
 		Gson u = new Gson();
 		String json = u.toJson(pc);
 		return json;
@@ -150,9 +124,9 @@ public class StudyVolunteerController {
 			@RequestParam(value="", required=false) String filter) {
 		List<StudyVolunteer> list;
 		if (page > 0) {
-			list = study_VolunteerDao.getExperimentByPage(page, 10);
+			list = studyVolunteerDao.getExperimentByPage(page, 10);
 		} else {
-			list = study_VolunteerDao.list();
+			list = studyVolunteerDao.list();
 		}
 		Gson u = new Gson();
 		String json = u.toJson(list);

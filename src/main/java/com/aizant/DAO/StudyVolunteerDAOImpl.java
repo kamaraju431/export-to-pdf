@@ -22,13 +22,8 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 	}
 
 	@Transactional
-	public void save(StudyVolunteer study_Volunteer) {
-		sessionFactory.getCurrentSession().save(study_Volunteer);
-	}
-
-	@Transactional
-	public void Update(StudyVolunteer study_Volunteer) {
-		sessionFactory.getCurrentSession().update(study_Volunteer);
+	public void saveOrUpdate(StudyVolunteer study_Volunteer) {
+		sessionFactory.getCurrentSession().saveOrUpdate(study_Volunteer);
 	}
 
 	@Transactional

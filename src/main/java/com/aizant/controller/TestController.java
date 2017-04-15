@@ -34,14 +34,14 @@ public class TestController {
 		List<BloodSampleCollection> samples = new ArrayList<BloodSampleCollection>();
 		samples.add(bloodSample);
 		studyVolunteer.setBloodSampleCollection(samples);
-		study_VolunteerDao.save(studyVolunteer);
+		study_VolunteerDao.saveOrUpdate(studyVolunteer);
 		
 		StudyVolunteer studyVolunteer2 = study_VolunteerDao.get(id);
 		List<BloodSampleCollection> samples2 = studyVolunteer2.getBloodSampleCollection();
 		System.out.println("SAMPLESS " + samples2.size());
 		
 		StudyVolunteer studyVolunteer3 = study_VolunteerDao.get(id);
-		study_VolunteerDao.save(studyVolunteer3);
+		study_VolunteerDao.saveOrUpdate(studyVolunteer3);
 		
 		StudyVolunteer studyVolunteer4 = study_VolunteerDao.get(id);
 		List<BloodSampleCollection> samples3 = studyVolunteer4.getBloodSampleCollection();

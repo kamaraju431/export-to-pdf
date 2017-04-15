@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyDAO;
+import com.aizant.Services.IStudyService;
 import com.aizant.model.Study;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class StudyController {
@@ -31,6 +32,9 @@ public class StudyController {
 	 */
 	@Autowired
 	private StudyDAO studyDao;
+	
+	@Autowired
+	private IStudyService studyService;
 	
 	SessionFactory sessionFactory;
 	/*
@@ -49,11 +53,9 @@ public class StudyController {
 	@Transactional
 	@RequestMapping(value = "study", method = RequestMethod.GET)
 	public @ResponseBody String getStudy(@RequestParam String id){
-		System.out.println("GOT THIS FAR 1" + id);
 		Study study=studyDao.get(id);
-		System.out.println("GOT THIS FAR 2" + study.getSampleTime());
 
-		Gson u = new Gson();
+		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson(study);
 		return json;
 	}
@@ -65,7 +67,6 @@ public class StudyController {
 	public ModelAndView view(@RequestParam String id,
 		@ModelAttribute Study study) {
 		Study s1  = studyDao.get(id);
-		System.out.println("VIEW STUDYYYY" + study);
 		return new ModelAndView("view_study","study",s1);
 		
 	}
@@ -77,7 +78,7 @@ public class StudyController {
 	@RequestMapping(value = "/update_study", method = RequestMethod.POST)
 	public ModelAndView updateexperimentType(HttpServletRequest request,
 			@Valid @ModelAttribute("Study") Study study, BindingResult result) {
-		studyDao.saveOrUpdate(study);
+		studyService.saveOrUpdate(study);
 		return new ModelAndView("redirect:/display_study");
 	}
 	/*
@@ -86,10 +87,10 @@ public class StudyController {
 	 */
 	
 	@RequestMapping(value="/store_study", method=RequestMethod.POST)
+	@Transactional
 	public ModelAndView store(HttpServletRequest request,
 			@RequestBody Study study, BindingResult result) {
-		System.out.println("store study"+study.getSampleTime());
-		studyDao.saveOrUpdate(study);
+		studyService.saveOrUpdate(study);
 		return new ModelAndView("redirect:/display_study");
 	}
 	
@@ -121,19 +122,18 @@ public class StudyController {
 		Gson u = new Gson();
 		String json = u.toJson(pc);
 		return json;
-
 	}
 
 	/*
 	 * ------------------------------------- View All study
 	 * --------------------------------------
 	 */
-
 	@RequestMapping("/display_study")
 	public String addmobile(HttpServletRequest request,
 			@Valid @ModelAttribute("Study") Study study, BindingResult result) {
 		return "display_study";
 	}
+	
 	/*
 	 * ------------------------------------- delete study
 	 * --------------------------------------
@@ -142,15 +142,15 @@ public class StudyController {
 	public @ResponseBody String deleteexperiment(@RequestParam String experimentTypeId) {
 		studyDao.delete(experimentTypeId);
 
-		Gson u = new Gson();
+		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson(experimentTypeId);
 		return json;
 	}
+	
 	/*
 	 * -------------------------------------page count
 	 * --------------------------------------
 	 */
-
 	@Transactional
 	@RequestMapping(value = "/list3", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody String showList2(@RequestParam int page, @ModelAttribute Study study) {
@@ -160,10 +160,11 @@ public class StudyController {
 		} else {
 			list = studyDao.list();
 		}
-		Gson u = new Gson();
+		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson(list);
 		return json;
 	}
+	
 	/*
 	 * ------------------------------------- View BloodSampleCollectionRecord All Users
 	 * --------------------------------------
@@ -173,6 +174,7 @@ public class StudyController {
 		ModelAndView m4 = new ModelAndView("BloodSampleCollectionRecord");
 		return m4;
 	}
+	
 	/*	@RequestMapping(value="Jasper", method = RequestMethod.GET)
 	public ModelAndView Jasper(@RequestParam String id, ModelMap modelMap,@ModelAttribute("Study") Study study) {
 		modelMap.put("study",studyDao.get(id));

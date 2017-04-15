@@ -10,7 +10,6 @@ import com.aizant.model.User;
 public interface StudyDAO {
 	public List<Study> list();
 	public Study get(String id);
-//	public Study getEager(int id);
 	public String saveOrUpdate(Study study);
 	public void delete(String id);
 	public List<Study> getStudyByPage(int pageid,int total);

@@ -1,8 +1,7 @@
 package com.aizant.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -109,7 +108,7 @@ public class StudyDAOImpl implements StudyDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Study");
 		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
-		List<Study> list = (List<Study>) query.getResultList();
+		List<Study> list = (ArrayList<Study>) query.getResultList();
 	
 		return list;
 	}

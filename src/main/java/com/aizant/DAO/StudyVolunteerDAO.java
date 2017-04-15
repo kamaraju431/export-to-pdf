@@ -11,9 +11,7 @@ public interface StudyVolunteerDAO {
 
 	public StudyVolunteer get(String id);
 
-	public void save(StudyVolunteer study_Volunteer);
-
-	public void Update(StudyVolunteer study_Volunteer);
+	public void saveOrUpdate(StudyVolunteer study_Volunteer);
 
 	public void delete(String id);
 

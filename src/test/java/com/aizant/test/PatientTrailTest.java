@@ -17,7 +17,7 @@ public class PatientTrailTest {
 		
 	
 		
-		studyVolunteerDAO.save(studyVolunteer);
+		studyVolunteerDAO.saveOrUpdate(studyVolunteer);
 		
 		
 

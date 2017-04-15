@@ -14,6 +14,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name ="Study")
 @Component
@@ -22,19 +25,29 @@ public class Study {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name="study_id")
+	@Expose
 	private String id;
 	
+	@Expose
 	private String name;
+	@Expose
 	private int aliquot;
+	@Expose
 	private int sampleCollectionSize_in_ml;
+	@Expose
 	private int periods;
+	@Expose
 	private String clientStudyId;
+	@Expose
 	private String date;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="study")
+	@JsonManagedReference
+	@Expose
 	private List<StudyVolunteer> studyVolunteers;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@Expose
 	private List<SampleTime> sampleTime;
 
 	/* --------------- Getter setters --------------------- */
