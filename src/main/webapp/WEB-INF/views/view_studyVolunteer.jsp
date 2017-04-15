@@ -88,11 +88,13 @@
 									</tbody>
 								</table>
 
-								<a ng-href="edit_studyVolunteer?id={{studyVolunteer.id}}""
+								<a ng-href="/aizantit/edit_studyVolunteer?id={{studyVolunteer.id}}"
+									target="_self"
 									class="btn btn-primary">EDIT</a> 
 								<a
-									ng-href="SampleCollections?id={{studyVolunteer.id}}"" class="btn btn-primary">Print
-									Barcode</a>
+									ng-href="/aizantit/SampleCollections?id={{studyVolunteer.id}}" 
+									target="_self"
+									class="btn btn-primary">Print Barcode</a>
 
 							</div>
 						</div>
@@ -115,7 +117,7 @@
 									<b>Blood Sample Collection Record</b>
 								</h3>
 								<a
-									href="add_BloodSampleCollection" class="btn btn-primary">ADD</a>
+									href="/aizantit/add_BloodSampleCollection" target="_self" class="btn btn-primary">ADD</a>
 							</div>
 							<div class="col col-xs-6 text-right">
 
@@ -154,12 +156,60 @@
 						
 								<td>{{x.comments}}</td>
 								<td><a ng-click="openDeleteModal(x.id)"><span
-										class="glyphicon glyphicon-trash"></span></a></td>
+										class="glyphicon glyphicon-trash"></span></a>
+										<a
+									data-toggle="modal" data-target="#myModal"><span
+										class="glyphicon glyphicon-eye-open"></span> </a>
+										</td>
 
 
 
 							</tr>
 						</table>
+						<!-- Model Template -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">×</button>
+										<h4 class="modal-title" id="myModalLabel">Aliquots</h4>
+									</div>
+									<div class="modal-body">
+										<table class="table table-hover table-bordered">
+											<tr>
+												<th>Aliquot</th>
+												<th>Date</th>
+												<th>Time</th>
+												<th>Period</th>
+												<th>Scan Time</th>
+
+												<th>Comments*</th>
+
+
+											</tr>
+											<tr ng-repeat="x in currentSamples">
+												<td>{{x.aliquot}}</td>
+												<td>{{x.date}}</td>
+												<td>{{x.time}}</td>
+												<td>{{x.period}}</td>
+												<td>{{x.scanTime}}</td>
+
+												<td>{{x.comments}}</td>
+											</tr>
+										</table>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary"
+											data-dismiss="modal">Close</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Model Template end -->
 					</div>
 
 
