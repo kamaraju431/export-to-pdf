@@ -1,4 +1,3 @@
-
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -23,8 +22,8 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/pagination.css" />
 
 <!-- Bootstrap modals -->
 <link rel="stylesheet"
@@ -51,10 +50,14 @@
 					<div class="col col-xs-6">
 						<h3 class="panel-title">Study</h3>
 					</div>
+
 					<div class="col col-xs-6 text-right">
-					<input type="text" ng-model="searchBy" align="center" placeholder="Search here">
-						<a href="add_study"><button type="button"
-								class="btn btn-sm btn-primary btn-create">Add Study</button></a>
+						<input type="text" ng-model="searchBy" align="center"
+							placeholder="Search Here" style="height:30px;"/>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<a href="add_study"><button type="button"
+									class="btn btn-sm btn-primary btn-create">Add Study</button></a>
+						</sec:authorize>
 					</div>
 				</div>
 			</div>
@@ -65,12 +68,11 @@
 					<tr>
 
 						<th>Name</th>
-					<!-- 	<th>Number of Sample</th> -->
-						<th>Sample 
-						CollectionSize(in ml)</th>
+						<th>Sample CollectionSize(in ml)</th>
 						<th>Periods</th>
 						<th>Client Study ID</th>
 						<th>Date</th>
+						<th>Action</th>
 
 					</tr>
 					<tr ng-repeat="s in names | filter:searchBy">
@@ -113,7 +115,8 @@
 							<ul class="pagination">
 
 								<li ng-repeat="i in numlist track by $index"><a
-									ng-click="goToPage($index + 1)"><span class="active">{{$index
+									ng-click="goToPage($index + 1)" id="round-button"
+									ng-class="$index+1 === currentPage ? 'selected' : ''"><span>{{$index
 											+ 1}}</span></a></li>
 							</ul>
 						</div>
@@ -122,11 +125,8 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 
 </body>
 </html>
-
-
-

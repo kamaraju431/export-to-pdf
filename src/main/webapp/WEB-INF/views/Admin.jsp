@@ -12,7 +12,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script
-	src="<%=request.getContextPath()%>/resources/js/admin.js" /></script>
+	src="<%=request.getContextPath()%>/resources/js/Admin.js" /></script>
 
 </head>
 <body>
@@ -69,5 +69,4 @@
 </div>
 </div>
 </body>
-<%@ include file="/WEB-INF/views/template/footer.jsp"%>
 </html>

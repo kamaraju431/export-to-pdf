@@ -1,26 +1,16 @@
 package com.aizant.controller;
 
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,8 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.BloodSampleCollectionDAO;
 import com.aizant.model.BloodSampleCollection;
-import com.aizant.model.Study;
-import com.aizant.model.User;
 import com.google.gson.Gson;
 
 @Controller
@@ -71,13 +59,13 @@ public class BloodSampleColletionController {
 		if (result.hasErrors()) {
 			System.out.println("hi");
 
-			return new ModelAndView("redirect:/add_BloodSampleCollection");
+			return new ModelAndView("redirect:/dispaly_study");
 		}
 	
 
 	
 		bloodSampleColletionDao.saveOrUpdate(bloodSampleCollection);
-		return new ModelAndView("redirect:/display_study");
+		return new ModelAndView("redirect:/add_BloodSampleCollection");
 	}
 	
 	/*

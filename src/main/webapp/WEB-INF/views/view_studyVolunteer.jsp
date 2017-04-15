@@ -94,7 +94,7 @@
 								<a
 									ng-href="/aizantit/SampleCollections?id={{studyVolunteer.id}}" 
 									target="_self"
-									class="btn btn-primary">Print Barcode</a>
+									class="btn btn-primary">PRINT</a>
 
 							</div>
 						</div>

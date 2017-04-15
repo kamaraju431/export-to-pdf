@@ -37,9 +37,9 @@ public class ApplicationContextConfig {
 	@Bean(name = "dataSource")
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/springbootdb");
-		dataSource.setUsername("vedha");
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizantTracking");
+		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;
 
@@ -49,7 +49,7 @@ public class ApplicationContextConfig {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.hbm2ddl.auto", "update");
-		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
 		return properties;
 
@@ -63,8 +63,8 @@ public class ApplicationContextConfig {
 		sessionFactoryBuilder.addAnnotatedClass(User.class);
 		sessionFactoryBuilder.addAnnotatedClass(Study.class);
 		sessionFactoryBuilder.addAnnotatedClass(StudyVolunteer.class);
-		sessionFactoryBuilder.addAnnotatedClass(SampleTime.class);
 		sessionFactoryBuilder.addAnnotatedClass(BloodSampleCollection.class);
+		sessionFactoryBuilder.addAnnotatedClass(SampleTime.class);
 		return sessionFactoryBuilder.buildSessionFactory();
 	}
 
@@ -93,14 +93,15 @@ public class ApplicationContextConfig {
 	public StudyDAO getStudyDAO(SessionFactory sessionFactory) {
 		return new StudyDAOImpl(sessionFactory);
 	}
-	@Autowired
-	@Bean(name = "sampleTimeDAO")
-	public SampleTimeDAO getSampleTimeDAO(SessionFactory sessionFactory) {
-		return new SampleTimeDAOImpl(sessionFactory);
-	}
+
 	@Autowired
 	@Bean(name = "bloodSampleCollectionDAO")
 	public BloodSampleCollectionDAO getBloodSampleCollectionDAO(SessionFactory sessionFactory) {
 		return new BloodSampleCollectionDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name = "sampleTimeDAO")
+	public SampleTimeDAO getSampleTimeDAO(SessionFactory sessionFactory) {
+		return new SampleTimeDAOImpl(sessionFactory);
 	}
 }
