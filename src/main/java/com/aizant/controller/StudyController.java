@@ -138,12 +138,12 @@ public class StudyController {
 	 * ------------------------------------- delete study
 	 * --------------------------------------
 	 */
-	@RequestMapping(value = "/deleteexperiment", method = RequestMethod.POST)
-	public @ResponseBody String deleteexperiment(@RequestParam String experimentTypeId) {
-		studyDao.delete(experimentTypeId);
+	@RequestMapping(value = "/deleteStudy", method = RequestMethod.POST)
+	public @ResponseBody String deleteStudy(@RequestParam String studyTypeId) {
+		studyService.delete( studyTypeId);
 
 		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-		String json = u.toJson(experimentTypeId);
+		String json = u.toJson( studyTypeId);
 		return json;
 	}
 	

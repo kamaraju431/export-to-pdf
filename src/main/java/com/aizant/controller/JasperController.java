@@ -18,7 +18,9 @@ import com.aizant.DAO.BloodSampleCollectionDAO;
 import com.aizant.DAO.StudyDAO;
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.Services.IStudyService;
+import com.aizant.Services.IStudyVolunteerService;
 import com.aizant.model.Aliquot;
+import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
@@ -35,6 +37,9 @@ public class JasperController {
 
 	@Autowired
 	IStudyService studyService;
+	
+	@Autowired
+	IStudyVolunteerService studyVolunteerService;
 
 	@Autowired
 	private BloodSampleCollectionDAO bloodSampleCollectionDao;
@@ -152,10 +157,29 @@ public class JasperController {
 	}
 
 	@RequestMapping("/SampleCollections")
-	public ModelAndView SampleCollections(@RequestParam String id, ModelMap modelMap) {
+	@Transactional
+	public ModelAndView SampleCollections(@RequestParam String id, @RequestParam int period, ModelMap modelMap) {
 		// BloodSampleCollection study = bloodSampleCollectionDao.get(id);
-		modelMap.put("bloodCollection", bloodSampleCollectionDao.get(id));
-		modelMap.put("studyCollection", studyService.get(id));
+		StudyVolunteer studyVolunteer = studyVolunteerService.get(id, true);
+		List<BloodSampleCollection> bloodCollections = new ArrayList<BloodSampleCollection>();
+		for(BloodSampleCollection sample: studyVolunteer.getBloodSampleCollection()) {
+			if (sample.getPeriod() == period && sample.getAliquot() == 0) {
+				bloodCollections.add(sample);
+			}
+		}
+
+		JRDataSource jrDataSource = new JRBeanCollectionDataSource(bloodCollections);
+
+		HashMap<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("Period_Num", period);
+		parameters.put("Project_Num", studyVolunteer.getStudy().getClientStudyId());
+		parameters.put("Subject_Num", studyVolunteer.getVolunteerId());
+		parameters.put("Volume", studyVolunteer.getStudy().getSampleCollectionSize_in_ml());
+		parameters.put("collectionDataSource", jrDataSource);
+		System.out.println("Whats going onnnn 4");
+		
+		modelMap.put("parameters", parameters);
+		modelMap.put("dataSource", jrDataSource);
 		return new ModelAndView("SampleCollections");
 
 	}

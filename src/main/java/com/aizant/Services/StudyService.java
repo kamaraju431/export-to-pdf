@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aizant.DAO.SampleTimeDAO;
 import com.aizant.DAO.StudyDAO;
 import com.aizant.DAO.StudyVolunteerDAO;
+import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
 
@@ -16,7 +18,13 @@ public class StudyService implements IStudyService{
     private StudyDAO studyDao;
     
     @Autowired
+    private SampleTimeDAO sampleTimeDao;
+    
+    @Autowired
     private StudyVolunteerDAO studyVolunteerDao;
+    
+    @Autowired
+    private IStudyVolunteerService studyVolunteerService;
      
     @Transactional
     public void saveOrUpdate(Study study)  {
@@ -31,6 +39,21 @@ public class StudyService implements IStudyService{
     public Study get(String id) {
     	Study study = studyDao.get(id);
     	study.getStudyVolunteers();
+    	study.getSampleTime();
     	return study;
+    }
+    
+    @Transactional
+    public void delete(String id) {
+    	Study study = studyDao.get(id);
+    	for(SampleTime sample: study.getSampleTime()) {
+    		sampleTimeDao.delete(sample.getId());
+    	}
+    	
+    	for(StudyVolunteer studyVolunteer: study.getStudyVolunteers()) {
+    		studyVolunteerService.delete(studyVolunteer.getId());
+    	}
+    	
+    	studyDao.delete(id);
     }
 }    

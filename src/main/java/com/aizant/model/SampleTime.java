@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name = "SampleTime")
 @Component
@@ -15,7 +17,9 @@ public class SampleTime {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Expose
 	private String id;
+	@Expose
 	private double timePoint;
 	
 	public String getId() {

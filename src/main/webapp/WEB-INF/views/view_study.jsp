@@ -141,7 +141,7 @@
 	
 								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}&period={{currentPeriod}}"
 									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-								<td></td>
+							
 							</tr>
 						</table>
 					</div>

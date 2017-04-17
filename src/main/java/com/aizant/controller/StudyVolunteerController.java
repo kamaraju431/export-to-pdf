@@ -103,6 +103,7 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "/delete_studyVolunteer", method = RequestMethod.POST)
 	public @ResponseBody String deleteexp(@RequestParam String id) {
+		studyVolunteerService.delete(id);
 		Gson u = new Gson();
 		String json = u.toJson(id);
 		return json;
@@ -114,11 +115,13 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "/study_volunteer", method = RequestMethod.GET)
 	@Transactional
-	public @ResponseBody String getStudyVolunteer(@RequestParam String id) {
-		StudyVolunteer studyVolunteer = studyVolunteerService.get(id);
+	public @ResponseBody String getStudyVolunteer(@RequestParam String id, @RequestParam boolean showBloodSamples) {
+		StudyVolunteer studyVolunteer = studyVolunteerService.get(id, showBloodSamples);
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String jsonStudyVolunteer = gson.toJson(studyVolunteer);
 		
+		System.out.println("STUDY VOLUNTEER BLOOD SAMPLE" + studyVolunteer.getBloodSampleCollection().get(0).getId());
+		System.out.println("STUDY VOLUNTEER GSON" + studyVolunteer);
 		Study study = studyVolunteer.getStudy();
 		return "{ \"studyVolunteer\": " +  jsonStudyVolunteer + 
 				", \"studyId\":\"" + study.getId() 

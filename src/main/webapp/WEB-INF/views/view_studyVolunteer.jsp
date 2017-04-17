@@ -92,7 +92,7 @@
 									target="_self"
 									class="btn btn-primary">EDIT</a> 
 								<a
-									ng-href="/aizantit/SampleCollections?id={{studyVolunteer.id}}" 
+									ng-href="/aizantit/SampleCollections?id={{studyVolunteer.id}}&period={{selectedPeriod}}" 
 									target="_self"
 									class="btn btn-primary">PRINT</a>
 
@@ -157,59 +157,14 @@
 								<td>{{x.comments}}</td>
 								<td><a ng-click="openDeleteModal(x.id)"><span
 										class="glyphicon glyphicon-trash"></span></a>
-										<a
-									data-toggle="modal" data-target="#myModal"><span
-										class="glyphicon glyphicon-eye-open"></span> </a>
+										
 										</td>
 
 
 
 							</tr>
 						</table>
-						<!-- Model Template -->
-						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-							aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">×</button>
-										<h4 class="modal-title" id="myModalLabel">Aliquots</h4>
-									</div>
-									<div class="modal-body">
-										<table class="table table-hover table-bordered">
-											<tr>
-												<th>Aliquot</th>
-												<th>Date</th>
-												<th>Time</th>
-												<th>Period</th>
-												<th>Scan Time</th>
-
-												<th>Comments*</th>
-
-
-											</tr>
-											<tr ng-repeat="x in currentSamples">
-												<td>{{x.aliquot}}</td>
-												<td>{{x.date}}</td>
-												<td>{{x.time}}</td>
-												<td>{{x.period}}</td>
-												<td>{{x.scanTime}}</td>
-
-												<td>{{x.comments}}</td>
-											</tr>
-										</table>
-
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-primary"
-											data-dismiss="modal">Close</button>
-
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Model Template end -->
+						
 					</div>
 
 

@@ -7,6 +7,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
+
+import com.google.gson.annotations.Expose;
 @Entity
 @Table(name ="BloodSampleCollection")
 @Component
@@ -14,13 +16,21 @@ public class BloodSampleCollection {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@Expose
 	private String id;
+	@Expose
 	private String date;
+	@Expose
 	private double time;
+	@Expose
 	private int period;
+	@Expose
 	private int aliquot;
+	@Expose
 	private String scanTime;
+	@Expose
 	private String comments;
+	@Expose
 	private String volunteerId;
 	public String getId() {
 		return id;

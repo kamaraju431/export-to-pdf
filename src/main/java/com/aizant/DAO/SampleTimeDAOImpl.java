@@ -64,6 +64,14 @@ public class SampleTimeDAOImpl implements SampleTimeDAO {
 		List<SampleTime> list = session.createQuery("from SampleTime").list();
 		return list;
 	}
+	
+	@Transactional
+	public void delete(String id) {
+		SampleTime sample = new SampleTime();
+		sample.setId(id);
+		sessionFactory.getCurrentSession().delete(sample);
+
+	}
 	/*
 	 * @Override public void addSampleTimesToStudy(List<SampleTime> sampleTime)
 	 * { Session session = sessionFactory.openSession();

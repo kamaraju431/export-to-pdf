@@ -13,6 +13,7 @@ public interface SampleTimeDAO {
 	public SampleTime get(String id);
 	public void saveOrUpdate(SampleTime sampleTime);
 	public List getAllSampleTime();
+	public void delete(String id);
   /*  public void addSampleTimesToStudy(List<SampleTime> sampleTime);*/
 	
   

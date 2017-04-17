@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-13T17:41:19 -->
+<!-- 2017-04-17T13:54:04 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleCollectionReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="977f59f9-8b5d-41d9-8d53-05c304e03ef7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -122,14 +122,15 @@
 		<parameterDescription><![CDATA[]]></parameterDescription>
 		<defaultValueExpression><![CDATA["collectionDataSample"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="Client_Id" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["CLIENT ID"]]></defaultValueExpression>
-	</parameter>
 	<parameter name="Period_Num" class="java.lang.Integer" isForPrompting="false">
 		<defaultValueExpression><![CDATA["period_num"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="Subject_Num" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["sub_num"]]></defaultValueExpression>
+	<parameter name="Project_Num" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="Subject_Num" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Volume" class="java.lang.Integer" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
 	</parameter>
 	<queryString>
 		<![CDATA[]]>
@@ -317,6 +318,22 @@
 				<reportElement x="219" y="139" width="114" height="14" uuid="27f0b522-2b51-4c44-89f0-bf5151c6d278"/>
 				<text><![CDATA[Yellow Light , others]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="333" y="13" width="56" height="15" uuid="501ff837-c303-433e-ba6c-3e0993bec256"/>
+				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="33" width="170" height="17" uuid="d873ad02-be26-4e52-a575-75831f85ede3"/>
+				<textFieldExpression><![CDATA[$P{Volume}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="11" width="76" height="14" uuid="939877b9-e932-4ae3-adfa-7ae0b69e1322"/>
+				<textFieldExpression><![CDATA[$P{Project_Num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="13" width="60" height="14" uuid="6dc099a8-6c6c-4906-b7de-709e1e8c9c50"/>
+				<textFieldExpression><![CDATA[$P{Subject_Num}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>

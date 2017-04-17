@@ -39,7 +39,7 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $
 		}
 	}
 	
-	$http.get('/aizantit/study_volunteer?id=' + id).then(function(response) {
+	$http.get('/aizantit/study_volunteer?id=' + id + "&showBloodSamples=true").then(function(response) {
 		console.log('STUDY VOLUNTEER RESPONSE', response.data);
 		$scope.response = response.data;
 		$scope.studyVolunteer = response.data.studyVolunteer;
