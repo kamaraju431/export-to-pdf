@@ -23,7 +23,8 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/pagination.css" />
 
 <!-- Bootstrap modals -->
 <link rel="stylesheet"
@@ -55,14 +56,10 @@
 						<form class="navbar-form" role="search">
 
 							<div class="input-group custom-search-form" align="center">
-								<input type="text" ng-model="searchBy" class="form-control">
+								<input type="text" style="height:30px;" ng-model="searchBy" placeholder="Search Here">
 								<!-- ng-model="tempfilter" -->
-								<span class="input-group-btn">
-									<button class="btn btn-primary" ng-click="search()"
-										type="button">
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-								</span>
+							
+							
 							</div>
 							<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<a href="add_user"><button type="button"
@@ -118,7 +115,7 @@
 								<ul class="pagination">
 
 									<li ng-repeat="i in numlist track by $index"><a
-										ng-click="goToPage($index + 1)"><span class="active">{{$index
+										ng-click="goToPage($index + 1)" id="round-button" ng-class="$index+1 === currentPage ? 'selected' : ''"><span>{{$index
 												+ 1}}</span></a></li>
 								</ul>
 							</div>

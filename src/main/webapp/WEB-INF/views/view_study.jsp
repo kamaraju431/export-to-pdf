@@ -86,8 +86,7 @@
 										<tr>
 									</tbody>
 								</table>
-								<a href="/aizantit/SampleCollections?id=${study.id}"
-									target="_self" class="btn btn-primary">PRINT</a> <a
+								 <a
 									href="/aizantit/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
 									href="/aizantit/Jasper?id=${study.id}" target="_self"
