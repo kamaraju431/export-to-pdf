@@ -12,9 +12,11 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		periods : "1",
 		clientStudyId : ' ',
 		date : '',
+		anticoagulant:'',
+		dosingTime:'',
+		studyType:'selectType',
 		studyVolunteers : [{
 			volunteerId : 'V ID 1',
-			volunteerName : 'V NAME 1',
 		} ],
 		sampleTime:[{
 			timePoint:0.0,
@@ -54,14 +56,15 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		if (sampleLength < newLength) {
 			for (var i = 0; i < (newLength - sampleLength); i++)
 				$scope.study.studyVolunteers.push({
-					volunteerId : 'V ID ' + (sampleLength + i + 1),
-					volunteerName : 'V NAME' + (sampleLength + i + 1)
+					volunteerId : 'V ID ' + (sampleLength + i + 1)
+					
 				});
 		} else {
 			for (var i = 0; i < (sampleLength - newLength); i++)
 				$scope.study.studyVolunteers.pop("");
 		}
 	});
+	
 
 	$scope.addStudy = function() {
 		$http.post('/aizantit/store_study', $scope.study).then(

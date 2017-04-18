@@ -19,7 +19,7 @@
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_add_study_Controller.js" /></script>
 <script
-	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>	
+	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>
 </head>
 </script>
 
@@ -50,14 +50,23 @@
 									<table class="table table-bordered" align="center">
 
 										<tbody>
+
 											<tr>
-												<th>Client Study Id:</th>
+												<th>Project Number:</th>
 												<td><input type="text" ng-model="study.clientStudyId"></td>
 											</tr>
 											<tr>
-												<th>Study name:
-												</td>
+												<th>Study name:</th>
+
 												<td><input type="text" ng-model="study.name"></td>
+											</tr>
+											<th>StudyType:</th>
+											<td><select ng-model="study.studyType" required>
+													<option value="selectType">selectType</option>
+													<option value="piolet">piolet</option>
+													<option value="pivotal">pivotal</option>
+
+											</select></td>
 											</tr>
 											<tr>
 												<th>Number of Aliquots:</th>
@@ -69,10 +78,16 @@
 													ng-model="study.sampleCollectionSize_in_ml"></td>
 											</tr>
 											<tr>
+												<th>Anticoagulant:</th>
+												<td><input type="text" ng-model="study.anticoagulant"></td>
+											</tr>
+											<tr>
+												<th>Scheduled Dosing Time:</th>
+												<td><input type="text" ng-model="study.dosingTime"></td>
+											</tr>
+											<tr>
 												<th>Periods:</th>
-												<td><select
-													ng-model="study.periods" 
-													convert-to-number 
+												<td><select ng-model="study.periods" convert-to-number
 													required>
 														<option value="1">1</option>
 														<option value="2">2</option>
@@ -113,18 +128,20 @@
 
 												<table class="table table-hover table-bordered">
 													<tr>
-														<th>Id</th>
-														<th>Name</th>
+														<th>Register Number</th>
+
 													</tr>
 													<tr type="text" ng-repeat="a in study.studyVolunteers">
 														<td><input type="text" ng-model="a.volunteerId"></td>
-														<td><input type="text" ng-model="a.volunteerName"></td>
+
 													</tr>
+												
 
 													<td><input type="submit" value="submit"
 														class="btn-success" /></td>
 
 												</table>
+												
 											</td>
 
 

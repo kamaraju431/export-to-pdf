@@ -7,6 +7,7 @@ public class BloodSampleRecord {
 	private String scanTime;
 	private String comments;
 	private String volunteerId;
+	 
 	
 	public String getDate() {
 		return date;

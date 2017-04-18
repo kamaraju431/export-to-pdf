@@ -4,5 +4,5 @@ import com.aizant.model.StudyVolunteer;
 
 public interface IStudyVolunteerService {
     StudyVolunteer get(String id, boolean showBloodSamples);
-    void delete(String id);
+    void delete(StudyVolunteer volunteer);
 }    

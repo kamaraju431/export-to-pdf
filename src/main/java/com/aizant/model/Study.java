@@ -40,6 +40,12 @@ public class Study {
 	private String clientStudyId;
 	@Expose
 	private String date;
+	@Expose
+	private String anticoagulant;
+	@Expose
+	private String dosingTime;
+	@Expose
+	private String studyType;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="study")
 	@JsonManagedReference
@@ -112,5 +118,31 @@ public class Study {
 	public void setSampleTime(List<SampleTime> sampleTime) {
 		this.sampleTime = sampleTime;
 	}
+
+	public String getAnticoagulant() {
+		return anticoagulant;
+	}
+
+	public void setAnticoagulant(String anticoagulant) {
+		this.anticoagulant = anticoagulant;
+	}
+
+	public String getDosingTime() {
+		return dosingTime;
+	}
+
+	public void setDosingTime(String dosingTime) {
+		this.dosingTime = dosingTime;
+	}
+
+	public String getStudyType() {
+		return studyType;
+	}
+
+	public void setStudyType(String studyType) {
+		this.studyType = studyType;
+	}
+	
+	
 
 }

@@ -39,8 +39,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" width="100px">
             <li><a href="/aizantit/display_study" style="color:#ffffff">HOME</a></li>
-             <li><a href="/aizantit/Blood_Sample_Collection_Record" style="color:#ffffff">BLOOD SAMPLE</a></li>
-           
+             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" style="color:#ffffff" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WHY WE <span class="caret"></span></a>
               <ul class="dropdown-menu">

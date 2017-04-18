@@ -23,7 +23,11 @@ public class User {
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "id")
 	private String id;
+	
 	private String username;
+	/* @NotNull
+	 @Size(min=2,max=30)
+	 @Column(name="email")*/
 	private String email;
 	private String password;
 	private boolean enabled = true;

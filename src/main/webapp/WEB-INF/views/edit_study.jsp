@@ -51,7 +51,7 @@
 										<center>
 											<tbody>
 												<tr>
-													<th>Client Study Id:</th>
+													<th>Project Number:</th>
 													<td><input type="text" ng-model="study.clientStudyId"></td>
 												</tr>
 												<tr>
@@ -59,6 +59,13 @@
 													</td>
 													<td><input type="text" ng-model="study.name"></td>
 												</tr>
+												<th>StudyType:</th>
+												<td><select ng-model="study.studyType"
+													 required>
+														<option value="piolet">piolet</option>
+														<option value="pivotal">pivotal</option>
+
+												</select></td>
 												<tr>
 													<th>Number of Aliquots:</th>
 													<td><input type="text" ng-model="study.aliquot"></td>
@@ -67,6 +74,14 @@
 													<th>sampleCollectionSize(ml):</th>
 													<td><input type="text"
 														ng-model="study.sampleCollectionSize_in_ml"></td>
+												</tr>
+												<tr>
+													<th>Anticoagulant:</th>
+													<td><input type="text" ng-model="study.anticoagulant"></td>
+												</tr>
+												<tr>
+													<th>Scheduled Dosing Time:</th>
+													<td><input type="text" ng-model="study.dosingTime"></td>
 												</tr>
 												<tr>
 													<th>Periods:</th>
@@ -121,11 +136,11 @@
 														<table class="table table-hover table-bordered">
 															<tr>
 																<th>Id</th>
-																<th>Name</th>
+																
 															</tr>
 															<tr type="text" ng-repeat="a in study.studyVolunteers">
 																<td><input type="text" ng-model="a.volunteerId"></td>
-																<td><input type="text" ng-model="a.volunteerName"></td>
+																
 															</tr>
 															</tr>
 															<td><input type="submit" value="submit"

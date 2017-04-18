@@ -124,7 +124,7 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/deleteBloodSampleCollecion", method = RequestMethod.POST)
-	public @ResponseBody String deleteuser(@RequestParam String BloodSampleColletionId) {
+	public @ResponseBody String delete(@RequestParam String BloodSampleColletionId) {
 		System.out.println("hello " + BloodSampleColletionId);
 
 		bloodSampleColletionDao.delete(BloodSampleColletionId);

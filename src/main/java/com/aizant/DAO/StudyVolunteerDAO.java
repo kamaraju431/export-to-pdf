@@ -14,14 +14,15 @@ public interface StudyVolunteerDAO {
 	public void saveOrUpdate(StudyVolunteer study_Volunteer);
 
 	public void delete(String id);
+	public void delete(StudyVolunteer volunteerToDelete);
+
 
 	public List getAllStudyVolunteer();
 	public List getAllStudyCollections();
-	
 
-	
 
-	public String deleteStudyVolunteer(String id);
+/*
+	public String deleteStudyVolunteer(String id);*/
 
 	public List<StudyVolunteer> getExperimentByPage(int pageid, int total);
 

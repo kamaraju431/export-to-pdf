@@ -140,7 +140,10 @@ public class StudyController {
 	 */
 	@RequestMapping(value = "/deleteStudy", method = RequestMethod.POST)
 	public @ResponseBody String deleteStudy(@RequestParam String studyTypeId) {
+		System.out.println("iam in controller");
+		
 		studyService.delete( studyTypeId);
+		System.out.println("study id in controller"+ studyService.get(studyTypeId));
 
 		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson( studyTypeId);

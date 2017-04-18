@@ -28,11 +28,16 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 
 	@Transactional
 	public void delete(String id) {
-		StudyVolunteer experimentToDelete = new StudyVolunteer();
-		experimentToDelete.setId(id);
-		sessionFactory.getCurrentSession().delete(experimentToDelete);
-
+		StudyVolunteer volunteerToDelete = new StudyVolunteer();
+		volunteerToDelete .setId(id);
+		sessionFactory.getCurrentSession().delete(volunteerToDelete );
 	}
+	
+	@Transactional
+	public void delete(StudyVolunteer volunteerToDelete) {
+		sessionFactory.getCurrentSession().delete(volunteerToDelete );
+
+	}	
 
 	@Transactional
 	public StudyVolunteer get(String id) {
@@ -70,7 +75,7 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		return list;
 	}
 
-	@Transactional
+/*	@Transactional
 	public String deleteStudyVolunteer(String id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
@@ -78,7 +83,7 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		session.delete(study_Volunteer);
 		return id;
 
-	}
+	}*/
 
 	@Transactional
 	public int getPageCount() {

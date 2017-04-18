@@ -175,6 +175,8 @@ public class JasperController {
 		parameters.put("Project_Num", studyVolunteer.getStudy().getClientStudyId());
 		parameters.put("Subject_Num", studyVolunteer.getVolunteerId());
 		parameters.put("Volume", studyVolunteer.getStudy().getSampleCollectionSize_in_ml());
+		parameters.put("anticougulant", studyVolunteer.getStudy().getAnticoagulant());
+		parameters.put("dosingTime", studyVolunteer.getStudy().getDosingTime());
 		parameters.put("collectionDataSource", jrDataSource);
 		System.out.println("Whats going onnnn 4");
 		

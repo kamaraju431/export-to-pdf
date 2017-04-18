@@ -32,11 +32,11 @@ public class StudyVolunteerService implements IStudyVolunteerService{
     }
     
     @Transactional
-    public void delete(String id) {
-    	StudyVolunteer volunteer = studyVolunteerDao.get(id);
-    	for (BloodSampleCollection sample : volunteer.getBloodSampleCollection()) {
-    		bloodSampleCollectionDao.delete(sample.getId());
+    public void delete(StudyVolunteer volunteer) {
+	for (BloodSampleCollection sampleCollection : volunteer.getBloodSampleCollection()) {
+    		bloodSampleCollectionDao.delete(sampleCollection.getId());
+    		System.out.println("blood collection delete" + sampleCollection.getId());
     	}
-    	studyVolunteerDao.delete(id);
+    	studyVolunteerDao.delete(volunteer);
     }
 }    

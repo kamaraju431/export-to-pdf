@@ -103,7 +103,9 @@ public class StudyVolunteerController {
 	 */
 	@RequestMapping(value = "/delete_studyVolunteer", method = RequestMethod.POST)
 	public @ResponseBody String deleteexp(@RequestParam String id) {
-		studyVolunteerService.delete(id);
+		StudyVolunteer volunteerToDelete = new StudyVolunteer();
+		volunteerToDelete.setId(id);
+		studyVolunteerService.delete(volunteerToDelete);
 		Gson u = new Gson();
 		String json = u.toJson(id);
 		return json;

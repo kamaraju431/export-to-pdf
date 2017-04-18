@@ -46,14 +46,17 @@ public class StudyService implements IStudyService{
     @Transactional
     public void delete(String id) {
     	Study study = studyDao.get(id);
-    	for(SampleTime sample: study.getSampleTime()) {
-    		sampleTimeDao.delete(sample.getId());
+    	System.out.println("study delete id"+study.getId());
+    	for(SampleTime sampleTime: study.getSampleTime()) {
+    		System.out.println(" SampleTime delete id"+sampleTime.getId());
     	}
     	
     	for(StudyVolunteer studyVolunteer: study.getStudyVolunteers()) {
-    		studyVolunteerService.delete(studyVolunteer.getId());
+    		studyVolunteerService.delete(studyVolunteer);
+    		System.out.println("volunteer delete" + studyVolunteer.getId());
     	}
-    	
-    	studyDao.delete(id);
+    	System.out.println("at last");
+    	studyDao.delete(study);
+    	System.out.println("at last delete" + study.getId());
     }
 }    

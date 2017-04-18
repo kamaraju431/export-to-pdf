@@ -14,7 +14,9 @@ public interface SampleTimeDAO {
 	public void saveOrUpdate(SampleTime sampleTime);
 	public List getAllSampleTime();
 	public void delete(String id);
+/*	public String deleteSampleTime(String id);*/
   /*  public void addSampleTimesToStudy(List<SampleTime> sampleTime);*/
+	
 	
   
  

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
@@ -31,6 +32,25 @@ public class SampleTimeDAOImpl implements SampleTimeDAO {
 		sessionFactory.getCurrentSession().saveOrUpdate(sampleTime);
 
 	}
+	@Transactional
+	public void delete(String id) {
+		SampleTime sample =new SampleTime();
+		sample.setId(id);
+		sessionFactory.getCurrentSession().delete(sample);
+		
+
+		
+	}
+	/*@Transactional
+	public String deleteSampleTime(String id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+	SampleTime sampleTime = (SampleTime) session.load(SampleTime.class, id);
+		session.delete(sampleTime);
+		return id;
+
+	}*/
+
 
 	@Transactional
 	public SampleTime get(String id) {
@@ -65,13 +85,7 @@ public class SampleTimeDAOImpl implements SampleTimeDAO {
 		return list;
 	}
 	
-	@Transactional
-	public void delete(String id) {
-		SampleTime sample = new SampleTime();
-		sample.setId(id);
-		sessionFactory.getCurrentSession().delete(sample);
-
-	}
+	
 	/*
 	 * @Override public void addSampleTimesToStudy(List<SampleTime> sampleTime)
 	 * { Session session = sessionFactory.openSession();

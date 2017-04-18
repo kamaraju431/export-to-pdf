@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aizant.DAO.SampleTimeDAO;
 import com.aizant.model.SampleTime;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class SampleTimeController {
@@ -86,6 +87,14 @@ public class SampleTimeController {
 		
 		Gson u = new Gson();
 		String json = u.toJson(list);
+		return json;
+	}
+	@RequestMapping(value = "/delete_sampleTime", method = RequestMethod.POST)
+	public @ResponseBody String deleteexp(@RequestParam String id) {
+		System.out.println("delete in controller");
+		sampleTimeDao.delete(id);
+		Gson u = new Gson();
+		String json = u.toJson(id);
 		return json;
 	}
 	/*

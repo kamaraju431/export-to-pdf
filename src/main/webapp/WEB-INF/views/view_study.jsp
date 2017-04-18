@@ -63,7 +63,7 @@
 									<tbody>
 
 										<tr>
-											<td>Experiment Name:</td>
+											<td>Study Name:</td>
 											<td>${study.name}</td>
 										</tr>
 										<tr>
@@ -79,8 +79,12 @@
 											<td>${study.periods}</td>
 										</tr>
 										<tr>
-											<td>Client Study ID</td>
+											<td>Project Number</td>
 											<td>${study.clientStudyId}</td>
+										</tr>
+										<tr>
+											<td>Study Type</td>
+											<td>${study.studyType}</td>
 										</tr>
 
 										<tr>
@@ -127,8 +131,8 @@
 						<table class="table table-hover table-bordered">
 							<tr>
 
-								<th>Volunteer ID</th>
-								<th>Volunteer Name</th>
+								<th>Register Number</th>
+								<!-- <th>Volunteer Name</th> -->
 								<th>Status</th>
 								<th>Action</th>
 						</tr>
@@ -136,7 +140,7 @@
 
 								<td>{{a.volunteerId}}</td>
 
-								<td>{{a.volunteerName}}</td>
+								<!-- <td>{{a.volunteerName}}</td> -->
 								<td>{{hasStarted(a) ? 'In Progress' : 'Not Started'}}</td>
 	
 								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}&period={{currentPeriod}}"

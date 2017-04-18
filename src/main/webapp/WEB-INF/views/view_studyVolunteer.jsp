@@ -74,15 +74,15 @@
 
 
 										<tr>
-											<td>Volunteer ID:</td>
+											<td>Register Number:</td>
 											<td>{{studyVolunteer.volunteerId}}</td>
 										</tr>
 
-
+<!-- 
 										<tr>
 											<td>Volunteer Name:</td>
 											<td>{{studyVolunteer.volunteerName}}</td>
-										</tr>
+										</tr> -->
 
 
 									</tbody>

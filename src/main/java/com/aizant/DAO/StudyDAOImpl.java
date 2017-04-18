@@ -39,18 +39,24 @@ public class StudyDAOImpl implements StudyDAO {
 	}
 
 	@Transactional
+	public void delete(Study deleteStudy) {
+		sessionFactory.getCurrentSession().delete(deleteStudy);
+
+	}
+
+	@Transactional
 	public Study get(String id) {
 		String hql = "from Study where id=" + "'" + id + "'";
 		System.out.println("GOT THIS FAR 3" + hql);
 		Query query = (Query) sessionFactory.getCurrentSession().createQuery(hql);
-		System.out.println("GOT THIS FAR 4" + query);		
+		System.out.println("GOT THIS FAR 4" + query);
 		List<Study> listStudy = (List<Study>) query.getResultList();
 		if (listStudy != null && !listStudy.isEmpty()) {
 			return listStudy.get(0);
 		}
 		return null;
 	}
-	
+
 	//
 	// @Transactional
 	// public Study getEager(int id)
@@ -89,7 +95,7 @@ public class StudyDAOImpl implements StudyDAO {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		List list = session.createQuery("from Study").list();
-		
+
 		return list;
 	}
 
@@ -104,12 +110,12 @@ public class StudyDAOImpl implements StudyDAO {
 
 	@Transactional
 	public List<Study> getStudyByPage(int pageid, int total) {
-		
+
 		Query query = sessionFactory.getCurrentSession().createQuery("FROM Study");
 		query.setFirstResult((pageid - 1) * total);
 		query.setMaxResults(total);
 		List<Study> list = (ArrayList<Study>) query.getResultList();
-	
+
 		return list;
 	}
 
@@ -119,7 +125,6 @@ public class StudyDAOImpl implements StudyDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Long count = (Long) session.createQuery("SELECT COUNT(id) FROM Study").getSingleResult();
 		System.out.println("Count from db " + count);
-		
 
 		return (int) Math.ceil(count / 10.0);
 	}
@@ -128,7 +133,7 @@ public class StudyDAOImpl implements StudyDAO {
 	public List<Study> list() {
 		Session session = sessionFactory.getCurrentSession();
 		List<Study> list = session.createQuery("from Study").list();
-	
+
 		return list;
 	}
 
