@@ -11,6 +11,8 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script
+	src="<%=request.getContextPath()%>/resources/js/moment.min.js" /></script>
+<script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -20,8 +22,35 @@
 	src="<%=request.getContextPath()%>/resources/js/display_add_study_Controller.js" /></script>
 <script
 	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>
+
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+
+
 </head>
-</script>
+
+<style>
+.datepickerdemo md-content {
+	padding-bottom: 200px;
+}
+
+.datepickerdemo .validation-messages {
+	font-size: 11px;
+	color: darkred;
+	margin: 10px 0 0 25px;
+}
+</style>
+
 
 </head>
 <body ng-app="myApp" ng-controller="addStudy">
@@ -83,7 +112,7 @@
 											</tr>
 											<tr>
 												<th>Scheduled Dosing Time:</th>
-												<td><input type="text" ng-model="study.dosingTime"></td>
+												<td><input type="time" ng-model=study.dosingTime></td>
 											</tr>
 											<tr>
 												<th>Periods:</th>
@@ -97,8 +126,9 @@
 											</tr>
 											<tr>
 												<th>Date :</th>
-												<td><input type="text" ng-model="study.date"
-													placeholder="dd/mm/yyyy"></td>
+												<td><md-datepicker ng-model="study.date" md-placeholder="Enter date"
+													md-min-date="minDate" md-max-date="maxDate"></md-datepicker></td> 
+												
 											</tr>
 											<tr>
 												<th>Number of samples:</th>
@@ -135,13 +165,13 @@
 														<td><input type="text" ng-model="a.volunteerId"></td>
 
 													</tr>
-												
+
 
 													<td><input type="submit" value="submit"
 														class="btn-success" /></td>
 
 												</table>
-												
+
 											</td>
 
 

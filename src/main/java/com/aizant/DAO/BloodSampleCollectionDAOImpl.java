@@ -30,6 +30,11 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 		return bloodSampleCollection.getId();
 	}
 	@Transactional
+	public void delete(BloodSampleCollection BloodSampleCollection) {
+		sessionFactory.getCurrentSession().delete(BloodSampleCollection);
+
+	}	
+	@Transactional
 	public void delete(String id) {
 		BloodSampleCollection BloodSampleCollectionToDelete =new BloodSampleCollection();
 		BloodSampleCollectionToDelete.setId(id);

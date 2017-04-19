@@ -157,6 +157,8 @@
 								<td>{{x.comments}}</td>
 								<td><a ng-click="openDeleteModal(x.id)"><span
 										class="glyphicon glyphicon-trash"></span></a>
+										<a ng-click="openViewModal(x)"><span
+										class="glyphicon glyphicon-eye-open"></span></a>
 										
 										</td>
 

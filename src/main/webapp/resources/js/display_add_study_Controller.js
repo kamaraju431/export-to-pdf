@@ -1,8 +1,11 @@
-var app = angular.module('myApp', ['aizant.directives']);
+var app = angular.module('myApp', ['aizant.directives', 'ngMaterial','ngMessages']);
+app.config(function($mdDateLocaleProvider) {
+	$mdDateLocaleProvider.formatDate = function(date) {
+		return moment(date).format('DD/MMM/YYYY');
+	};
+});
 
-app.controller('addStudy', function($scope, $http, $log, $window) {
-	// $http.post('/add_study').then(function(response){
-	// });
+app.controller('addStudy', function($scope, $http, $log, $window) {	
 	$scope.sampleCount = "1";
 	$scope.volunteerCount = "1";
 	$scope.study = {
@@ -64,7 +67,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 				$scope.study.studyVolunteers.pop("");
 		}
 	});
-	
+
 
 	$scope.addStudy = function() {
 		$http.post('/aizantit/store_study', $scope.study).then(
@@ -76,6 +79,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 					$log.log(url);
 					$window.location.href = url;
 				});
+	 
 
 	};
 

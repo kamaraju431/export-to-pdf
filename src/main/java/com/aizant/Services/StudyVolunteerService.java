@@ -33,10 +33,13 @@ public class StudyVolunteerService implements IStudyVolunteerService{
     
     @Transactional
     public void delete(StudyVolunteer volunteer) {
+    	
 	for (BloodSampleCollection sampleCollection : volunteer.getBloodSampleCollection()) {
-    		bloodSampleCollectionDao.delete(sampleCollection.getId());
+		System.out.println("blood collection" + sampleCollection);
+    		bloodSampleCollectionDao.delete(sampleCollection);
     		System.out.println("blood collection delete" + sampleCollection.getId());
     	}
     	studyVolunteerDao.delete(volunteer);
     }
+
 }    

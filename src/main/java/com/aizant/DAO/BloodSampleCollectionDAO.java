@@ -10,6 +10,7 @@ import com.aizant.model.StudyVolunteer;public interface BloodSampleCollectionDAO
 
 	public String saveOrUpdate(BloodSampleCollection bloodSampleCollection);
 	public void delete(String id);
+	public void delete(BloodSampleCollection BloodSampleCollectionToDelete);
 	public List getAllBloodSampleCollection();
 	public String deleteBloodSampleCollection(String id);
 /*	  public BloodSampleCollection getbyId(String volunteerId) ;*/

@@ -59,6 +59,11 @@ public class HomeController {
 		ModelAndView m4 = new ModelAndView("Login");
 		return m4;
 	}
+	@RequestMapping("/date")
+	public ModelAndView display1() {
+		ModelAndView m4 = new ModelAndView("date");
+		return m4;
+	}
 
 
 	/*
@@ -71,6 +76,7 @@ public class HomeController {
 		
 		return m1;
 	}
+	
 
 	/*
 	 * ------------------------------------- Edit User
