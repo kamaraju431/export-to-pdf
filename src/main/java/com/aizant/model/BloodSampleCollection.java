@@ -31,7 +31,7 @@ public class BloodSampleCollection {
 	@Expose
 	private String comments;
 	@Expose
-	private String volunteerId;
+	private String registerNumber;
 	public String getId() {
 		return id;
 	}
@@ -68,16 +68,18 @@ public class BloodSampleCollection {
 	public void setScanTime(String scanTime) {
 		this.scanTime = scanTime;
 	}
-	public String getVolunteerId() {
-		return volunteerId;
-	}
-	public void setVolunteerId(String volunteerId) {
-		this.volunteerId = volunteerId;
-	}
+	
 	public int getAliquot() {
 		return aliquot;
 	}
 	public void setAliquot(int aliquot) {
 		this.aliquot = aliquot;
 	}
+	public String getRegisterNumber() {
+		return registerNumber;
+	}
+	public void setRegisterNumber(String registerNumber) {
+		this.registerNumber = registerNumber;
+	}
+	
 }

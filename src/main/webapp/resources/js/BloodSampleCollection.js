@@ -14,6 +14,29 @@ var modalTemplate =
 
 		"<button ng-click='delete()' type='button' class='btn btn-danger' data-dismiss='modal'>Delete</button>	</div>";
 
+var viewTemplate = "<div class='modal-content'>"
+	+"<div class='modal-header'>"
+	+ "<button ng-click='x()'type='button' class='close' data-dismiss='modal'>x</button>"
+	+ "<h4 class='modal-title'>Aliquots</h4>"
+	+ "</div>"
+	+ "	<div class='modal-body'>"
+	+"<table class='table table-hover table-bordered'>"
+	+"<tr>"
+	+"<th>Aliquot</th>"
+    +"<th>Date</th>"
+	+"<th>Time</th>"
+	+"<th>Period</th>"
+	+"<th>Scan Time</th>"
+
+    +"</tr>" +"<tr ng-repeat='x in aliquots'>" +"<td>{{x.aliquot}}</td>" +"<td>{{x.date}}</td>" +"<td>{{x.time}}</td>" +"<td>{{x.period}}</td>" +"<td>{{x.scanTime}}</td>"
+    +"</tr>"
+ 
+	+"</table>"
+
+	+"</div>"
+	+ "<div class='modal-footer'>"
+	+ "<button ng-click='cancel()' type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"
+	+"</div";
 app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $uibModal) {
 	var id = $location.search().id;
 	var currentPeriod = parseInt($location.search().period);
@@ -77,9 +100,34 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $
 
 		});
 		
-	
+	modalInstance.result.then(function( BloodSampleColletionId) {  
+			
+			
+		})
 		
 	  };
+	  $scope.openViewModal = function(selectedSample) {
+		var aliquotsForSample = $scope.currentSamples.filter(function(sample) {
+			return selectedSample.time === sample.time;
+		});
+		
+		console.log('VEDHA aliquotsForSample', aliquotsForSample);
+
+		  var modalInstance = $uibModal.open({
+				template : viewTemplate,
+				controller : 'viewModalController',
+				resolve : {
+					aliquots: function() {
+						return aliquotsForSample;
+					}		
+				}
+
+			});
+			
+		
+			
+		  };
+
 	
 });
 
@@ -90,7 +138,7 @@ app.controller('deleteModalController', function($scope, $http, $uibModalInstanc
 	$scope.delete = function() {
 		var body = { BloodSampleColletionId: $scope.id };
 		console.log('VEDHA deleting', body);
-		$http.post('deleteBloodSampleCollecion?BloodSampleColletionId=' + $scope.id).then(function(response) {
+		$http.post('/aizantit/deleteBloodSampleCollecion?BloodSampleColletionId=' + $scope.id).then(function(response) {
 			console.log('VEDHAAA HEREE DELETED');
 			$uibModalInstance.close('deleted');	
 			location.reload();
@@ -107,3 +155,16 @@ app.controller('deleteModalController', function($scope, $http, $uibModalInstanc
 		$uibModalInstance.dismiss('x');
 	};
 });
+
+app.controller('viewModalController', function($scope, $http, aliquots, $uibModalInstance) {
+	$scope.aliquots = aliquots;
+	
+	$scope.cancel = function() {
+		$uibModalInstance.dismiss('cancel');
+
+	};
+	$scope.x = function() {
+		$uibModalInstance.dismiss('x');
+	};
+});
+

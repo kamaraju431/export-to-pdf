@@ -20,10 +20,6 @@ public interface StudyVolunteerDAO {
 	public List getAllStudyVolunteer();
 	public List getAllStudyCollections();
 
-
-/*
-	public String deleteStudyVolunteer(String id);*/
-
 	public List<StudyVolunteer> getExperimentByPage(int pageid, int total);
 
 	public int getPageCount();

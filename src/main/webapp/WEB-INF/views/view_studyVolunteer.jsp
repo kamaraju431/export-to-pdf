@@ -42,6 +42,7 @@
 <script
 	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-tpls-2.5.0.min.js" /></script>
 
+
 </head>
 <base href="/aizantit">
 <body ng-app="myApp"
@@ -75,15 +76,8 @@
 
 										<tr>
 											<td>Register Number:</td>
-											<td>{{studyVolunteer.volunteerId}}</td>
+											<td>{{studyVolunteer.registerNumber}}</td>
 										</tr>
-
-<!-- 
-										<tr>
-											<td>Volunteer Name:</td>
-											<td>{{studyVolunteer.volunteerName}}</td>
-										</tr> -->
-
 
 									</tbody>
 								</table>
@@ -157,7 +151,11 @@
 								<td>{{x.comments}}</td>
 								<td><a ng-click="openDeleteModal(x.id)"><span
 										class="glyphicon glyphicon-trash"></span></a>
-										
+										<a ng-click="openViewModal(x)"><span
+										class="glyphicon glyphicon-eye-open"></span></a>
+										<a
+										href="${pageContext.servletContext.contextPath}/edit_BloodSampleCollection?id={{x.id}}&view_studyVolunteer={{studyVolunteer.id}}&period={{selectedPeriod}}" target="_self"><span
+										class="glyphicon glyphicon-pencil"></span></a>
 										</td>
 
 

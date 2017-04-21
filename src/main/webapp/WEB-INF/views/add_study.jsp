@@ -63,8 +63,8 @@
 											<th>StudyType:</th>
 											<td><select ng-model="study.studyType" required>
 													<option value="selectType">selectType</option>
-													<option value="piolet">piolet</option>
-													<option value="pivotal">pivotal</option>
+													<option value="piolet">Pilot</option>
+													<option value="pivotal">Pivotal</option>
 
 											</select></td>
 											</tr>
@@ -73,7 +73,7 @@
 												<td><input type="text" ng-model="study.aliquot"></td>
 											</tr>
 											<tr>
-												<th>sampleCollectionSize(ml):</th>
+												<th>SampleCollectionSize(ml):</th>
 												<td><input type="text"
 													ng-model="study.sampleCollectionSize_in_ml"></td>
 											</tr>
@@ -97,7 +97,7 @@
 											</tr>
 											<tr>
 												<th>Date :</th>
-												<td><input type="text" ng-model="study.date"
+												<td><input type="datetime-local" ng-model="study.date"
 													placeholder="dd/mm/yyyy"></td>
 											</tr>
 											<tr>
@@ -132,7 +132,7 @@
 
 													</tr>
 													<tr type="text" ng-repeat="a in study.studyVolunteers">
-														<td><input type="text" ng-model="a.volunteerId"></td>
+														<td><input type="text" ng-model="a.registerNumber"></td>
 
 													</tr>
 												

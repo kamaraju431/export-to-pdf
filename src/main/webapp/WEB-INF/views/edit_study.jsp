@@ -139,7 +139,7 @@
 																
 															</tr>
 															<tr type="text" ng-repeat="a in study.studyVolunteers">
-																<td><input type="text" ng-model="a.volunteerId"></td>
+																<td><input type="text" ng-model="a.registerNumber"></td>
 																
 															</tr>
 															</tr>

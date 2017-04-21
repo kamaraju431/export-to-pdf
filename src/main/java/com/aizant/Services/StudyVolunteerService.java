@@ -12,7 +12,8 @@ import com.aizant.model.StudyVolunteer;
 @Transactional
 @Service
 public class StudyVolunteerService implements IStudyVolunteerService{
-    @Autowired
+
+	@Autowired
     private StudyVolunteerDAO studyVolunteerDao;
   
     @Autowired
@@ -32,11 +33,25 @@ public class StudyVolunteerService implements IStudyVolunteerService{
     }
     
     @Transactional
-    public void delete(StudyVolunteer volunteer) {
-	for (BloodSampleCollection sampleCollection : volunteer.getBloodSampleCollection()) {
-    		bloodSampleCollectionDao.delete(sampleCollection.getId());
+    public void delete(StudyVolunteer volunteer) {	
+    	for (BloodSampleCollection sampleCollection : volunteer.getBloodSampleCollection()) {
+		System.out.println("blood collection" + sampleCollection);
+    		bloodSampleCollectionDao.delete(sampleCollection);
     		System.out.println("blood collection delete" + sampleCollection.getId());
     	}
-    	studyVolunteerDao.delete(volunteer);
+		studyVolunteerDao.delete(volunteer);
     }
+    
+    @Transactional
+    public void deleteFromStudy(String volunteerId) {	
+    	StudyVolunteer volunteer = studyVolunteerDao.get(volunteerId);
+    	System.out.println("Study volunteer to delete" + volunteer.getBloodSampleCollection());
+    	for (BloodSampleCollection sampleCollection : volunteer.getBloodSampleCollection()) {
+		System.out.println("blood collection" + sampleCollection);
+    		bloodSampleCollectionDao.delete(sampleCollection);
+    		System.out.println("blood collection delete" + sampleCollection.getId());
+    	}
+		studyVolunteerDao.delete(volunteer);
+    }
+
 }    

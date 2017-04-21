@@ -75,13 +75,12 @@ public class StudyVolunteerDAOImpl implements StudyVolunteerDAO {
 		return list;
 	}
 
-/*	@Transactional
-	public String deleteStudyVolunteer(String id) {
+	/*@Transactional
+	public void deleteFromStudy(String id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		StudyVolunteer study_Volunteer = (StudyVolunteer) session.load(StudyVolunteer.class, id);
 		session.delete(study_Volunteer);
-		return id;
 
 	}*/
 

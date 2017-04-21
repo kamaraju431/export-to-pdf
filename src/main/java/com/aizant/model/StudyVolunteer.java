@@ -28,13 +28,8 @@ public class StudyVolunteer {
 	@Column(name="studyVolunteer_id")
     @Expose
 	private String id;
-	
-
 	@Expose
-	private String volunteerId;
-	@Expose
-	private String volunteerName;
-	
+	private String registerNumber;
 	@OneToMany(fetch = FetchType.LAZY)
 	@Expose
 	private List<BloodSampleCollection> bloodSampleCollection;
@@ -62,20 +57,13 @@ public class StudyVolunteer {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public String getVolunteerId() {
-		return volunteerId;
+
+	public String getRegisterNumber() {
+		return registerNumber;
 	}
 
-	public void setVolunteerId(String volunteerId) {
-		this.volunteerId = volunteerId;
-	}
-	public String getVolunteerName() {
-		return volunteerName;
-	}
-
-	public void setVolunteerName(String volunteerName) {
-		this.volunteerName = volunteerName;
+	public void setRegisterNumber(String registerNumber) {
+		this.registerNumber = registerNumber;
 	}
 
 	public Study getStudy() {

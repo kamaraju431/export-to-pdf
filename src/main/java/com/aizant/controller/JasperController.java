@@ -32,6 +32,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 @Controller
 public class JasperController {
 
+
 	@Autowired
 	private StudyDAO studyDAO;
 
@@ -58,6 +59,8 @@ public class JasperController {
 		Study study = studyService.get(id);
 		List<SampleTime> sampleTimes = study.getSampleTime();		
 		List<StudyVolunteer> studyVolunteers = (List<StudyVolunteer>) study.getStudyVolunteers();
+		
+	
 		
 		JRDataSource studyDataSource = new JRBeanCollectionDataSource(studyVolunteers);
 		List<Aliquot> aliquots = new ArrayList<Aliquot>();
@@ -109,6 +112,7 @@ public class JasperController {
 			}
 
 		}
+		  
 
 		System.out.println("after hello1");
 		HashMap<String, List<JRDataSource>> baseDataSourcesMap = new HashMap<String, List<JRDataSource>>();
@@ -167,13 +171,14 @@ public class JasperController {
 				bloodCollections.add(sample);
 			}
 		}
+	
 
 		JRDataSource jrDataSource = new JRBeanCollectionDataSource(bloodCollections);
 
 		HashMap<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("Period_Num", period);
 		parameters.put("Project_Num", studyVolunteer.getStudy().getClientStudyId());
-		parameters.put("Subject_Num", studyVolunteer.getVolunteerId());
+		parameters.put("Subject_Num", studyVolunteer.getRegisterNumber());
 		parameters.put("Volume", studyVolunteer.getStudy().getSampleCollectionSize_in_ml());
 		parameters.put("anticougulant", studyVolunteer.getStudy().getAnticoagulant());
 		parameters.put("dosingTime", studyVolunteer.getStudy().getDosingTime());
@@ -183,6 +188,9 @@ public class JasperController {
 		modelMap.put("parameters", parameters);
 		modelMap.put("dataSource", jrDataSource);
 		return new ModelAndView("SampleCollections");
+	
+	    
 
 	}
+	
 }

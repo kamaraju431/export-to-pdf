@@ -5,14 +5,14 @@ app.controller('add_BloodSampleCollection', function($scope, $http, $log, $windo
 	// });
 
 	$scope.study_Volunteer= {
-			volunteerId : ' ',
+			registerNumber : ' ',
 			volunteerName : '',
 			bloodSampleCollection : [{
 				date : ' ',
 				time : '',
 				period:'',
 				scanTime:'',
-				volunteerId:'',
+				registerNumber:'',
 				comments:'' 
 			}, 
 			],

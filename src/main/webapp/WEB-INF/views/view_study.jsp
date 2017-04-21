@@ -35,7 +35,13 @@
 
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_view_study_Controller.js" /></script>
-
+<!-- Bootstrap modals -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/ui-bootstrap-custom-2.5.0-csp.css" />
+<script
+	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-2.5.0.min.js" /></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/ui-bootstrap-custom-tpls-2.5.0.min.js" /></script>
 </head>
 <body ng-app="viewStudyApp" ng-controller="viewStudyController">
 	<%@ include file="/WEB-INF/views/template/header.jsp"%>
@@ -90,8 +96,7 @@
 										<tr>
 									</tbody>
 								</table>
-								 <a
-									href="/aizantit/edit_study?id=${study.id}" target="_self"
+								<a href="/aizantit/edit_study?id=${study.id}" target="_self"
 									class="btn btn-primary">EDIT</a> <a
 									href="/aizantit/Jasper?id=${study.id}" target="_self"
 									class="btn btn-primary">PRINT</a>
@@ -125,27 +130,30 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div>
 
 						<table class="table table-hover table-bordered">
 							<tr>
 
 								<th>Register Number</th>
-								<!-- <th>Volunteer Name</th> -->
+								
 								<th>Status</th>
 								<th>Action</th>
-						</tr>
+							</tr>
 							<tr ng-repeat="a in study.studyVolunteers">
 
-								<td>{{a.volunteerId}}</td>
+								<td>{{a.registerNumber}}</td>
 
-								<!-- <td>{{a.volunteerName}}</td> -->
-								<td>{{hasStarted(a) ? 'In Progress' : 'Not Started'}}</td>
-	
-								<td><a ng-href="/aizantit/view_studyVolunteer?id={{a.id}}&period={{currentPeriod}}"
-									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a></td>
 							
+								<td>{{hasStarted(a) ? 'In Progress' : 'Not Started'}}</td>
+
+								<td><a
+									ng-href="/aizantit/view_studyVolunteer?id={{a.id}}&period={{currentPeriod}}"
+									target="_self"><span class="glyphicon glyphicon-eye-open"></span></a>
+									<a ng-click="openDeleteModal(a.id)"><span
+										class="glyphicon glyphicon-trash"></span></a></td>
+
 							</tr>
 						</table>
 					</div>

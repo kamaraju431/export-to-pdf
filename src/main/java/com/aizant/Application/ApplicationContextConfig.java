@@ -38,7 +38,7 @@ public class ApplicationContextConfig {
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizantTracking");
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizant");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;

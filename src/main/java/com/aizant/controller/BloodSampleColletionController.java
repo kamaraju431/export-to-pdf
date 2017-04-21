@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.BloodSampleCollectionDAO;
+import com.aizant.Services.IBloodSampleService;
 import com.aizant.model.BloodSampleCollection;
+import com.aizant.model.User;
 import com.google.gson.Gson;
 
 @Controller
@@ -32,22 +34,29 @@ public class BloodSampleColletionController {
 	
 	@Autowired
 	private BloodSampleCollectionDAO bloodSampleColletionDao;
-	
+	@Autowired
+	private IBloodSampleService bloodSampleService;
 	SessionFactory sessionFactory;
 
-
+	
 	
 	/*
 	 * ------------------------------------- Update User
 	 * --------------------------------------
 	 */
+	@RequestMapping(value = "edit_BloodSampleCollection", method = RequestMethod.GET)
+	public ModelAndView editBloodSample(@RequestParam String id,
+			@ModelAttribute("BloodSampleCollection") BloodSampleCollection bloodSampleCollection) {
+		BloodSampleCollection u1 = bloodSampleColletionDao.get(id);
+		return new ModelAndView("edit_BloodSampleCollection", "bloodSampleCollection", u1);
+	}
 	
 	@RequestMapping(value = "/update_BloodSampleColletion", method = RequestMethod.POST)
 	public ModelAndView updateBloodSampleColletion(HttpServletRequest request,@RequestParam String id,@ModelAttribute("BloodSampleColletion") BloodSampleCollection bloodSampleColletion) {
 		System.out.println(bloodSampleColletion.getId());
 	
 		bloodSampleColletionDao.saveOrUpdate(bloodSampleColletion);
-		return new ModelAndView("redirect:/view_studyVolunteer");
+		return new ModelAndView("redirect:/view_studyVolunteer?id");
 	}
 	/*
 	 * ------------------------------------- Store User
@@ -127,7 +136,8 @@ public class BloodSampleColletionController {
 	public @ResponseBody String delete(@RequestParam String BloodSampleColletionId) {
 		System.out.println("hello " + BloodSampleColletionId);
 
-		bloodSampleColletionDao.delete(BloodSampleColletionId);
+		//bloodSampleColletionDao.delete(BloodSampleColletionId);
+		bloodSampleService.deleteFromStudyVolunteer(BloodSampleColletionId);
 		Gson u = new Gson();
 		String json = u.toJson(BloodSampleColletionId);
 		return json;

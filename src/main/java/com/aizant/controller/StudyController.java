@@ -143,7 +143,7 @@ public class StudyController {
 		System.out.println("iam in controller");
 		
 		studyService.delete( studyTypeId);
-		System.out.println("study id in controller"+ studyService.get(studyTypeId));
+		//System.out.println("study id in controller"+ studyService.get(studyTypeId));
 
 		Gson u = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String json = u.toJson( studyTypeId);

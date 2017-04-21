@@ -2,8 +2,10 @@ package com.aizant.controller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,11 +70,11 @@ public class BarCodeController {
 		
 		BloodSampleCollection scannedSample = new BloodSampleCollection();
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
 		Date timestamp = new Date();
 
-		scannedSample.setVolunteerId(volunteerId);
+		scannedSample.setRegisterNumber(volunteerId);
 		scannedSample.setDate(dateFormat.format(timestamp));
 		scannedSample.setScanTime(timeFormat.format(timestamp));
 		scannedSample.setAliquot(Integer.parseInt(aliquot));
@@ -83,7 +85,14 @@ public class BarCodeController {
 
 		bloodSampleCollectionDao.saveOrUpdate(scannedSample);
 		
-		studyVolunteer.getBloodSampleCollection().add(scannedSample);
+		if (studyVolunteer.getBloodSampleCollection().size() > 0) {
+			studyVolunteer.getBloodSampleCollection().add(scannedSample);
+
+		} else {
+			List<BloodSampleCollection> bloodSamples = new ArrayList<BloodSampleCollection>();
+			bloodSamples.add(scannedSample);
+			studyVolunteer.setBloodSampleCollection(bloodSamples);
+		}
 		studyVolunteerDao.saveOrUpdate(studyVolunteer);
 		return "";
 	}

@@ -16,7 +16,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		dosingTime:'',
 		studyType:'selectType',
 		studyVolunteers : [{
-			volunteerId : 'V ID 1',
+			registerNumber : 'V ID 1',
 		} ],
 		sampleTime:[{
 			timePoint:0.0,
@@ -56,7 +56,7 @@ app.controller('addStudy', function($scope, $http, $log, $window) {
 		if (sampleLength < newLength) {
 			for (var i = 0; i < (newLength - sampleLength); i++)
 				$scope.study.studyVolunteers.push({
-					volunteerId : 'V ID ' + (sampleLength + i + 1)
+					registerNumber : 'V ID ' + (sampleLength + i + 1)
 					
 				});
 		} else {

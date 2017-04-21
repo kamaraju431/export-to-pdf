@@ -41,7 +41,7 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 			if (sampleLength < newLength) {
 				for (var i = 0; i < (newLength - sampleLength); i++)
 					$scope.study.studyVolunteers.push({
-						volunteerId : 'V ID ' + (sampleLength + i + 1)
+						registerNumber : 'V ID ' + (sampleLength + i + 1)
 				
 					});
 			} else {
