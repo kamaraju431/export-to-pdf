@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="net.sf.jasperreports.engine.*"%>
 <%@ page import="net.sf.jasperreports.engine.data.*"%>
-<%@ page import="com.aizant.model.Sample"%>
+
 <%@ page import="com.aizant.model.Study"%>
 <%@ page import="com.aizant.model.Aliquot"%>
 <%@ page import="com.aizant.model.StudyVolunteer"%>

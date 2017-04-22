@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.annotations.Expose;
 
@@ -39,6 +40,7 @@ public class Study {
 	@Expose
 	private String clientStudyId;
 	@Expose
+	@JsonFormat(pattern ="DD/MMM/YYYY")
 	private String date;
 	@Expose
 	private String anticoagulant;

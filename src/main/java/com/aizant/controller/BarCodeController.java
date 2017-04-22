@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,47 +54,19 @@ public class BarCodeController {
 	
 	@RequestMapping(value = "/barcode", method = RequestMethod.POST)
 	@Transactional
-	public @ResponseBody String scanCode(@RequestBody String scannedCode) {
-		System.out.println("SCANNED CODE" + scannedCode);
-		String[] parts = scannedCode.split("_");
-		System.out.println("part" + scannedCode);
-		String volunteerId = parts[0];
-		System.out.println("volunteerId" + volunteerId);
-		String period = parts[1];
-		System.out.println("period" + period);
-		String aliquot = parts[2];
-		System.out.println("aliquot" + aliquot);
-		String timepointId = parts[3];
-		System.out.println("timepoint" + timepointId);
-		StudyVolunteer studyVolunteer = studyVolunteerService.get(volunteerId, true);
-		SampleTime timepointConfig = findSampleTime(studyVolunteer.getStudy().getSampleTime(),timepointId);
-		
-		BloodSampleCollection scannedSample = new BloodSampleCollection();
+	public @ResponseBody String scanCode(@RequestBody int scannedSampleId) {
+		BloodSampleCollection scannedSample = bloodSampleCollectionDao.get(scannedSampleId);		
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd/MMM/yyyy");
 		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
 		Date timestamp = new Date();
 
-		scannedSample.setVolunteerId(volunteerId);
 		scannedSample.setDate(dateFormat.format(timestamp));
 		scannedSample.setScanTime(timeFormat.format(timestamp));
-		scannedSample.setAliquot(Integer.parseInt(aliquot));
-		scannedSample.setPeriod(Integer.parseInt(period));
-		scannedSample.setTime(timepointConfig.getTimePoint());
 		System.out.println("date" + scannedSample.getDate());
 		System.out.println("time" + scannedSample.getScanTime());
 
 		bloodSampleCollectionDao.saveOrUpdate(scannedSample);
-		
-		if (studyVolunteer.getBloodSampleCollection().size() > 0) {
-			studyVolunteer.getBloodSampleCollection().add(scannedSample);
-
-		} else {
-			List<BloodSampleCollection> bloodSamples = new ArrayList<BloodSampleCollection>();
-			bloodSamples.add(scannedSample);
-			studyVolunteer.setBloodSampleCollection(bloodSamples);
-		}
-		studyVolunteerDao.saveOrUpdate(studyVolunteer);
 		return "";
 	}
 }

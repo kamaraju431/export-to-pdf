@@ -2,6 +2,7 @@ package com.aizant.DAO;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 
 import org.hibernate.Session;
@@ -25,9 +26,9 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 		this.sessionFactory=sessionFactory;
 	}
 	@Transactional
-	public String saveOrUpdate(BloodSampleCollection bloodSampleCollection) {
+	public void saveOrUpdate(BloodSampleCollection bloodSampleCollection) {
 		sessionFactory.getCurrentSession().saveOrUpdate(bloodSampleCollection);
-		return bloodSampleCollection.getId();
+
 	}
 	@Transactional
 	public void delete(BloodSampleCollection BloodSampleCollection) {
@@ -35,14 +36,14 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 
 	}	
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		BloodSampleCollection BloodSampleCollectionToDelete =new BloodSampleCollection();
 		BloodSampleCollectionToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(BloodSampleCollectionToDelete);
 		
 	}
 	@Transactional
-	public BloodSampleCollection get(String id)
+	public BloodSampleCollection get(int id)
 	{
 		String hql ="from BloodSampleCollection where id="+"'"+id+"'";
 		Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);
@@ -66,7 +67,7 @@ public List getAllBloodSampleCollection() {
 	}
 
 @Transactional
-public String deleteBloodSampleCollection(String id) {
+public int deleteBloodSampleCollection(int id) {
 	// TODO Auto-generated method stub
 	Session session=sessionFactory.openSession();
 	org.hibernate.Transaction tx=session.beginTransaction();
@@ -98,6 +99,7 @@ public BloodSampleCollection getbyId(String volunteerId) {
 	return null;
 
 }*/
+
 
 
 }

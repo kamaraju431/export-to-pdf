@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.StudyVolunteerDAO;
 import com.aizant.Services.IStudyVolunteerService;
-import com.aizant.gson.GsonStudyExclusionStrategy;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
 import com.google.gson.Gson;
@@ -102,14 +101,14 @@ public class StudyVolunteerController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/delete_studyVolunteer", method = RequestMethod.POST)
-	public @ResponseBody String deleteexp(@RequestParam String id) {
-		StudyVolunteer volunteerToDelete = new StudyVolunteer();
-		volunteerToDelete.setId(id);
-		studyVolunteerService.delete(volunteerToDelete);
+	public @ResponseBody String deleteStudyVolunteer(@RequestParam String id) {
+		//studyVolunteerService.delete(volunteerToDelete);
+		studyVolunteerService.deleteFromStudy(id);
 		Gson u = new Gson();
 		String json = u.toJson(id);
 		return json;
 	}
+	
 
 	/*
 	 * ------------------------------------- Delete PaatientTrail
@@ -122,7 +121,6 @@ public class StudyVolunteerController {
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 		String jsonStudyVolunteer = gson.toJson(studyVolunteer);
 		
-		System.out.println("STUDY VOLUNTEER BLOOD SAMPLE" + studyVolunteer.getBloodSampleCollection().get(0).getId());
 		System.out.println("STUDY VOLUNTEER GSON" + studyVolunteer);
 		Study study = studyVolunteer.getStudy();
 		return "{ \"studyVolunteer\": " +  jsonStudyVolunteer + 

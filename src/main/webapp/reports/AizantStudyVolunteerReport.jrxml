@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-15T18:01:29 -->
+<!-- 2017-04-21T16:44:58 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AizantStudyVolunteerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c265d5d3-c923-43c3-ae17-affa6d591970">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="subreportPath" class="java.lang.String" isForPrompting="false">
@@ -24,8 +24,7 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="id" class="java.lang.String"/>
-	<field name="volunteerId" class="java.lang.String"/>
+	<field name="studyVolunteer" class="com.aizant.model.StudyVolunteer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -81,30 +80,27 @@
 					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseParameters()]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="baseDataSource">
-					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource().get($F{id})]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource().get($F{studyVolunteer}.getId())]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="baseDataSource1">
-					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource1().get($F{id})]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource1().get($F{studyVolunteer}.getId())]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="baseDataSource2">
-					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource2().get($F{id})]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource2().get($F{studyVolunteer}.getId())]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="baseDataSource3">
-					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource3().get($F{id})]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource3().get($F{studyVolunteer}.getId())]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="baseDataSource4">
-					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource4().get($F{id})]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getBaseDataSource4().get($F{studyVolunteer}.getId())]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="subreportPath">
 					<subreportParameterExpression><![CDATA[$P{volunteerParameters}.getSubreportPath()]]></subreportParameterExpression>
 				</subreportParameter>
-				<subreportParameter name="id">
-					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				<subreportParameter name="volunteer">
+					<subreportParameterExpression><![CDATA[$F{studyVolunteer}]]></subreportParameterExpression>
 				</subreportParameter>
-				<subreportParameter name="volunteerId">
-					<subreportParameterExpression><![CDATA[$F{volunteerId}]]></subreportParameterExpression>
-				</subreportParameter>
-				<dataSourceExpression><![CDATA[$P{volunteerDataSource}.get($F{id})]]></dataSourceExpression>
+				<dataSourceExpression><![CDATA[$P{volunteerDataSource}.get($F{studyVolunteer}.getId())]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subreportPath}]]></subreportExpression>
 			</subreport>
 			<break>

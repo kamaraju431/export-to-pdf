@@ -50,6 +50,7 @@ public class ApplicationContextConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.hbm2ddl.auto", "update");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		//properties.put("hibernate.id.new_generator_mappings","true");
 
 		return properties;
 

@@ -2,6 +2,8 @@ package com.aizant.controller;
 
 
 import java.util.List;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aizant.DAO.BloodSampleCollectionDAO;
+
+import com.aizant.Services.IStudyVolunteerService;
 import com.aizant.model.BloodSampleCollection;
+import com.aizant.model.Study;
+import com.aizant.model.StudyVolunteer;
 import com.google.gson.Gson;
 
 @Controller
@@ -32,6 +39,8 @@ public class BloodSampleColletionController {
 	
 	@Autowired
 	private BloodSampleCollectionDAO bloodSampleColletionDao;
+	@Autowired
+	private IStudyVolunteerService studyVolunteerService;
 	
 	SessionFactory sessionFactory;
 
@@ -55,17 +64,17 @@ public class BloodSampleColletionController {
 	 */
 
 	@RequestMapping(value="/store_BloodSampleCollection", method=RequestMethod.POST)
-	public ModelAndView store(@Valid @ModelAttribute("BloodSampleCollection") BloodSampleCollection bloodSampleCollection, BindingResult result) {
+	@Transactional
+	public ModelAndView store(HttpServletRequest request,@ModelAttribute BloodSampleCollection bloodSampleCollection, @RequestParam String volunteerId, BindingResult result) {
+		/*
 		if (result.hasErrors()) {
 			System.out.println("hi");
-
+ 
 			return new ModelAndView("redirect:/dispaly_study");
-		}
+		}*/
 	
-
-	
-		bloodSampleColletionDao.saveOrUpdate(bloodSampleCollection);
-		return new ModelAndView("redirect:/add_BloodSampleCollection");
+		studyVolunteerService.addBloodSample(volunteerId,bloodSampleCollection);
+		return new ModelAndView("redirect:/view_StudyVolunteer");
 	}
 	
 	/*
@@ -111,7 +120,7 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "view_BloodSampleColletion", method = RequestMethod.GET)
-	public ModelAndView viewBloodSampleColletion(@RequestParam String id, @ModelAttribute BloodSampleCollection bloodSampleColletion) {
+	public ModelAndView viewBloodSampleColletion(@RequestParam int id, @ModelAttribute BloodSampleCollection bloodSampleColletion) {
 		System.out.println(id);
 		System.out.println(bloodSampleColletion.getId());
 		BloodSampleCollection SampleColletion = bloodSampleColletionDao.get(id);
@@ -124,12 +133,11 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/deleteBloodSampleCollecion", method = RequestMethod.POST)
-	public @ResponseBody String delete(@RequestParam String BloodSampleColletionId) {
-		System.out.println("hello " + BloodSampleColletionId);
-
-		bloodSampleColletionDao.delete(BloodSampleColletionId);
+	public @ResponseBody String delete(@RequestParam int bloodSampleColletionId,@RequestParam String volunteerId) {
+		System.out.println("hello " + bloodSampleColletionId + " " + volunteerId);
+		studyVolunteerService.deleteBloodSample(volunteerId, bloodSampleColletionId);
 		Gson u = new Gson();
-		String json = u.toJson(BloodSampleColletionId);
+		String json = u.toJson(bloodSampleColletionId);
 		return json;
 	}
 

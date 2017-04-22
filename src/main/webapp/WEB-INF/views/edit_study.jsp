@@ -21,6 +21,22 @@
 	src="<%=request.getContextPath()%>/resources/js/convertToNumber.js" /></script>
 <script
 	src="<%=request.getContextPath()%>/resources/js/display_edit_study_Controller.js" /></script>
+
+
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/moment.min.js" /></script>
+
 </head>
 </script>
 </head>
@@ -60,8 +76,7 @@
 													<td><input type="text" ng-model="study.name"></td>
 												</tr>
 												<th>StudyType:</th>
-												<td><select ng-model="study.studyType"
-													 required>
+												<td><select ng-model="study.studyType" required>
 														<option value="piolet">piolet</option>
 														<option value="pivotal">pivotal</option>
 
@@ -81,7 +96,7 @@
 												</tr>
 												<tr>
 													<th>Scheduled Dosing Time:</th>
-													<td><input type="text" ng-model="study.dosingTime"></td>
+													<td><input type="text" ng-model=study.dosingTime ></td>
 												</tr>
 												<tr>
 													<th>Periods:</th>
@@ -95,8 +110,10 @@
 												</tr>
 												<tr>
 													<th>Date :</th>
-													<td><input type="text" ng-model="study.date"
-														placeholder="dd/mm/yyyy"></td>
+													<td><md-datepicker ng-model="study.date"
+															md-placeholder="Enter date" md-min-date="minDate"
+															md-max-date="maxDate"></md-datepicker></td>
+
 												</tr>
 												<tr>
 													<th>Number of samples:</th>
@@ -136,11 +153,11 @@
 														<table class="table table-hover table-bordered">
 															<tr>
 																<th>Id</th>
-																
+
 															</tr>
 															<tr type="text" ng-repeat="a in study.studyVolunteers">
-																<td><input type="text" ng-model="a.volunteerId"></td>
-																
+																<td><input type="text" ng-model="a.registerNumber"></td>
+
 															</tr>
 															</tr>
 															<td><input type="submit" value="submit"
@@ -170,5 +187,5 @@
 
 
 </body>
-<%@ include file="/WEB-INF/views/template/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/template/footer.jsp"%> --%>
 </html>

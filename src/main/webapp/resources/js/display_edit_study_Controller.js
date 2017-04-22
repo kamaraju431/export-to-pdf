@@ -1,5 +1,12 @@
-var app = angular.module('editStudyApp', ['aizant.directives'], function($locationProvider) {
+var app = angular.module('editStudyApp', ['aizant.directives','ngMaterial','ngMessages'],
+	function($locationProvider) {
     $locationProvider.html5Mode(true);
+    
+});
+app.config(function($mdDateLocaleProvider) {
+	$mdDateLocaleProvider.formatDate = function(date) {
+		return moment(date).format('DD/MMM/YYYY');
+	};
 });
 
 app.controller('editStudyController', function($scope, $http, $log, $window, $location) {
@@ -41,7 +48,7 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 			if (sampleLength < newLength) {
 				for (var i = 0; i < (newLength - sampleLength); i++)
 					$scope.study.studyVolunteers.push({
-						volunteerId : 'V ID ' + (sampleLength + i + 1)
+						registerNumber : 'V ID ' + (sampleLength + i + 1)
 				
 					});
 			} else {
@@ -55,6 +62,8 @@ app.controller('editStudyController', function($scope, $http, $log, $window, $lo
 
 
 	$scope.editStudy = function() {
+		$scope.study.date = moment($scope.study.date).format('DD/MMM/YYYY')
+		$scope.study.dosingTime = moment($scope.study.dosingTime).format('HH:mm')
 		$http.post('/aizantit/store_study', $scope.study).then(
 				function(result) {
 					console.log('FINISHHHHEEDDDD');

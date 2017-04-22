@@ -92,7 +92,7 @@
 											<th>StudyType:</th>
 											<td><select ng-model="study.studyType" required>
 													<option value="selectType">selectType</option>
-													<option value="piolet">piolet</option>
+													<option value="piolet">pilot</option>
 													<option value="pivotal">pivotal</option>
 
 											</select></td>
@@ -162,7 +162,7 @@
 
 													</tr>
 													<tr type="text" ng-repeat="a in study.studyVolunteers">
-														<td><input type="text" ng-model="a.volunteerId"></td>
+														<td><input type="text" ng-model="a.registerNumber"></td>
 
 													</tr>
 
@@ -192,5 +192,5 @@
 
 
 </body>
-<%@ include file="/WEB-INF/views/template/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/template/footer.jsp"%> --%>
 </html>

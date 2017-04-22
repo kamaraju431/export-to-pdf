@@ -88,12 +88,15 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $
 		console.log('data in p1', $scope.currentSamples);		
 	});
 
-	$scope.openDeleteModal = function(id) {
+	$scope.openDeleteModal = function(bloodSampleId) {
 		var modalInstance = $uibModal.open({
 			template : modalTemplate,
 			controller : 'deleteModalController',
 			resolve : {
-				id : function() {
+				bloodSampleId : function() {
+					return bloodSampleId;
+				},
+				volunteerId: function() {
 					return id;
 				}
 			}
@@ -128,15 +131,14 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $
 	
 });
 
-app.controller('deleteModalController', function($scope, $http, $uibModalInstance, id) {
-	console.log('VEDHAAA ID modal', id);
+app.controller('deleteModalController', function($scope, $http, $uibModalInstance, bloodSampleId, volunteerId) {
+	console.log('VEDHAAA ID modal', bloodSampleId, volunteerId);
 
-	$scope.id = id;
+	$scope.bloodSampleId = bloodSampleId;
+	$scope.volunteerId = volunteerId;
 	$scope.delete = function() {
-		var body = { BloodSampleColletionId: $scope.id };
-		console.log('VEDHA deleting', body);
-		$http.post('deleteBloodSampleCollecion?BloodSampleColletionId=' + $scope.id).then(function(response) {
-			console.log('VEDHAAA HEREE DELETED');
+		$http.post('/aizantit/deleteBloodSampleCollecion?bloodSampleColletionId=' + $scope.bloodSampleId + "&volunteerId=" + $scope.volunteerId).then(function(response) {
+			console.log('BLOOD SAMPLE DELETED');
 			$uibModalInstance.close('deleted');	
 			location.reload();
 		

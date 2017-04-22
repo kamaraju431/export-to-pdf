@@ -78,7 +78,7 @@ public class StudyController {
 	@RequestMapping(value = "/update_study", method = RequestMethod.POST)
 	public ModelAndView updateexperimentType(HttpServletRequest request,
 			@Valid @ModelAttribute("Study") Study study, BindingResult result) {
-		studyService.saveOrUpdate(study);
+		studyService.update(study);
 		return new ModelAndView("redirect:/display_study");
 	}
 	/*
@@ -90,7 +90,7 @@ public class StudyController {
 	@Transactional
 	public ModelAndView store(HttpServletRequest request,
 			@RequestBody Study study, BindingResult result) {
-		studyService.saveOrUpdate(study);
+		studyService.add(study);
 		return new ModelAndView("redirect:/display_study");
 	}
 	

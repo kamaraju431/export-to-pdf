@@ -75,14 +75,9 @@
 
 										<tr>
 											<td>Register Number:</td>
-											<td>{{studyVolunteer.volunteerId}}</td>
+											<td>{{studyVolunteer.registerNumber}}</td>
 										</tr>
 
-<!-- 
-										<tr>
-											<td>Volunteer Name:</td>
-											<td>{{studyVolunteer.volunteerName}}</td>
-										</tr> -->
 
 
 									</tbody>
@@ -117,7 +112,7 @@
 									<b>Blood Sample Collection Record</b>
 								</h3>
 								<a
-									href="/aizantit/add_BloodSampleCollection" target="_self" class="btn btn-primary">ADD</a>
+									href="/aizantit/add_BloodSampleCollection?id={{studyVolunteer.id}}" target="_self" class="btn btn-primary">ADD</a>
 							</div>
 							<div class="col col-xs-6 text-right">
 

@@ -1,5 +1,6 @@
 package com.aizant.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,28 +26,25 @@ public class StudyVolunteer {
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name="studyVolunteer_id")
-    @Expose
+	@Column(name = "studyVolunteer_id")
+	@Expose
 	private String id;
-	
 
 	@Expose
-	private String volunteerId;
-	@Expose
-	private String volunteerName;
-	
+	private String registerNumber;
+
 	@OneToMany(fetch = FetchType.LAZY)
 	@Expose
 	private List<BloodSampleCollection> bloodSampleCollection;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "study_id", nullable = false)
 	@JsonBackReference
-    @Expose(serialize = false)
+	@Expose(serialize = false)
 	private Study study;
-	
+
 	/* --------------- Getter setters --------------------- */
-	
+
 	public List<BloodSampleCollection> getBloodSampleCollection() {
 		return bloodSampleCollection;
 	}
@@ -62,20 +60,13 @@ public class StudyVolunteer {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	public String getVolunteerId() {
-		return volunteerId;
+
+	public String getRegisterNumber() {
+		return registerNumber;
 	}
 
-	public void setVolunteerId(String volunteerId) {
-		this.volunteerId = volunteerId;
-	}
-	public String getVolunteerName() {
-		return volunteerName;
-	}
-
-	public void setVolunteerName(String volunteerName) {
-		this.volunteerName = volunteerName;
+	public void setRegisterNumber(String registerNumber) {
+		this.registerNumber = registerNumber;
 	}
 
 	public Study getStudy() {
