@@ -50,13 +50,18 @@ public class BloodSampleColletionController {
 	 * ------------------------------------- Update User
 	 * --------------------------------------
 	 */
-	
+	@RequestMapping(value = "edit_BloodSampleCollection", method = RequestMethod.GET)
+	public ModelAndView editBloodSample(@RequestParam int id,
+			@ModelAttribute("BloodSampleCollection") BloodSampleCollection bloodSampleCollection) {
+		BloodSampleCollection u1 = bloodSampleColletionDao.get(id);
+		return new ModelAndView("edit_BloodSampleCollection", "bloodSampleCollection", u1);
+	}
 	@RequestMapping(value = "/update_BloodSampleColletion", method = RequestMethod.POST)
 	public ModelAndView updateBloodSampleColletion(HttpServletRequest request,@RequestParam String id,@ModelAttribute("BloodSampleColletion") BloodSampleCollection bloodSampleColletion) {
 		System.out.println(bloodSampleColletion.getId());
 	
 		bloodSampleColletionDao.saveOrUpdate(bloodSampleColletion);
-		return new ModelAndView("redirect:/view_studyVolunteer");
+		return new ModelAndView("redirect:/view_studyVolunteer"+bloodSampleColletion.getRegisterNumber());
 	}
 	/*
 	 * ------------------------------------- Store User

@@ -56,7 +56,7 @@ public class JasperController {
 	@Transactional
 	public ModelAndView Jasper(@RequestParam String id, @RequestParam int period, ModelMap modelMap) {
 		String volunteerReportFile = servletContext.getRealPath("/reports/AizantVolunteerReport.jasper");
-		String baseReportFile = servletContext.getRealPath("/reports/SampleBarcode.jasper");
+		String baseReportFile = servletContext.getRealPath("/reports/AizantBaseReport.jasper");
 		
 		Study study = studyService.get(id);
 		List<SampleTime> sampleTimes = study.getSampleTime();		
@@ -153,6 +153,7 @@ public class JasperController {
 		studyParameters.put("subreportPath", volunteerReportFile);
 		studyParameters.put("Client_Id", study.getClientStudyId());
 		studyParameters.put("Period_Num", period);
+		studyParameters.put("Study_Type", study.getStudyType());
 
 		System.out.println("totalAliquots" + study.getAliquot());
 
@@ -185,6 +186,7 @@ public class JasperController {
 		parameters.put("Volume", studyVolunteer.getStudy().getSampleCollectionSize_in_ml());
 		parameters.put("anticougulant", studyVolunteer.getStudy().getAnticoagulant());
 		parameters.put("dosingTime", studyVolunteer.getStudy().getDosingTime());
+		parameters.put("Study_Type", studyVolunteer.getStudy().getStudyType());
 		parameters.put("collectionDataSource", jrDataSource);
 		System.out.println("Whats going onnnn 4");
 

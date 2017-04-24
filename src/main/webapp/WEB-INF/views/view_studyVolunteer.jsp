@@ -83,9 +83,9 @@
 									</tbody>
 								</table>
 
-								<a ng-href="/aizantit/edit_studyVolunteer?id={{studyVolunteer.id}}"
+								<!-- <a ng-href="/aizantit/edit_studyVolunteer?id={{studyVolunteer.id}}"
 									target="_self"
-									class="btn btn-primary">EDIT</a> 
+									class="btn btn-primary">EDIT</a> --> 
 								<a
 									ng-href="/aizantit/SampleCollections?id={{studyVolunteer.id}}&period={{selectedPeriod}}" 
 									target="_self"
@@ -154,7 +154,9 @@
 										class="glyphicon glyphicon-trash"></span></a>
 										<a ng-click="openViewModal(x)"><span
 										class="glyphicon glyphicon-eye-open"></span></a>
-										
+										<a
+										href="${pageContext.servletContext.contextPath}/edit_BloodSampleCollection?id={{x.id}}&view_studyVolunteer={{studyVolunteer.id}}&period={{selectedPeriod}}" target="_self"><span
+										class="glyphicon glyphicon-pencil"></span></a>
 										</td>
 
 

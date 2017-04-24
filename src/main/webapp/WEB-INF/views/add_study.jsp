@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="n">
 <head>
-<title>AIZANT::Adduser</title>
+<title>AIZANT::AddStudy</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -92,8 +92,8 @@
 											<th>StudyType:</th>
 											<td><select ng-model="study.studyType" required>
 													<option value="selectType">selectType</option>
-													<option value="piolet">pilot</option>
-													<option value="pivotal">pivotal</option>
+													<option value="piolet">Pilot</option>
+													<option value="pivotal">Pivotal</option>
 
 											</select></td>
 											</tr>
@@ -112,7 +112,7 @@
 											</tr>
 											<tr>
 												<th>Scheduled Dosing Time:</th>
-												<td><input type="time" ng-model=study.dosingTime></td>
+												<td><input type="time" ng-model=study.dosingTime /> </td>
 											</tr>
 											<tr>
 												<th>Periods:</th>

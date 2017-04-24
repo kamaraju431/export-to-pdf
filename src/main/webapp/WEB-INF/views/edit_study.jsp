@@ -6,7 +6,7 @@
 <html lang="n">
 <head>
 <base href="aizantit">
-<title>AIZANT::Adduser</title>
+<title>AIZANT::editStudy</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -96,7 +96,7 @@
 												</tr>
 												<tr>
 													<th>Scheduled Dosing Time:</th>
-													<td><input type="text" ng-model=study.dosingTime ></td>
+													<td><input type="time" ng-model="study.dosingTime" /></td>
 												</tr>
 												<tr>
 													<th>Periods:</th>
