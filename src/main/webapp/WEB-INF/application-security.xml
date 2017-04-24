@@ -8,23 +8,29 @@
 
 	<http use-expressions="true" auto-config="true">
 
-		<!--<intercept-url access="hasRole('ROLE_ADMIN')" pattern="/admin**" />-->
+		<intercept-url access="hasRole('ROLE_ADMIN')" pattern="/admin**" />
 
-		<!--<intercept-url access="hasRole('ROLE_MONITOR/QA')"-->
-			<!--pattern="/user**" />-->
-		<!--<intercept-url pattern="/add_user**" access="isAuthenticated()" /> -->
-		<!--<intercept-url pattern="/add_study**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/add_studyVolunteer**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/display_user**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/display_study**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/display_studyVolunteer**"-->
-			<!--access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/view_user**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/view_study**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/view_studyVolunteer**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/edit_user**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/edit_study**" access="isAuthenticated()" />-->
-		<!--<intercept-url pattern="/edit_studyVolunteer**" access="isAuthenticated()" />-->
+		<intercept-url access="hasRole('ROLE_MONITOR/QA')"
+			pattern="/user**" />
+		<intercept-url pattern="/add_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/add_study**" access="isAuthenticated()" />
+		<intercept-url pattern="/add_studyVolunteer**" access="isAuthenticated()" />
+		<intercept-url pattern="/display_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/display_study**" access="isAuthenticated()" />
+		<intercept-url pattern="/display_studyVolunteer**"
+			access="isAuthenticated()" />
+		<intercept-url pattern="/view_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/store_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/store_study**" access="isAuthenticated()" />
+		<intercept-url pattern="/store_studyVolunteer**" access="isAuthenticated()" />
+		<intercept-url pattern="/store_SampleTime**" access="isAuthenticated()" />
+		<intercept-url pattern="/store_BloodSampleCollection**"
+			access="isAuthenticated()" />
+		<intercept-url pattern="/view_study**" access="isAuthenticated()" />
+		<intercept-url pattern="/view_studyVolunteer**" access="isAuthenticated()" />
+		<intercept-url pattern="/edit_user**" access="isAuthenticated()" />
+		<intercept-url pattern="/edit_study**" access="isAuthenticated()" />
+		<intercept-url pattern="/edit_studyVolunteer**" access="isAuthenticated()" />
 
 
 
