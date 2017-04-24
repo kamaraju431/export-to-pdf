@@ -25,7 +25,7 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 		this.sessionFactory=sessionFactory;
 	}
 	@Transactional
-	public String saveOrUpdate(BloodSampleCollection bloodSampleCollection) {
+	public int saveOrUpdate(BloodSampleCollection bloodSampleCollection) {
 		sessionFactory.getCurrentSession().saveOrUpdate(bloodSampleCollection);
 		return bloodSampleCollection.getId();
 	}
@@ -35,14 +35,14 @@ public class BloodSampleCollectionDAOImpl  implements BloodSampleCollectionDAO {
 
 	}	
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		BloodSampleCollection BloodSampleCollectionToDelete =new BloodSampleCollection();
 		BloodSampleCollectionToDelete.setId(id);
 		sessionFactory.getCurrentSession().delete(BloodSampleCollectionToDelete);
 		
 	}
 	@Transactional
-	public BloodSampleCollection get(String id)
+	public BloodSampleCollection get(int id)
 	{
 		String hql ="from BloodSampleCollection where id="+"'"+id+"'";
 		Query query =(Query) sessionFactory.getCurrentSession().createQuery(hql);

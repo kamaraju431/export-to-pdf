@@ -13,7 +13,7 @@ public class BloodSampleService implements IBloodSampleService {
 	 @Autowired
 	    private BloodSampleCollectionDAO bloodSampleCollectionDao;
 	 @Transactional
-	    public BloodSampleCollection get(String id, boolean showBloodSamples)  {
+	    public BloodSampleCollection get(int id, boolean showBloodSamples)  {
 	    	BloodSampleCollection volunteer = bloodSampleCollectionDao.get(id);
 	    
 	    		volunteer.getId();
@@ -21,7 +21,7 @@ public class BloodSampleService implements IBloodSampleService {
 	    	return volunteer;
 	    }
 	    @Transactional
-	public void deleteFromStudyVolunteer(String BloodSampleId) {
+	public void deleteFromStudyVolunteer(int BloodSampleId) {
 	    	BloodSampleCollection bloodSample = bloodSampleCollectionDao.get(BloodSampleId);
 	    	System.out.println("Study volunteer to delete" + bloodSample.getId());
 		bloodSampleCollectionDao.delete(bloodSample);

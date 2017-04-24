@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aizant.DAO.BloodSampleCollectionDAO;
 import com.aizant.Services.IBloodSampleService;
 import com.aizant.model.BloodSampleCollection;
+import com.aizant.model.StudyVolunteer;
 import com.aizant.model.User;
 import com.google.gson.Gson;
 
@@ -45,7 +46,7 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "edit_BloodSampleCollection", method = RequestMethod.GET)
-	public ModelAndView editBloodSample(@RequestParam String id,
+	public ModelAndView editBloodSample(@RequestParam int id,
 			@ModelAttribute("BloodSampleCollection") BloodSampleCollection bloodSampleCollection) {
 		BloodSampleCollection u1 = bloodSampleColletionDao.get(id);
 		return new ModelAndView("edit_BloodSampleCollection", "bloodSampleCollection", u1);
@@ -55,8 +56,12 @@ public class BloodSampleColletionController {
 	public ModelAndView updateBloodSampleColletion(HttpServletRequest request,@RequestParam String id,@ModelAttribute("BloodSampleColletion") BloodSampleCollection bloodSampleColletion) {
 		System.out.println(bloodSampleColletion.getId());
 	
+	
 		bloodSampleColletionDao.saveOrUpdate(bloodSampleColletion);
-		return new ModelAndView("redirect:/view_studyVolunteer?id");
+		StudyVolunteer sv=new StudyVolunteer();
+		System.out.println(sv.getId());
+	System.out.println(bloodSampleColletion.getRegisterNumber());
+		return new ModelAndView("redirect:/view_studyVolunteer?id="+bloodSampleColletion.getRegisterNumber());
 	}
 	/*
 	 * ------------------------------------- Store User
@@ -120,7 +125,7 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "view_BloodSampleColletion", method = RequestMethod.GET)
-	public ModelAndView viewBloodSampleColletion(@RequestParam String id, @ModelAttribute BloodSampleCollection bloodSampleColletion) {
+	public ModelAndView viewBloodSampleColletion(@RequestParam int id, @ModelAttribute BloodSampleCollection bloodSampleColletion) {
 		System.out.println(id);
 		System.out.println(bloodSampleColletion.getId());
 		BloodSampleCollection SampleColletion = bloodSampleColletionDao.get(id);
@@ -133,7 +138,7 @@ public class BloodSampleColletionController {
 	 * --------------------------------------
 	 */
 	@RequestMapping(value = "/deleteBloodSampleCollecion", method = RequestMethod.POST)
-	public @ResponseBody String delete(@RequestParam String BloodSampleColletionId) {
+	public @ResponseBody String delete(@RequestParam int BloodSampleColletionId) {
 		System.out.println("hello " + BloodSampleColletionId);
 
 		//bloodSampleColletionDao.delete(BloodSampleColletionId);

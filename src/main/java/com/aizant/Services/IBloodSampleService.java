@@ -4,7 +4,7 @@ import com.aizant.model.BloodSampleCollection;
 
 public interface IBloodSampleService {
 
-	BloodSampleCollection get(String id, boolean showBloodSamples);
+	BloodSampleCollection get(int id, boolean showBloodSamples);
 
-	void deleteFromStudyVolunteer(String BloodSampleId);
+	void deleteFromStudyVolunteer(int BloodSampleId);
 }

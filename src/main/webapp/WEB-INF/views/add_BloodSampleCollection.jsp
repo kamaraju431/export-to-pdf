@@ -85,9 +85,9 @@
 															path="scanTime"></form:errors></font></td>
 											</tr>
 											<tr>
-												<td><form:label path="volunteerId">Volunteer Id :</form:label></td>
-												<td><form:input path="volunteerId" /> <font color="red"><form:errors
-															path="volunteerId"></form:errors></font></td>
+												<td><form:label path="registerNumber">Register Number :</form:label></td>
+												<td><form:input path="registerNumber" /> <font color="red"><form:errors
+															path="registerNumber"></form:errors></font></td>
 											</tr>
 											<tr>
 												<td><form:label path="comments">Comments* :</form:label></td>

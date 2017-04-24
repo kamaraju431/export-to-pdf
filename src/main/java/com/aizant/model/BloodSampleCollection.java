@@ -1,9 +1,12 @@
 package com.aizant.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.stereotype.Component;
@@ -14,10 +17,11 @@ import com.google.gson.annotations.Expose;
 @Component
 public class BloodSampleCollection {
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+
 	@Expose
-	private String id;
+	private int id;
 	@Expose
 	private String date;
 	@Expose
@@ -32,10 +36,10 @@ public class BloodSampleCollection {
 	private String comments;
 	@Expose
 	private String registerNumber;
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getDate() {
