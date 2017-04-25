@@ -60,7 +60,14 @@ app.controller('BloodSampleCollectionCtrl', function($scope, $http, $location, $
 		} else {
 			$scope.currentSamples = $scope.bloodSampleCollection.p4;
 		}
-	}
+	};
+	
+	$scope.getMainSamples = function(samples) {
+		return (samples || []).filter(function(sample) {
+			console.log('VEDHA sample', sample, sample.aliquot === 0);
+			return sample.aliquot === 0;
+		});
+	};
 	
 	$http.get('/aizantit/study_volunteer?id=' + id + "&showBloodSamples=true").then(function(response) {
 		console.log('STUDY VOLUNTEER RESPONSE', response.data);

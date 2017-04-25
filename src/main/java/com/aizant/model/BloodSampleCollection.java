@@ -120,7 +120,7 @@ public class BloodSampleCollection {
 	}
 	
 	public String getScannedByName() {
-		return this.getScannedByName();
+		return this.scannedByName;
 	}
 	
 	public void setScannedByName(String scannedByName) {

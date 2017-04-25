@@ -55,7 +55,7 @@ app.controller('viewStudyController', function($scope, $http, $location, $uibMod
 	
 	$scope.hasStarted = function(studyVolunteer) {
 		var samplesForPeriod = studyVolunteer.bloodSampleCollection.filter(function(sample) {
-			return sample.period === $scope.currentPeriod;
+			return sample.period === $scope.currentPeriod && sample.scanTime;
 		});
 		return !!samplesForPeriod.length;
 	}

@@ -142,7 +142,7 @@
 								<th>Action</th>
 
 							</tr>
-							<tr ng-repeat="x in currentSamples">
+							<tr ng-repeat="x in getMainSamples(currentSamples)">
 
 								<td>{{x.date}}</td>
 								<td>{{x.time}}</td>
