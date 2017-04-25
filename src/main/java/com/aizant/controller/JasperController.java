@@ -25,9 +25,7 @@ import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.SampleTime;
 import com.aizant.model.Study;
 import com.aizant.model.StudyVolunteer;
-
 import com.aizant.model.VolunteerParameters;
-import com.aizant.jasper.StudyVolunteerDataSource;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;

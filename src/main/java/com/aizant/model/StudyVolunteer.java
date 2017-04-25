@@ -42,6 +42,9 @@ public class StudyVolunteer {
 	@JsonBackReference
 	@Expose(serialize = false)
 	private Study study;
+	
+	@Expose
+	private String dosingTime;
 
 	/* --------------- Getter setters --------------------- */
 
@@ -75,5 +78,13 @@ public class StudyVolunteer {
 
 	public void setStudy(Study study) {
 		this.study = study;
+	}
+	
+	public String getDosingTime() {
+		return this.dosingTime;
+	}
+	
+	public void setDosingTime(String dosingTime) {
+		this.dosingTime = dosingTime;
 	}
 }

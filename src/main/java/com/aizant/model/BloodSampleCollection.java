@@ -29,9 +29,15 @@ public class BloodSampleCollection {
 	@Expose
 	private String scanTime;
 	@Expose
+	private String expectedTime;
+	@Expose
 	private String comments;
 	@Expose
 	private String registerNumber;
+	@Expose
+	private String scannedById;
+	@Expose
+	private String scannedByName;
 
 	public int getId() {
 		return id;
@@ -81,6 +87,14 @@ public class BloodSampleCollection {
 		this.scanTime = scanTime;
 	}
 
+	public String getExpectedTime() {
+		return expectedTime;
+	}
+	
+	public void setExpectedTime(String expectedTime) {
+		this.expectedTime = expectedTime;
+	}
+	
 	public int getAliquot() {
 		return aliquot;
 	}
@@ -96,5 +110,20 @@ public class BloodSampleCollection {
 	public void setRegisterNumber(String registerNumber) {
 		this.registerNumber = registerNumber;
 	}
-
+	
+	public String getScannedById() {
+		return this.getScannedById();
+	}
+	
+	public void setScannedById(String scannedById) {
+		this.scannedById = scannedById;
+	}
+	
+	public String getScannedByName() {
+		return this.getScannedByName();
+	}
+	
+	public void setScannedByName(String scannedByName) {
+		this.scannedByName = scannedByName;
+	}	
 }

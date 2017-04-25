@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-24T16:00:34 -->
+<!-- 2017-04-25T13:26:56 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SampleCollectionReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="977f59f9-8b5d-41d9-8d53-05c304e03ef7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -117,6 +117,8 @@
 		<field name="scanTime" class="java.lang.String"/>
 		<field name="comments" class="java.lang.String"/>
 		<field name="volunteerId" class="java.lang.String"/>
+		<field name="scannedByName" class="java.lang.String"/>
+		<field name="expectedTime" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="collectionDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
@@ -401,8 +403,18 @@
 					</jr:column>
 					<jr:column width="50" uuid="02ae9fc4-a5f7-4d29-96e8-30d5058ad0a5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="Table 1_TD" height="20"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="14e4a0e0-ef47-41e6-9386-fbc9758e8962"/>
+								<text><![CDATA[Expected Scan Time]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="a2357e63-c544-4064-b87e-b7faa37a8968"/>
+								<textFieldExpression><![CDATA[$F{expectedTime}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="50" uuid="8d40ce9d-b10b-4605-933f-5137e2ac1716">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
@@ -421,8 +433,18 @@
 					</jr:column>
 					<jr:column width="70" uuid="dce813fd-1e58-490f-80a2-cb9da80fceec">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="Table 1_TD" height="20"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="4ce5ee3c-3214-44b9-a9d3-3bc22ce85e3c"/>
+								<text><![CDATA[Scanned By]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="20" uuid="77b39463-f42e-4de9-9112-bb479cd0ac73"/>
+								<textFieldExpression><![CDATA[$F{scannedByName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="70" uuid="c4cd0fa9-e433-4038-be6c-a87cea1b2034">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
