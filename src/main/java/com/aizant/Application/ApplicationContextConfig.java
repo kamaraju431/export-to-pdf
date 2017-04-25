@@ -37,10 +37,9 @@ public class ApplicationContextConfig {
 	@Bean(name = "dataSource")
 	public DataSource getH2DataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/aizantTracking");
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/springbootdb");
+		dataSource.setUsername("vedha");		
 		return dataSource;
 
 	}
@@ -49,7 +48,7 @@ public class ApplicationContextConfig {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.hbm2ddl.auto", "update");
-		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
 		//properties.put("hibernate.id.new_generator_mappings","true");
 
 		return properties;
