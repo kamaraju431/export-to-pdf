@@ -4,7 +4,7 @@ import com.aizant.model.StudyVolunteer;
 
 public class StudyVolunteerDataSource {
 	StudyVolunteer studyVolunteer;
-	
+
 	public StudyVolunteerDataSource(StudyVolunteer studyVolunteer) {
 		this.studyVolunteer = studyVolunteer;
 	}
@@ -16,7 +16,5 @@ public class StudyVolunteerDataSource {
 	public void setStudyVolunteer(StudyVolunteer studyVolunteer) {
 		this.studyVolunteer = studyVolunteer;
 	}
-	
-	
-	
+
 }
