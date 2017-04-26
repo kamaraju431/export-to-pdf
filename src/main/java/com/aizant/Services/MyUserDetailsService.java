@@ -23,7 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
 	private UserDAO userDao;
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
 		User user = userDao.getByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException("No user found with username: " + username);
@@ -33,7 +32,7 @@ public class MyUserDetailsService implements UserDetailsService {
 		boolean credentialsNonExpired = true;
 		boolean accountNonLocked = true;
 		
-		System.out.println("GETTING USER" + user.getPassword());
+		System.out.println("GETTING USER" + user.getUsername() + " " + user.getPassword());
 		return new org.springframework.security.core.userdetails.User(user.getUsername(),
 				user.getPassword(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked,
 				getAuthorities(user.getRole()));

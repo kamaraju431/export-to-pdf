@@ -5,6 +5,8 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<beans:bean id="customAuthenticationFailureHandler" class="com.aizant.security.CustomAuthenticationFailureHandler" />
+	<beans:bean id="customAuthenticationSuccessHandler" class="com.aizant.security.CustomAuthenticationSuccessHandler" />
 
 	<http use-expressions="true" auto-config="true">
 
@@ -33,8 +35,10 @@
 		<intercept-url pattern="/edit_studyVolunteer**" access="isAuthenticated()" />
 
 
-
-		<form-login authentication-failure-url="/fail2login"
+<!-- 			authentication-failure-handler-ref="customAuthenticationFailureHandler" 
+			authentication-success-handler-ref="customAuthenticationSuccessHandler" -->
+		<form-login
+			authentication-failure-url="/fail2login"
 			default-target-url="/welcome" login-processing-url="/j_spring_security_check"
 			login-page="/" />
 

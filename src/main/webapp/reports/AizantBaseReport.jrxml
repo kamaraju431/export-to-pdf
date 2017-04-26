@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
-<!-- 2017-04-25T13:31:02 -->
+<!-- 2017-04-25T15:40:50 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReport" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="0" bottomMargin="0" uuid="dec9e481-4ee0-4ce4-9133-19d86ad149ef">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -37,7 +37,7 @@
 			<textField>
 				<reportElement x="38" y="37" width="15" height="14" uuid="273dfd5a-b7f4-4461-aa6d-077350a0e525"/>
 				<textElement rotation="None">
-					<font fontName="Consolas" size="8"/>
+					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Period_Num}]]></textFieldExpression>
 			</textField>

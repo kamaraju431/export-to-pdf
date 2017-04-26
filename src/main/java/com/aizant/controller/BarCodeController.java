@@ -60,6 +60,7 @@ public class BarCodeController {
 	@RequestMapping(value = "/barcode", method = RequestMethod.POST)
 	@Transactional
 	public @ResponseBody String scanCode(@RequestBody String scannedSampleIdString) {
+		System.out.println("YOYOY SCANNNN " + scannedSampleIdString);
 		int scannedSampleId = Integer.parseInt(scannedSampleIdString);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

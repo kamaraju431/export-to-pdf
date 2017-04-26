@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -47,6 +48,9 @@ public class HomeController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+    PasswordEncoder passwordEncoder;
 	
 	SessionFactory sessionFactory;
 
@@ -179,6 +183,18 @@ public class HomeController {
 		return new User();
 	}
 
+	@RequestMapping(value = "/auth_check", method = RequestMethod.POST)
+	public @ResponseBody String checkAuth(HttpServletRequest request) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		System.out.println("FORM FIELDS " + username + " " + password);
+		User user = userDao.getByUsername(username);
+		System.out.println("FORM FIELDS " + user.getUsername() + " " + user.getPassword());
+		Gson u = new Gson();
+		String json = u.toJson(passwordEncoder.matches(password, user.getPassword()));
+		return json;
+	}
 
 	
 
