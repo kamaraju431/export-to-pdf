@@ -88,10 +88,7 @@ public class HomeController {
 	User u1 = userDao.get(id);
 		return new ModelAndView("edit_user", "user", u1);
 	}
-//	@RequestMapping("/edit_user")
-//	public String editUser() {
-//		return "edit_user";
-//	}
+
 
 	/*
 	 * ------------------------------------- Update User

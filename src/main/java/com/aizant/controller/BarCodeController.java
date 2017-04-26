@@ -22,8 +22,6 @@ import com.aizant.Services.IStudyVolunteerService;
 import com.aizant.model.BloodSampleCollection;
 import com.aizant.model.SampleTime;
 
-
-
 @Controller
 @Transactional
 public class BarCodeController {
