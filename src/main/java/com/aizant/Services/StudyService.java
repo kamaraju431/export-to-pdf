@@ -59,13 +59,9 @@ public class StudyService implements IStudyService {
 	@Transactional
 	public void addVolunteerToStudy(Study study, StudyVolunteer volunteer) {
 		List<BloodSampleCollection> bloodSamples = new ArrayList<BloodSampleCollection>();
-		System.out.println("HEREEEE HEREEE 1 " + study.getPeriods() + " " + study.getAliquot() + " " + study.getSampleTime().size());
 		for (int period = 0; period < study.getPeriods(); period++) {
-			System.out.println("HEREEE 2 " + period);
 			for (int aliquot = 0; aliquot <= study.getAliquot(); aliquot++) {
-				System.out.println("HEREEE 3 " + aliquot);
 				for (SampleTime sampleTime : study.getSampleTime()) {
-					System.out.println("HEREEE 4" + sampleTime.getTimePoint());
 					BloodSampleCollection bloodSample = new BloodSampleCollection();
 					bloodSample.setAliquot(aliquot);
 					bloodSample.setPeriod(period + 1);
